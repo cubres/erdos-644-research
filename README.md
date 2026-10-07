@@ -12,7 +12,7 @@ The latest recovered v3 manuscript claims the partial bound `tau(H) <= ceil(6k/7
 - [Latest referee diff audit](research/claude644_work/fable_publication_revision_20260926/supporting/final_diff_check.md) and [strengthening report](research/claude644_work/fable_publication_revision_20260926/supporting/STRENGTHENING_REPORT.md).
 - [September 26 result summary](research/claude644_work/codex_paper_push_20260926/PAPER_RESULTS_2026-09-26.md).
 - `research/`: preserved Claude/Codex research sources; `codex/`: additional reports, manuscript versions and experiment sources.
-- `evidence/`: independently extractable ZIP archives of certificates, logs, numerical outputs, large historical notes and source bundles.
+- `evidence/`: ordinary ZIP archives of certificates, logs, numerical outputs, large historical notes and source bundles. A few large compressed members are split into parts; the helper reconstructs and verifies their original bytes.
 
 ## Reproduce the fresh finite checks
 

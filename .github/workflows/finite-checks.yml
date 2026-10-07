@@ -1,5 +1,16 @@
 name: Finite diagnostics
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    paths:
+      - '.github/workflows/finite-checks.yml'
+      - 'research/claude644_work/fable_publication_revision_20260926/manuscript/check_cases.py'
+      - 'research/claude644_work/fable_publication_revision_20260926/k7/verify_k7.py'
+  pull_request:
+    paths:
+      - '.github/workflows/finite-checks.yml'
+      - 'research/claude644_work/fable_publication_revision_20260926/manuscript/check_cases.py'
+      - 'research/claude644_work/fable_publication_revision_20260926/k7/verify_k7.py'
+  workflow_dispatch:
 jobs:
   verify:
     runs-on: ubuntu-latest
