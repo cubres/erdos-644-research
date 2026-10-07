@@ -1,0 +1,692 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\HH}{\mathcal H}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\pos}[1]{\left(#1\right)_+}
+\newcommand{\bt}{\frac67}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{2em}
+\title{A six-sevenths bound for transversals in hypergraphs with property $(7,2)$}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+A hypergraph has property $(7,2)$ if every subfamily of at most seven
+edges has a transversal of size at most two. We prove that every
+$k$-uniform hypergraph with this property satisfies
+$\tau(\HH)\le\lceil6k/7\rceil$ for $k\ge8$.
+This improves the previously established asymptotic upper coefficient
+$7/8$ to $6/7$. The proof combines sharper local avoidance constructions
+with three successive exclusions of pair-intersection sizes and a
+maximal-intersection argument. All constructions admit integral
+allocations of points among at most four requests.
+\end{abstract}
+
+\section{Introduction}
+A \emph{transversal} of a hypergraph is a set meeting every edge, and its
+\emph{transversal number} $\tau(\HH)$ is the minimum size of such a set.
+For integers $k\ge2$ and $r\ge3$, let $f(k,r)$ be the largest transversal
+number of a finite $k$-uniform hypergraph in which every subfamily of at
+most $r$ edges has a transversal of size at most two. The use of ``at most''
+avoids vacuous exceptions for families with fewer than $r$ edges.
+
+Erd\H{o}s, Fon-Der-Flaass, Kostochka and Tuza studied these local
+transversal conditions in~\cite{EFKT}. For $r=7$, Fon-Der-Flaass,
+Kostochka and Woodall proved the bounds
+\[
+ \ceil{3k/4}\le f(k,7)\le\ceil{7k/8}
+\]
+for the upper-bound range $k\ge8$; see~\cite{FKW}.
+The question whether $f(k,7)=(3/4+o(1))k$ remains the motivating problem.
+Here we improve the coefficient in the upper bound to $6/7$.
+
+\begin{theorem}\label{thm:main}
+Let $k\ge8$. Every finite $k$-uniform hypergraph with property $(7,2)$
+satisfies
+\[
+ \tau(\HH)\le\ceil{6k/7}.
+\]
+Consequently $\limsup_{k\to\infty}f(k,7)/k\le6/7$.
+\end{theorem}
+
+Our proof refines the avoidance method of Fon-Der-Flaass, Kostochka
+and Woodall~\cite{FKW}, which already uses good triples, intersection
+gaps, and a maximal small intersection. The improvement comes from
+stronger local completion constructions and their three-stage
+combination. Broader local-cover problems were subsequently studied
+by Kostochka~\cite{Kostochka} and Buci\'c, Kor\'andi and Sudakov~\cite{BKS}.
+
+The proof uses the elementary consequence of $\tau(\HH)>T$ that each
+set of at most $T$ points is avoided by an edge of $\HH$. Starting from
+three edges with empty common intersection, we construct four such
+requests so that no pair of points can meet all seven resulting edges.
+Some constructions use a previously established gap in the possible
+pair-intersection sizes. This permits three successive exclusions,
+after which a pair with largest intersection at most $k/2$ supplies the
+final contradiction.
+
+The main argument is given in Sections~\ref{sec:gaps} and~\ref{sec:finish}.
+The elementary setup is in Section~\ref{sec:prelim}. For completeness,
+Appendices~\ref{app:allocation}--\ref{app:smallmax} contain full proofs of
+all local constructions used in the argument. The local statements keep the integer request budget explicit.
+The gap endpoints are chosen from the actual integer budget
+$\lceil6k/7\rceil$, so no additive rounding term is needed.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.30\textwidth}>{\raggedright\arraybackslash}p{0.58\textwidth}}
+\toprule
+Part of the proof & Local results used\\
+\midrule
+First gap, Proposition~\ref{prop:gapone}
+ & Lemmas~\ref{lem:asymone}, \ref{lem:fourcase}, \ref{lem:symmetric}\\
+Middle gap, Proposition~\ref{prop:gaptwo}
+ & Lemmas~\ref{lem:hallstatic} and~\ref{lem:gaptwo}\\
+Final gap, Proposition~\ref{prop:gapthree}
+ & Lemmas~\ref{lem:split}, \ref{lem:asymtwo},
+   \ref{lem:gapempty}, \ref{lem:gapsurvive}\\
+Local finisher, Proposition~\ref{prop:localfinish}
+ & Lemmas~\ref{lem:asymone}, \ref{lem:fourcase}, \ref{lem:symmetric},
+   \ref{lem:gaptwo}, \ref{lem:nearcore}\\
+Small-maximum case, Lemma~\ref{lem:smallmax}
+ & Lemmas~\ref{lem:balanced}, \ref{lem:smalltriple}, \ref{lem:twolarge}\\
+\bottomrule
+\end{tabular}
+\caption{Dependencies of the main argument. The local results are proved
+in full in the appendices; the balanced request is proved below.}
+\label{tab:dependencies}
+\end{table}
+
+\section{Avoidance requests and good triples}\label{sec:prelim}
+Throughout the main argument, $\HH$ is a finite $k$-uniform hypergraph
+with property $(7,2)$ and $\tau(\HH)>T$, where $0\le T\le k$ is an integer. An \emph{avoidance request} is a set $D$ of at most $T$ points.
+There is an edge disjoint from $D$, called a response to the request.
+We construct responses successively. The requests need not be disjoint,
+and their sizes are bounded individually.
+
+A triple $E,F,G$ is \emph{good} if $E\cap F\cap G=\varnothing$.
+Write
+\[
+ X=E\cap F,\qquad Y=E\cap G,\qquad Z=F\cap G,
+\]
+and write $P_E,P_F,P_G$ for the private parts of its three edges.
+The six cells $X,Y,Z,P_E,P_F,P_G$ are disjoint. Any pair meeting the
+three edges either lies in two distinct pair cells or lies in a pair
+cell and the opposite private part. Points outside $E\cup F\cup G$
+are irrelevant, because their partner alone cannot meet a good triple.
+This observation verifies the static constructions below.
+
+For four edges with all triple intersections empty, a pair meeting all
+four must lie in two complementary pair cells. If precisely one triple
+cell survives, there is in addition the product of that cell with the
+opposite edge. These descriptions will be used explicitly in the local
+proofs.
+
+Call a subfamily \emph{bad} if its transversal number is greater than
+two.
+
+\begin{lemma}[Request-cover principle]\label{lem:requestcover}
+Suppose $\tau(\HH)>T$. Let $A_1,\ldots,A_t$ be edges and let
+$D_1,\ldots,D_s$ be sets of size at most $T$, where $t+s\le7$.
+If every transversal of $\{A_1,\ldots,A_t\}$ of size at most two is
+contained in some $D_j$, then responses avoiding the $D_j$ together
+with the initial edges form a bad subfamily of at most seven edges.
+\end{lemma}
+\begin{proof}
+A transversal of size at most two for all resulting edges would meet
+the initial edges, and hence be contained in one of the requests. It
+would then miss that request's response. Repeated responses only reduce
+the number of distinct edges and do not affect the contradiction.
+\end{proof}
+
+We will also use integral allocation among requests. Suppose disjoint
+sets of points may each be assigned to a specified subset of request
+indices, and each request has an integer remaining capacity. An
+assignment exists if every collection of source sets has total size at
+most the sum of the capacities of its available indices. To see this,
+make a bipartite flow network with the source-set sizes and request
+capacities on its outer arcs. These inequalities are precisely its
+min-cut conditions; integral augmenting paths give an assignment of
+individual points. In particular, a set available to every request can
+be distributed whenever its size is at most the sum of their remaining
+capacities. For restricted assignments we list all Hall inequalities.
+
+For integers $0\le L\le H<k$, let $\mathcal G(L,H)$ denote the condition
+\[
+ |A\cap B|\le H\quad\Longrightarrow\quad |A\cap B|\le L
+ \qquad(A,B\in\HH, A\ne B).
+\]
+This formulation fixes both endpoints of a global intersection gap.
+No ordering or convexity assumption on the set of possible intersections
+is implicit in this notation.
+
+\begin{lemma}[Balanced request]\label{lem:balanced}
+Suppose $E,F$ have intersection size $M\le T\le k$. There is a request
+of size $T$ containing $E\cap F$ such that an avoiding response $G$
+forms a good triple and
+\[
+ |E\cap G|,|F\cap G|\le k-\floor{(T+M)/2}.
+\]
+\end{lemma}
+\begin{proof}
+Include the $M$ common points and distribute the remaining $T-M$
+requested points as evenly as possible between $E\setminus F$ and
+$F\setminus E$. Both selections fit because $T\le k$. Each new trace
+has size at most $k-M-\lfloor(T-M)/2\rfloor$, which is the asserted
+quantity.
+\end{proof}
+
+\begin{lemma}[Two capped traces]\label{lem:caps}
+Suppose two edges meet in $q$ points. If a nonnegative integer $K$
+satisfies
+\[
+ 0\le2k-T-q\le2K,\qquad K\le k-q,
+\]
+there is a size-$T$ request whose response completes the pair to a
+good triple with both new pair intersections at most $K$.
+\end{lemma}
+\begin{proof}
+Choose integers $u,v\in[0,K]$ with $u+v=2k-T-q$. Retain $u$ and $v$
+points in the two private parts, and request every other point of the
+union of the edges. The retained sets fit because $K\le k-q$.
+The request has size $2k-q-u-v=T$ and contains the common intersection.
+Its response has the required traces and forms a good triple.
+\end{proof}
+
+All pair sizes used below are actual integer cardinalities.
+A triple \emph{closes at budget $T$} if four further requests of size
+at most $T$ force a bad subfamily of at most seven edges.
+Each closing result is incompatible with property $(7,2)$ under
+$\tau(\HH)>T$.
+
+\section{Integer endpoints and three intersection gaps}\label{sec:gaps}
+Fix $k\ge8$ and put
+\begin{equation}\label{eq:budget}
+ h=\floor{k/7},\qquad s=k-7h,\qquad T=k-h=\ceil{6k/7}.
+\end{equation}
+Thus $h\ge1$, $0\le s\le6$, and $6k/7\le T\le k$.
+Assume $\tau(\HH)>T$. Define integer endpoints
+\begin{equation}\label{eq:endpoints}
+ \begin{gathered}
+ A=\floor{T/2},\qquad B=\floor{(4T-2k)/3},\qquad
+ C=T-\ceil{k/2},\\
+ D=2k-T-2B,\qquad L=D-1,\qquad U=2T-k-\ceil{k/2}.
+ \end{gathered}
+\end{equation}
+The first stage excludes intersections in $(A,B]$, up to $\lfloor k/2\rfloor$.
+If this already reaches $k/2$, the finishing theorem applies. Otherwise
+the second stage excludes $[D,C]$, and the third excludes $(B,k/2]$.
+All endpoints and all retained subsets are integral.
+
+\begin{lemma}[Endpoint identities]\label{lem:endpoints}
+The endpoints in \eqref{eq:endpoints} satisfy
+\begin{gather}
+ 0\le C\le A\le B,\qquad B\ge3h,\qquad
+ L\le U=C-h,\qquad4L\le T,\label{eq:basicendpoints}\\
+ k-B-1+L\le T.\label{eq:lastendpoint}
+\end{gather}
+If $B<\lfloor k/2\rfloor$, then $h<D\le C$; in particular,
+$0\le L<C<k$.
+\end{lemma}
+\begin{proof}
+Put $r=\lfloor(h+2s)/3\rfloor$. Directly from \eqref{eq:endpoints},
+\begin{gather*}
+ A=3h+\floor{s/2},\qquad B=3h+r,\qquad
+ C=\floor{(5h+s)/2},\\
+ D=2h+s-2r,\qquad L=2h+s-2r-1,\qquad
+ U=\floor{(3h+s)/2}=C-h.
+\end{gather*}
+Clearly $C\ge0$, while $C\le A$ follows from $T\le k$.
+Also $(4T-2k)/3\ge T/2$ because $T\ge4k/5$, so $B\ge A$.
+The formula for $B$ gives $B\ge3h$.
+
+To prove $L\le U$, it suffices to show
+$2r+1\ge\lceil(h+s)/2\rceil$.
+For every nonnegative integer $n$, writing $n=3a+b$ with $0\le b\le2$
+gives $n\le4a+2$, and hence
+$\lceil n/2\rceil\le2\lfloor n/3\rfloor+1$.
+Apply this with $n=h+s$ and use $r\ge\lfloor(h+s)/3\rfloor$.
+Next, write $h+2s=3r+t$ with $0\le t\le2$. Then
+\[
+ 4L-T=2t-2r-s-4\le0.
+\]
+Finally,
+\[
+ k-B-1+L-T=s-3r-2\le-h-s\le0,
+\]
+because $3r\ge h+2s-2$. This proves
+\eqref{eq:basicendpoints}--\eqref{eq:lastendpoint}.
+If $B<\lfloor k/2\rfloor$, then $2B<k$ implies $D>k-T=h$.
+Also $D=L+1\le C-h+1\le C$, since $h\ge1$.
+\end{proof}
+
+The cap requests used in the three stages are summarized in
+Table~\ref{tab:gaps}. When a stage is reached, its earlier exclusions
+apply to every pair of family edges, including pairs involving a new
+response.
+\begin{table}[ht]
+\centering
+\begin{tabular}{cccc}
+\toprule
+Stage & Hypothetical intersection $q$ & Retained cap & New traces\\
+\midrule
+1 & $A+1\le q\le\min(B,\lfloor k/2\rfloor)$ & $C$ & $\le C$\\
+2 & $D\le q\le C$ & $B$ & $\le A$\\
+3 & $B+1\le q\le\lfloor k/2\rfloor$ & $C$ & $\le L$\\
+\bottomrule
+\end{tabular}
+\caption{Integer gap exclusions. Stages 2 and 3 are needed only when
+$B<\lfloor k/2\rfloor$.}\label{tab:gaps}
+\end{table}
+
+\subsection{The first gap}
+\begin{proposition}\label{prop:gapone}
+No pair intersection has integer size
+$A+1\le q\le\min(B,\lfloor k/2\rfloor)$.
+\end{proposition}
+\begin{proof}
+Use Lemma~\ref{lem:caps} with retained cap $C$.
+Its host bound follows from $C\le\lfloor k/2\rfloor\le k-q$, and
+$2k-T-q\ge0$. Furthermore
+\[
+ 2k-T-2C=3h+(k\bmod2)\le A+1\le q,
+\]
+so the request has size $T$. Its good triple has pair sizes
+$x=q$ and $0\le z\le y\le C$. Since $C\le A<x$, the largest is $x$.
+Put $d=y-z$, $v=y+z$, and $S=x+v$.
+
+\paragraph{Case 1: $d>x-h$.}
+Apply Lemma~\ref{lem:asymone} in orientation $(x,y,z)$.
+As $v+d=2y\le2T-k$, its four conditions follow from
+\begin{align*}
+ S&<T,&k/2+y&\le T,\\
+ (k+2x-d)/2&<(k+x+h)/2\le T,\\
+ (k+2x+2v-d)/3&<(2k+T-x)/3\le T.
+\end{align*}
+For the third bound use
+$x\le B\le(4T-2k)/3\le3T-2k$, where the last comparison follows from
+$T\ge4k/5$. For the fourth, $x\ge A+1\ge3h+1>2h$.
+
+\paragraph{Case 2: $d\le x-h$ and $v\le3T-k-2x$.}
+Use Lemma~\ref{lem:fourcase} in orientation $(y,z,x)$.
+Its nine expressions are bounded as follows:
+\begin{gather*}
+ v\le2T-k\le T,\qquad k/2+y, k/2+z\le T,\\
+ k+d-x\le k-h=T,\qquad k-d-x\le k-x\le T,\\
+ k-S/3\le T,\qquad (3k+S)/5\le T,\\
+ (k+v+2x)/3\le T,\qquad (2k+3x)/4\le T.
+\end{gather*}
+Here $S\ge x\ge3h$ proves the bound on $k-S/3$.
+For the next expression use $S\le x+2T-k$ and $x\le3T-2k$.
+The last two use the case assumption and $x\le B$.
+
+\paragraph{Case 3: $v>3T-k-2x$.}
+Use Lemma~\ref{lem:symmetric}. Its four exact budget forms satisfy
+\[
+ \begin{gathered}
+ k+x-v<2k+3x-3T\le T,\qquad (k+x)/2\le T,\\
+ (2k+x+d)/3<T,\qquad(3k+S)/5\le T.
+ \end{gathered}
+\]
+The second follows from $x\le B\le2T-k$. For the third,
+$d\le2T-k-v$ gives $2k+x+d<2k-T+3x\le3T$.
+The fourth is the estimate in Case 2. Every triple therefore closes.
+\end{proof}
+
+If $B\ge\lfloor k/2\rfloor$, Proposition~\ref{prop:gapone} already
+excludes every intersection greater than $A$ and at most $k/2$.
+Theorem~\ref{thm:finish} then gives the contradiction.
+For the remaining two stages assume
+\begin{equation}\label{eq:branch}
+ B<\floor{k/2}.
+\end{equation}
+
+\subsection{The second gap}
+\begin{proposition}\label{prop:gaptwo}
+Under \eqref{eq:branch}, no pair intersection has size $D\le q\le C$.
+\end{proposition}
+\begin{proof}
+The interval is nonempty and positive by Lemma~\ref{lem:endpoints}.
+Use retained cap $B$ in Lemma~\ref{lem:caps}.
+The hosts fit because $q\le C\le\lfloor k/2\rfloor$ and
+$B<\lfloor k/2\rfloor$. The required total is nonnegative and at most
+$2B$ because $q\ge D=2k-T-2B$.
+By the first gap, the two new traces are at most $A$.
+Thus there is a good triple with
+\[
+ D\le x\le C,\qquad0\le z\le y\le A.
+\]
+
+If $x+z\ge k-B$, apply Lemma~\ref{lem:gaptwo} in orientation $(y,x,z)$
+with $\mathcal G(A,B)$, supplied by the first gap.
+The host conditions follow from $x+y\ge x+z\ge k-B$.
+The first request has size
+\[
+ \max(x,2k-x-2B)\le T,
+\]
+since $x\ge D$. The remaining conditions are
+\begin{gather*}
+ y+A, z+A\le2A\le T,\qquad k+2x\le k+2C\le2T,\\
+ 3k\le4T,\qquad3k+S\le3k+C+2A\le5k/2+2T\le5T.
+\end{gather*}
+
+If $x+z<k-B$, use Lemma~\ref{lem:hallstatic} with distinguished pair
+$a=y$ and other pairs $b=x,c=z$. We have $a\le A$, $b\le C$, and
+\begin{align*}
+ c&\le k-B-x-1\le k-B-D-1=T+B-k-1\le C,\\
+ b+c&\le k-B-1\le3T-2k,
+\end{align*}
+where the last bound uses $B\ge3h$.
+The four base capacities are nonnegative because
+$a+b,a+c\le A+C\le T$ and $b+c\le k-B-1\le T$.
+The seven Hall conditions follow from
+\begin{gather*}
+ k+2b, k+2c\le2T,\qquad k+3a\le k+3T/2\le3T,\\
+ 2k+b+c\le3T,\qquad
+ 2k+2a+b, 2k+2a+c\le3k/2+2T\le4T,\\
+ 3k+a\le3k+T/2\le4T.
+\end{gather*}
+Thus the exact integral allocation closes this case as well.
+\end{proof}
+
+\subsection{The third gap}
+\begin{proposition}\label{prop:gapthree}
+Under \eqref{eq:branch}, no pair intersection has size
+$B+1\le q\le\lfloor k/2\rfloor$.
+\end{proposition}
+\begin{proof}
+Use retained cap $C$. The same host calculation as in the first stage
+applies, since $q\ge B+1\ge3h+1$.
+By the second gap, both new traces are at most $L=D-1$. Thus the good
+triple satisfies
+\[
+ B+1\le x\le\floor{k/2},\qquad0\le z\le y\le L.
+\]
+The global implication is $\mathcal G(L,C)$. Define
+\[
+ J=2k-C+2\floor{k/2}-3T=\floor{(h-s)/2},\qquad S=x+y+z.
+\]
+
+\paragraph{Case 1: $S\le2T-k$.}
+Use Lemma~\ref{lem:split}, whose bounds follow from
+\[
+ (k+S)/2\le T,\qquad k-x+|y-z|\le k-B-1+L\le T,
+ \qquad k/3+x\le5k/6\le T.
+\]
+
+\paragraph{Case 2: $2T-k\le S\le T$ and $z<J$.}
+Use Lemma~\ref{lem:asymtwo} in orientation $(x,z,y)$.
+The first three forms fit by $S\le T$, $k/3+x\le T$, and
+$k-x+y\le T$, using \eqref{eq:lastendpoint}.
+For the last form, $z<J\le h/2$, $y\le L\le2h+s$, and $2x\le k$ give
+\[
+ k+2x+3z+y\le2k+3h/2+2h+s=35h/2+3s\le18h+3s=3T.
+\]
+This case is empty if $J\le0$.
+
+\paragraph{Case 3: $2T-k\le S\le T$ and $z\ge J$.}
+Apply Lemma~\ref{lem:gapempty} with thresholds $(L,C)$.
+Expanding its first condition gives
+\[
+ S+p+t=\max(S,k-C+y,k-C+z,2k-2C-x)\le T.
+\]
+The middle terms fit because $L\le U=C-h$, while the last fits because
+$2k-2C-T=3h+(k\bmod2)\le B+1\le x$.
+For its split condition,
+\[
+ \begin{aligned}
+ k+3x+p+t=\max\{&k+3x, 2k-C+2x-y, 2k-C+2x-z,\\
+                &3k-2C+x-y-z\}\le3T.
+ \end{aligned}
+\]
+The first term is at most $5k/2\le3T$.
+The next two fit by $y\ge z\ge J$ and $2x\le2\lfloor k/2\rfloor$.
+For the last,
+\begin{align*}
+ 3k-2C+x-y-z
+ &=3k-2C+2x-S\\
+ &\le4k-2C+2\floor{k/2}-2T=6k-4T\le3T.
+\end{align*}
+The equality uses $C=T-\lceil k/2\rceil$.
+The third request fits because $y+z+2L\le4L\le T$.
+
+\paragraph{Case 4: $S\ge T$.}
+Apply Lemma~\ref{lem:gapsurvive} with thresholds $(L,C)$ and
+$Q=S-T$. Its conditions follow from $L\le U=C-h$ and $4L\le T$:
+\begin{align*}
+ x+y&\le\floor{k/2}+L\le\floor{k/2}+C\le T,\\
+ k-x-y&\le k-T+z\le h+L\le C,\\
+ k-x-z+Q&=h+y\le C,\\
+ 2x+2Q+k-y-z
+ &=4x+y+z+k-2T\\
+ &\le4\floor{k/2}+2U+k-2T=2T-3(k\bmod2)\le2T,\\
+ y+z+2L&\le4L\le T,\\
+ 2k+x-y+L+Q
+ &=2k+2x+z+L-T\\
+ &\le2k+2\floor{k/2}+2U-T=3T-2(k\bmod2)\le3T.
+\end{align*}
+This exhausts the cases.
+\end{proof}
+
+Together, the first and third gaps exclude every intersection in
+$(A,k/2]$. The next section proves that this suffices for the contradiction.
+
+\section{The maximal-intersection argument}\label{sec:finish}
+The three gap exclusions reduce the proof to the following statement.
+\begin{theorem}[Finishing theorem]\label{thm:finish}
+Let $k\ge8$ and $T=\lceil6k/7\rceil$. Suppose that every pair of
+ distinct edges in a finite $k$-uniform hypergraph with property $(7,2)$
+has intersection at most $T/2$ or greater than $k/2$.
+Then $\tau(\HH)\le T$.
+\end{theorem}
+We first give the local completion needed when the largest intersection
+at most $k/2$ is greater than $2k/7$.
+
+\begin{proposition}\label{prop:localfinish}
+Let $6k/7\le T\le k$ be an integer, and let $M\le T/2$ be an integer.
+Suppose every pair intersection in the family is at most $M$ or greater
+than $k/2$. Every good triple whose pair sizes are
+$M\ge y\ge z\ge0$ closes at budget $T$.
+\end{proposition}
+\begin{proof}
+Put $h=k-T$, $c=T-k/2$, and $S=M+y+z$.
+Here $0\le h\le c$. We use four cases. All numerical comparisons
+below follow from $6k/7\le T\le k$.
+
+\paragraph{Case 1: $y\le c$.}
+Write $d=y-z$. If $d>M-h$, apply Lemma~\ref{lem:asymone} in orientation
+$(M,y,z)$. Its first three budget forms satisfy
+\[
+ S<2y+h\le T,\qquad k/2+y\le T,\qquad
+ (k+2M-d)/2<(k+M+h)/2\le k-T/4\le T.
+\]
+For the fourth,
+\[
+ \frac{k+2M+2(y+z)-d}{3}
+ <\frac{k-M+4y+3h}{3}
+ \le\frac{k}{3}+y+h\le\frac{5k}{6}\le T,
+\]
+Here the first weak inequality uses $M\ge y$, and the next uses $y\le c$.
+
+Suppose next that $d\le M-h$ but $S<3h$.
+Use Lemma~\ref{lem:asymone} in orientation $(z,y,M)$.
+The first two forms fit because $S<3h\le T$ and $k/2+y\le T$.
+The last two are at most $(k+3h)/2$ and $(k+9h)/3$, respectively,
+and both are at most $T$.
+
+In the remaining subcase, $d\le M-h$ and $S\ge3h$.
+Use Lemma~\ref{lem:fourcase} in orientation $(z,y,M)$.
+The inequality $d\le M-h$ implies $M\ge h$, so
+\[
+ k-d-M\le k-M\le T,\qquad k+d-M\le T.
+\]
+Also $y+z\le2c=2T-k\le T$, $k/2+y,k/2+z\le T$, and
+$k-S/3\le T$. The remaining three forms satisfy
+\begin{gather*}
+ S\le M+2y\le5T/2-k,
+ \qquad \frac{3k+S}{5}\le\frac{2k}{5}+\frac T2\le T,\\
+ \frac{k+y+z+2M}{3}\le T,
+ \qquad \frac{2k+3M}{4}\le\frac k2+\frac{3T}{8}\le T.
+\end{gather*}
+This proves Case 1.
+
+\paragraph{Case 2: $y>c$ and $h<z\le c$.}
+Apply Lemma~\ref{lem:gaptwo} in orientation $(M,z,y)$, with
+thresholds $(M,\lfloor k/2\rfloor)$.
+Its pair-cell cuts have size $g=(k-z-\lfloor k/2\rfloor)_+$.
+They fit because $M+z\ge y+z>c+h=k/2$, so both host sums are at
+least $\lceil k/2\rceil$.
+The initial request fits since
+\[
+ z+2g=\max\{z,k-z+(k\bmod2)\}\le T;
+\]
+here the integer $z$ is at least $h+1$.
+The remaining hypotheses follow from
+\[
+ 2M\le T,\qquad M+y\le2M\le T,\qquad
+ k+2z\le2T,\qquad3k\le4T,
+\]
+and
+\[
+ 3k+S\le3k+2M+c\le5k/2+2T\le5T.
+\]
+
+\paragraph{Case 3: $y>c$ and $z>c$.}
+Use Lemma~\ref{lem:symmetric}. Its four budget forms are at most,
+respectively,
+\[
+ 2k-3T/2,\qquad k/2+T/4,\qquad5k/6,\qquad
+ (3k+3T/2)/5.
+\]
+Each is at most $T$. For the third bound use
+$M+y-z\le T-c=k/2$; the others follow directly from $M\le T/2$
+and $y,z>c$.
+
+\paragraph{Case 4: $y>c$ and $z\le h$.}
+Use Lemma~\ref{lem:nearcore} in orientation $(M,z,y)$, with global
+small-intersection cap $m=M$. Its common hypotheses follow from
+\begin{gather*}
+ y+z\le T/2+h=k-T/2\le T,\qquad M+y\le2M\le T,\\
+ k+z-y<k+h-c=5k/2-2T\le T,\\
+ 2k+M-2y<3k-3T/2\le2T,\\
+ 2k+2M-y<5k/2\le3T,\qquad2M\le T.
+\end{gather*}
+If $S\le T$, use the empty-core variant. Its two further conditions are
+\[
+ k-M+z\le k-y+z<T,\qquad
+ 2k-2M+y\le2k-M<2k-c=5k/2-T\le2T.
+\]
+If $S>T$, put $\Delta=S-T$. After substitution, the four remaining
+near-core conditions reduce to
+\begin{align*}
+ k+y+2z&\le3k-3T/2\le2T,\\
+ 2k-M+2y+z&\le2k+y+z\le3k-T/2\le3T,\\
+ 2k+M+z&\le3k-T/2\le3T,\\
+ 3k+y&\le3k+T/2\le4T.
+\end{align*}
+Thus both variants close the triple. Since $h\le c$, the four cases
+exhaust all possibilities.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:finish}]
+Suppose $\tau(\HH)>T$. Choose an edge avoiding a $T$-subset of another
+edge. Their intersection has size at most $k-T\le k/2$, so the largest
+pair-intersection size $M\le k/2$ exists. By hypothesis, $M\le T/2$.
+If $M\le2k/7$, Lemma~\ref{lem:smallmax} applies.
+Its four arithmetic conditions hold for the present budget.
+For $k\ge14$, the estimate $T\ge6k/7$ gives respective margins at least
+\[
+ k/7-1,\qquad k/14-1/2,\qquad3k/14-1/2,\qquad2k/7-4,
+\]
+with the required strictness in the first. For $8\le k\le13$, we have
+$T=k-1$, and the four conditions reduce to
+$k>7$, $k-3\ge\lceil k/2\rceil$, $k\ge5$, and $k\ge8$.
+
+Otherwise, choose a pair attaining $M>2k/7$ and apply
+Lemma~\ref{lem:balanced}. The resulting good triple has other
+intersections $Y\ge Z$ satisfying
+\[
+ Y,Z\le k-\floor{(T+M)/2}<3k/7+1/2\le k/2.
+\]
+By maximality, $Y,Z\le M$. Every pair intersection in the family is
+at most $M$ or greater than $k/2$, so Proposition~\ref{prop:localfinish}
+closes this triple. Both alternatives contradict property $(7,2)$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose $\tau(\HH)>T=\lceil6k/7\rceil$.
+If $B\ge\lfloor k/2\rfloor$, Proposition~\ref{prop:gapone} excludes
+all intersections in $(A,k/2]$.
+Otherwise, Propositions~\ref{prop:gapone}--\ref{prop:gapthree} do so.
+Since $A=\lfloor T/2\rfloor$, every pair intersection is at most
+$T/2$ or greater than $k/2$. Theorem~\ref{thm:finish} gives a
+contradiction.
+\end{proof}
+
+\begin{corollary}
+The conclusion of Theorem~\ref{thm:main} also holds for finite families
+of nonempty sets of rank at most $k$.
+\end{corollary}
+\begin{proof}
+Pad each edge to size $k$ with points private to that edge. Old
+transversals still meet the padded edges. Conversely, replace each
+private point of a transversal by an arbitrary point of its original
+nonempty edge. This gives a transversal of the original family of no
+larger size. Thus padding preserves the transversal number, and it
+preserves property $(7,2)$ because every original two-point transversal
+still works. Apply Theorem~\ref{thm:main} to the padded family.
+\end{proof}
+
+\appendix
+\input{allocations.tex}
+\input{local_closures.tex}
+\input{small_maximum.tex}
+
+\section*{Research assistance}
+Claude (Anthropic) and Codex (OpenAI) were used for literature searches,
+mathematical exploration, computational experiments, and manuscript
+preparation. The proofs presented here are self-contained hand arguments;
+no numerical output or software execution is required to verify them.
+
+\begin{thebibliography}{9}
+\bibitem{EFKT}
+P.~Erd\H{o}s, D.~G.~Fon-Der-Flaass, A.~V.~Kostochka and Zs.~Tuza,
+\emph{Small transversals in uniform hypergraphs},
+Siberian Advances in Mathematics \textbf{2} (1992), 82--88.
+
+\bibitem{FKW}
+D.~G.~Fon-Der-Flaass, A.~V.~Kostochka and D.~R.~Woodall,
+\emph{Transversals in uniform hypergraphs with property $(7,2)$},
+Discrete Mathematics \textbf{207} (1999), 277--284.
+\href{https://doi.org/10.1016/S0012-365X(99)00114-4}
+{doi:10.1016/S0012-365X(99)00114-4}.
+\bibitem{Kostochka}
+A.~V.~Kostochka,
+\emph{Transversals in uniform hypergraphs with property $(p,2)$},
+Combinatorica \textbf{22} (2002), 275--285.
+\href{https://doi.org/10.1007/s004930200013}{doi:10.1007/s004930200013}.
+
+\bibitem{BKS}
+M.~Buci\'c, D.~Kor\'andi and B.~Sudakov,
+\emph{Covering graphs by monochromatic trees and Helly-type results
+for hypergraphs}, Combinatorica \textbf{41} (2021), 319--352.
+\href{https://doi.org/10.1007/s00493-020-4292-9}
+{doi:10.1007/s00493-020-4292-9}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,98 @@
+\section{A threshold theorem for symmetric families}\label{sec:threshold}
+
+The extremal example for the conjectured value $3/4$, the complete hypergraph $K^{(k)}_{\lfloor 7k/4\rfloor-1}$, is invariant under all permutations of its ground set, and the parity example of~\cite{FKW} is invariant under all permutations preserving a fixed set $X$. It is therefore natural to test the conjecture on families with a large symmetry group. In this section we prove it, up to an additive constant, for a natural class of such families: unions of \emph{threshold} conditions.
+
+\begin{definition}\label{def:threshold}
+Let $V=P_1\sqcup\dots\sqcup P_p$ be a partition, let $I\subseteq[p]$, and let $t_i\ (i\in I)$ be integers with $1\le t_i\le k$. The \emph{threshold family} $\mathcal T=\mathcal T(P;I;t)$ consists of all $k$-subsets $E\subseteq V$ such that $|E\cap P_i|\ge t_i$ for at least one $i\in I$. We call $P_i$ ($i\in I$) the \emph{boxes}.
+\end{definition}
+
+A threshold family is invariant under $\mathrm{Sym}(P_1)\times\dots\times\mathrm{Sym}(P_p)$. The complete hypergraph is the case $p=1$, $t_1\le k$.
+
+\begin{theorem}\label{thm:threshold}
+Let $\mathcal T$ be a threshold family with at least three boxes, and suppose $|P_i|\ge t_i+7$ for every box $P_i$. If $\mathcal T$ has property $(7,2)$, then
+\[
+\tau(\mathcal T)\le \tfrac34k+8p .
+\]
+\end{theorem}
+
+The bad subfamilies we construct are always of the Fano type used in Section~\ref{sec:further}. We first isolate the only fact about them that we need.
+
+\begin{lemma}[Fano windows]\label{lem:fanowindows}
+Label the points of a Fano plane by $\{1,\dots,7\}$. Let $C_1,\dots,C_7$ be pairwise disjoint sets, and for every line $\ell$ let $G_\ell$ be a set contained in the \emph{window} $W_\ell=\bigcup_{q\notin\ell}C_q$. Then no two points meet all seven sets $G_\ell$.
+\end{lemma}
+
+\begin{proof}
+A point of $C_q$ lies only in sets $G_\ell$ with $q\notin\ell$. Given $u\in C_q$ and $v\in C_{q'}$ (possibly $q=q'$), choose a line $\ell$ through $q$ and $q'$; then $G_\ell$ misses both. A point outside $\bigcup C_q$ lies in no $G_\ell$.
+\end{proof}
+
+\subsection{The continuous model}
+Scale by $k$. Put $x_i=|P_i|/k$ (the \emph{capacities}), $X=\sum_ix_i$ and $\theta_i=t_i/k$. A \emph{type} is a vector $a\in\mathbb R^p_{\ge0}$ with $a\le x$, $\sum_ia_i=1$ and $a_i\ge\theta_i$ for some box $i$; types are the rescaled profiles $(|E\cap P_i|/k)_i$ of edges. A vector $0\le u\le x$ is \emph{free} if no type satisfies $a\le u$, and
+\[
+\tau^*=X-\sup\Bigl\{\textstyle\sum_iu_i: u\text{ free}\Bigr\}.
+\]
+
+\begin{lemma}\label{lem:tauint}
+$\tau(\mathcal T)\le k\,\tau^*+p$.
+\end{lemma}
+
+\begin{proof}
+Let $u$ be free and let $S\subseteq V$ have $\lfloor ku_i\rfloor$ points in each $P_i$. An edge $E\subseteq S$ would give a type $|E\cap P|/k\le u$; so $S$ is independent, and $\tau(\mathcal T)\le|V|-|S|\le kX-k\sum u_i+p$. Take the supremum over $u$.
+\end{proof}
+
+We say a box $i$ is \emph{effective} if some type $a$ has $a_i\ge\theta_i$. For an effective box put $\theta_i'=\max(\theta_i,\,1-X+x_i)$; every type with $a_i\ge\theta_i$ has $a_i\ge\theta'_i$, because the remaining coordinates sum to at most $X-x_i$. Put $d_i=x_i-\theta_i'\ge0$.
+
+\begin{lemma}\label{lem:freevector}
+$\tau^*\le X-1$, and $\tau^*\le\sum_{i\text{ effective}}d_i$.
+\end{lemma}
+
+\begin{proof}
+Every $u$ with $\sum u_i<1$ is free. The vector with coordinates $\theta'_i-\varepsilon$ on effective boxes and $x_j$ elsewhere is free, since a type below it would have $a_i<\theta'_i$ for every effective box $i$ and could not reach any threshold. Let $\varepsilon\to0$.
+\end{proof}
+
+A \emph{Fano placement} for the template $T(A,B,C)$, where $A,B,C$ are distinct effective boxes, is the following continuous object. Fix a Fano point $p_0$; call the four lines missing $p_0$ the \emph{quadrilateral} and the three lines through $p_0$ the \emph{pencil} $\ell_1,\ell_2,\ell_3$. Assign box $A$ to the quadrilateral lines, box $B$ to $\ell_1,\ell_2$ and box $C$ to $\ell_3$, and write $\beta(\ell)$ for the box of line $\ell$. A placement consists of numbers $c_{i,q}\ge0$ (the mass of Fano point $q$ in part $i$) and $a^\ell_i\ge0$ (the trace of row $\ell$ in part $i$) with
+\begin{equation}\label{eq:placement}
+\sum_qc_{i,q}\le x_i,\qquad a^\ell_i\le\sum_{q\notin\ell}c_{i,q},\qquad\sum_ia^\ell_i=1,\qquad a^\ell_{\beta(\ell)}\ge\theta'_{\beta(\ell)} .
+\end{equation}
+
+\begin{lemma}[realisation]\label{lem:realise}
+Delete $\min(7,|P_i|)$ points from every part, obtaining the threshold family $\mathcal T'$ on the smaller parts. If $\mathcal T'$ admits a Fano placement, or a type with $a\le\tfrac47x$, then $\mathcal T$ does not have property $(7,2)$.
+\end{lemma}
+
+\begin{proof}
+Take the continuous data for $\mathcal T'$, with capacities $x'_i\ge x_i-7/k$. Let $C_{i,q}$ be disjoint subsets of $P_i$ of sizes $\lceil kc_{i,q}\rceil$; this fits, since $\sum_q\lceil kc_{i,q}\rceil\le kx'_i+7\le|P_i|$. The window of row $\ell$ then has at least $\lceil ka^\ell_i\rceil$ points in $P_i$. Choose $b^\ell_i=\lceil ka^\ell_i\rceil$ points there. This gives at least $k$ points with at least $\lceil ka^\ell_{\beta}\rceil\ge t_\beta$ of them in the box $\beta=\beta(\ell)$. Discard points outside the box first, and if necessary box points down to $t_\beta$, to get exactly $k$ points. The result is an edge $G_\ell$ of $\mathcal T$ inside its window, and by Lemma~\ref{lem:fanowindows} the seven edges have no $2$-point transversal. For a type $a\le\frac47x'$ use seven classes of size $\lceil kx'_i/7\rceil$ in every part and seven copies of that type.
+\end{proof}
+
+\subsection{The continuous theorem}
+
+\begin{theorem}\label{thm:threshold-cont}
+In the continuous model, suppose there are at least three effective boxes and $\tau^*\ge 3/4$. Then either some type satisfies $a\le\frac47x$, or for any three effective boxes $A,B,C$ the template $T(A,B,C)$ admits a Fano placement.
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1 (the homogeneous case).} By Lemma~\ref{lem:freevector}, $X\ge7/4$, so $\sum_i\frac47x_i\ge1$. If some effective box has $\theta'_i\le\frac47x_i$, the vector with $a_i=\theta'_i$, filled up to total $1$ inside $\frac47x$, is a type below $\frac47x$. Assume from now on that $\frac47x_i<\theta'_i\le\min(x_i,1)$ for every effective box.
+
+\emph{Step 2 (one light part).} Rows of the template only need thresholds in $A,B,C$. Merge all other parts into one part $L$ of capacity $x_L$. The constraints~\eqref{eq:placement} are linear and homogeneous in $(c_{i,\cdot},a_{i}^{\cdot},x_i)$, so a placement for the merged part splits back into the original parts proportionally to their capacities. By Step~1, each merged effective box has $d_j<\frac37x_j$, and non-boxes contribute nothing to Lemma~\ref{lem:freevector}. Writing $d_X=x_X-\theta'_X$ for $X\in\{A,B,C\}$, we get
+\begin{equation}\label{eq:g}
+g:=d_A+d_B+d_C+\tfrac37x_L\ \ge\ \tau^*\ \ge\ \tfrac34 .
+\end{equation}
+If $x_L\ge7/4$, give each row trace $\theta'_{\beta(\ell)}$ in its own box and the rest in $L$. Put mass $\theta'_A$ on $p_0$ in part $A$, and mass $\theta'_B$ (resp.\ $\theta'_C$) on a point of part $B$ (resp.\ $C$) off $\ell_1\cup\ell_2$ (resp.\ off $\ell_3$). Put $x_L/7\ge\frac14$ on every point in $L$. This is a placement, so assume $x_L\le7/4$.
+
+\emph{Step 3 (convexity).} For fixed $(x_A,x_B,x_C,\theta'_A,\theta'_B,\theta'_C,x_L)$, conditions~\eqref{eq:placement} are linear inequalities in the variables $c,a$ whose right-hand sides depend linearly on these parameters. The set of parameters admitting a placement is therefore the projection of a polyhedron, and is convex. It suffices to show that it contains every vertex of the domain
+\[
+D=\{(x_X,\theta'_X)_{X=A,B,C}\in\Delta^3,\ 0\le x_L\le\tfrac74,\ g\ge\tfrac34\},\qquad
+\Delta=\{(x,\theta):\tfrac47x\le\theta\le\min(x,1)\}.
+\]
+
+\emph{Step 4 (the vertices are degenerate).} $\Delta$ is the triangle with vertices $(0,0)$, $(1,1)$ and $(\frac74,1)$, on which $d=x-\theta$ takes the values $0,0,\frac34$. At the vertices of the product $P=\Delta^3\times[0,\frac74]$ the function $g$ therefore takes values in $\frac34\mathbb Z$. Along an edge of $P$ only one factor moves, so $g$ changes by $0$ or $\frac34$, and the hyperplane $g=\frac34$ can meet an edge of $P$ only at an endpoint. Hence every vertex of $D=P\cap\{g\ge\frac34\}$ is a vertex of $P$. At such a vertex each of $A,B,C$ is \emph{empty} ($x=\theta=0$), \emph{tight} ($x=\theta=1$) or a \emph{Fano part} ($x=\frac74$, $\theta=1$), and $x_L\in\{0,\frac74\}$. Since $g\ge\frac34$, at least one part of capacity $\frac74$ exists (a Fano part, or $L$); call it the \emph{host}.
+
+\emph{Step 5 (the vertices).} Give every row its whole mass $1$ in its own box if that box is tight or a Fano part, and in the host if its box is empty; the threshold conditions then hold ($\theta'=1$ or $\theta'=0$). A tight part $A$ carries the four quadrilateral rows: put mass $1$ on $p_0$, which lies in the window of every line missing $p_0$. A tight $B$ carries the rows $\ell_1,\ell_2$: put mass $1$ on one of the two points off $\ell_1\cup\ell_2$. A tight $C$ carries $\ell_3$: put mass $1$ on a point off $\ell_3$. Every part of capacity $\frac74$ gets mass $\frac14$ on each Fano point; each of its windows then has mass $1$ and can carry any row. This is a placement at every vertex of $D$. By Step~3 it exists on all of $D$, and the parameters of our family lie in $D$ by Steps~1 and~2.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:threshold}]
+Suppose $\tau(\mathcal T)>\frac34k+8p$ and delete $\min(7,|P_i|)$ points from each part to obtain $\mathcal T'$. Then $\tau(\mathcal T')\ge\tau(\mathcal T)-7p>\frac34k+p$. Every box keeps $|P'_i|\ge t_i$ points, so it stays effective when $X'\ge1$, and $\mathcal T'$ is nonempty. By Lemma~\ref{lem:tauint}, $\tau^*(\mathcal T')>\frac34$. Theorem~\ref{thm:threshold-cont} and Lemma~\ref{lem:realise} show that $\mathcal T$ is not $(7,2)$.
+\end{proof}
+
+\begin{remark}\label{rem:threshold}
+(i) The constant $\frac34$ is sharp even for $p=1$, by the complete hypergraph.
+(ii) At least three boxes are needed for Fano-type subfamilies. With two boxes of capacity $\frac{11}8$ and thresholds equal to $1$, no Fano placement exists although $\tau^*=\frac34$. That family is nevertheless not $(7,2)$: four edges inside one box with no common point, together with one edge inside the other box, have no $2$-point transversal. So the two-box case needs other bad subfamilies.
+\end{remark}

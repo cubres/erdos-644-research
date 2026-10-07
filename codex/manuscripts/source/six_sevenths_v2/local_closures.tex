@@ -1,0 +1,404 @@
+% Complete local avoidance constructions. All mathematical statements
+% are independent of the source-note numbering.
+\section{Local avoidance constructions}\label{app:local}
+Throughout this appendix, the family is $k$-uniform and has transversal
+number greater than the integer request budget $0\le T\le k$. Thus every set
+of at most $T$ points is avoided by a family edge. All edges obtained by
+such requests belong to the original family. Repetitions cause no problem:
+the contradiction is a subfamily of at most seven edges.
+
+The notation of a good triple is as in Section~\ref{sec:prelim}.
+A construction \emph{closes} a triple if four further requests force a
+subfamily with no transversal of size at most two. Pair-cell sizes in
+this appendix are actual integer cardinalities.
+
+For integers $0\le L\le H<k$, the notation $\mathcal G(L,H)$ recalls
+the global condition from Section~\ref{sec:prelim}: every intersection
+of distinct family edges of size at most $H$ has size at most $L$.
+Since $H<k$, any response with trace at most $H$ is distinct from the
+edge against which that trace is measured.
+The three threshold lemmas state their integer conditions directly.
+
+\begin{lemma}[Three small intersections; cf.~\cite{FKW}]\label{lem:smalltriple}
+Suppose all three pairwise intersections of a good triple have size at most $m\le k/2$. It extends to a bad subfamily of at most seven edges whenever
+\[
+\tau>B:=\left\lceil\max\{(3k+m)/4,(2k+2m)/3\}\right\rceil.
+\]
+\end{lemma}
+\begin{proof}
+Write the triple as $E,F,G$, with $X=E\cap G$, $Y=E\cap F$, $Z=F\cap G$, and relabel so $x=|X|\ge y=|Y|\ge z=|Z|$. Choose $P_G\subseteq G\setminus(E\cup F)$ of size $B-x-y$, and $B_0\subseteq F\setminus(E\cup G)$ of size $\min(B-x,k-y-z)$. Put $C=F\setminus(Y\cup B_0)$; then
+\[
+c=|C|=\max(k-B+x-y,z).
+\]
+Choose $P_E\subseteq E\setminus(F\cup G)$ of size $\min(B-x-c,k-x-y)$. All requested sizes are nonnegative and fit their hosts: $B-x-y\ge B-2m\ge0$, $c\le k-B+m$, $B-x-c\ge2B-k-2m\ge0$, and $B-x-y\le k-x-z$ because $y\ge z$ and $B\le k$.
+
+Request edges avoiding
+\[
+X\cup Y\cup P_G,\quad X\cup B_0,\quad X\cup C\cup P_E,\quad (E\cup G)\setminus(X\cup P_E\cup P_G).
+\]
+The first three sizes are at most $B$. The fourth size is
+\[
+\max\{3(k-B)+x,\ 2(k-B)+y+z,\ (k-B)+2y\}\le B,
+\]
+by the definition of $B$.
+A candidate pair with one point in $X$ has its other point in $Y,B_0$, or $C$ and is missed by one of the first three responses. Otherwise a point in $Y$ must pair with a point in $G\setminus X$, and the first or fourth response misses the pair according as the latter point is in $P_G$ or its complement. If the first point is in $Z$, use the third or fourth response and $P_E$. This exhausts the candidate pairs.
+\end{proof}
+
+\begin{lemma}[Splitting one pair cell]\label{lem:split}
+For a good triple with pair sizes $x=|E\cap F|$, $y=|E\cap G|$, $z=|F\cap G|$, four legal responses yield a bad seven-tuple at any budget $T\le k$ satisfying
+\[
+T\ge\max\{(k+x+y+z)/2,\ k-x+|y-z|,\ k/3+x\}.
+\]
+The lemma is exactly integral.
+\end{lemma}
+\begin{proof}
+Put $S=x+y+z$; the first hypothesis and $T\le k$ give $S\le T$. Request $H$ avoiding $X=E\cap F$, $Y=E\cap G$, $Z=F\cap G$, and
+\[
+p=\max(0,k-2(T-x)-y-z)
+\]
+points of the private part of $G$. This selection fits because $T\ge x$. Its union size is
+\[
+S+p=x+\max(y+z,k-2T+2x)\le T.
+\]
+All four triple cells vanish. Put $A=F\cap H$, $B=G\cap H$, $C=E\cap H$ with sizes $a,b,c$. Then
+\[
+a\le k-x-z,\quad b\le2(T-x),\quad c\le k-x-y,\quad a+b+c\le k.
+\]
+
+If $b\le T-x$, the three requests $X\cup B$, $Y\cup A$, $Z\cup C$ have sizes at most $T$: for the latter two use $k-x+|y-z|\le T$. They cover the three complementary candidate pairs.
+
+If $b>T-x$, divide $B$ into two parts of size at most $T-x$; this is possible because $b\le2(T-x)$, also integrally. Two requests contain $X$ and one part each. The third contains $Y\cup Z\cup A\cup C$, whose size satisfies
+\[
+y+z+a+c\le k-b+y+z<k-T+x+y+z\le T.
+\]
+These requests again cover all three candidate pairs.
+\end{proof}
+
+\begin{lemma}[One surviving triple cell]\label{lem:fourcase}
+Let $E,F,G$ be a good triple of $k$-sets, and put $X=E\cap F$, $Y=E\cap G$, $Z=F\cap G$, with sizes $x,y,z$ and $S=x+y+z$. Four further avoidance responses force a bad seven-tuple at any integer budget $T\le k$ satisfying
+\[
+\begin{gathered}
+T\ge\max\Bigl\{x+y,\ k/2+x,\ k/2+y,\ k+x-y-z,\ k-x+y-z,\\
+ k-S/3,\ (3k+S)/5,\ (k+x+y+2z)/3,\ (2k+3z)/4\Bigr\}.
+\end{gathered}
+\]
+The construction is exactly integral. Any of the three pair cells can be designated $Z$.
+\end{lemma}
+\begin{proof}
+Request $H$ avoiding $X,Y$ and a subset $Z_0\subseteq Z$ of size $\min(z,T-x-y)$. This is legal. Write
+\[
+Q=Z\cap H,\quad A=(F\cap H)\setminus Q,\quad B=(G\cap H)\setminus Q,\quad C=E\cap H,
+\]
+with sizes $q,a,b,c$. Also put $V=Z\setminus Q$, $v=z-q$, and $D=E\setminus(X\cup Y\cup C)$, $d=k-x-y-c$. These eight cells are disjoint, and
+\[
+q\le(S-T)_+,\quad a\le k-x-z,\quad b\le k-y-z,\quad c\le k-x-y,\quad q+a+b+c\le k.
+\]
+The only triple cell of $E,F,G,H$ is $Q$. A pair piercing these four edges therefore either belongs to $Q\times E$, or to one of $X\times B$, $Y\times A$, $V\times C$. We will make all three remaining avoidance requests contain $Q$ and their union contain $E$, while covering these last three products.
+
+Two uniform bounds used below are
+\[
+q+x+b\le\max(k+x-y-z,k+2x-T)\le T,
+\]
+\[
+q+y+a\le\max(k-x+y-z,k+2y-T)\le T.
+\]
+Also $z\le T$, since $4T\ge2k+3z$ and $z\le k$.
+
+\paragraph{Case 0: $c\le T-z$.} Start the three requests with the disjoint-cell unions
+\[
+Q\cup X\cup B,\qquad Q\cup Y\cup A,\qquad Z\cup C.
+\]
+Each base has size at most $T$. Their total load, plus $d$, is
+\[
+k+2q+a+b+z\le\max(3k-S,3k+S-2T)\le3T.
+\]
+The first inequality follows from $a+b\le2k-x-y-2z$ and $q\le(S-T)_+$. Distribute $D$ among the remaining capacities. These capacities and $d$ are integers; hence the distribution can be integral. All candidate pairs are now covered by the bases or by $Q$ together with this distribution.
+
+In the other cases $c>T-z$. Set
+\[
+a_0=k+x+z-2T,\qquad b_0=k+y+z-2T.
+\]
+
+\textbf{Case 1: $a<a_0$.} Use bases
+\[
+Q\cup X\cup B,\qquad Y\cup A\cup Z\cup C_2,\qquad Z\cup C_3,
+\]
+where $C=C_2\sqcup C_3$. This split fits because
+\[
+y+a+z\le k+x+y+2z-2T\le T,
+\]
+\[
+a+c\le2k+z-y-2T\le2T-2z-y.
+\]
+Thus the two capacities $T-y-a-z$ and $T-z$ are nonnegative and sum to at least $c$. The total base load plus $d$ is
+\[
+k+q+a+b+2z\le2k+2z-c<2k+3z-T\le3T.
+\]
+Distribute $D$ among the remaining capacities. The three products are covered, and all bases contain $Q$.
+
+\textbf{Case 2: $b<b_0$.} Interchange $X,B,x,b$ with $Y,A,y,a$ in Case 1. This covers the case even if both inequalities hold.
+
+\textbf{Case 3: $a\ge a_0$ and $b\ge b_0$.} Put $u=c+z-T>0$. Since $z\le T$, we have $u\le c$, so choose $C_{12}\subseteq C$ of size $u$ and put $C_3=C\setminus C_{12}$. Choose an integer $t$ in
+\[
+\max(0,y+a+z+u-T)\ \le t\le\ \min(v,T-q-x-b-u).
+\]
+This interval is nonempty. The second upper entry is nonnegative because
+\[
+q+b+c\le k-a\le2T-x-z.
+\]
+The second lower entry is at most $v$ because
+\[
+q+a+c\le k-b\le2T-y-z.
+\]
+Finally the untruncated lower entry does not exceed the untruncated upper entry: this is equivalent to
+\[
+q+a+b+2c+x+y+3z\le4T,
+\]
+which follows from $q+a+b+c\le k$, $c\le k-x-y$ and $2k+3z\le4T$. All endpoints are integers.
+
+Split $V=V_{13}\sqcup V_{23}$ with $|V_{13}|=t$, and use bases
+\[
+Q\cup X\cup B\cup C_{12}\cup V_{13},
+\]
+\[
+Q\cup Y\cup A\cup C_{12}\cup V_{23},
+\]
+\[
+Z\cup C_3.
+\]
+The interval inequalities make the first two sizes at most $T$; the third has size exactly $T$. Their total load plus $d$ is
+\[
+k+q+a+b+2z+u\le2k+3z-T\le3T.
+\]
+Again distribute $D$ into the residual capacities. The first two requests cover $X\times B$, $Y\times A$ and $V\times C_{12}$; the third covers $V\times C_3$. All contain $Q$ and their union contains $E$. Thus each candidate piercing pair of the first four edges misses at least one of the three new responses. This is a bad seven-tuple.
+\end{proof}
+
+\begin{lemma}[An asymmetric split]\label{lem:asymone}
+With the good-triple notation of Lemma~\ref{lem:fourcase}, four further avoidance responses force a bad seven-tuple whenever $T\le k$ and
+\[
+T\ge\max\left\{S,\ \frac k2+y,\ \frac{k+2x-y+z}{2},\ \frac{k+2x+y+3z}{3}\right\}.
+\]
+The construction is exactly integral. All six permutations of $x,y,z$ are available.
+\end{lemma}
+\begin{proof}
+Request $H$ avoiding $X,Y,Z$ and $T-S$ points in the private part of $F$. The private selection fits because $T-S\ge0$ and $T-S\le k-x-z$, the latter following from $T\le k+y$. Put $A=F\cap H$, $B=G\cap H$, $C=E\cap H$, with sizes $a,b,c$. All four triple cells vanish, so the candidate piercing pairs are $X\times B$, $Y\times A$, and $Z\times C$. Also
+\[
+a\le k-T+y,\qquad b\le k-y-z,\qquad a+b+c\le k.
+\]
+If $a\le T-y-z$, split $B=B_1\sqcup B_2$ into two parts of size at most $T-x-z$. This is possible, integrally, since
+\[
+2(T-x-z)\ge k-y-z\ge b.
+\]
+Start the final three requests with
+\[
+X\cup Z\cup B_1,\qquad X\cup Z\cup B_2,\qquad Y\cup Z\cup A.
+\]
+The first two fit by construction; the third fits by the case assumption. The total base load plus $c$ is
+\[
+2x+y+3z+a+b+c\le k+2x+y+3z\le3T.
+\]
+Distribute $C$ integrally among the residual capacities. Every final request contains $Z$, so this distribution covers $Z\times C$; the first two requests cover $X\times B$ and the third covers $Y\times A$.
+
+If instead $a>T-y-z$, then
+\[
+b+c\le k-a<k-T+y+z\le2(T-x-z).
+\]
+Split $B\cup C$ into two parts of size at most $T-x-z$, and put $X\cup Z$ together with one part in each of the first two requests. The third request is $Y\cup A$, of size at most $k-T+2y\le T$. These three requests cover all three candidate-pair products again. Thus no pair pierces the seven edges in either case.
+\end{proof}
+
+\begin{lemma}[A second asymmetric split]\label{lem:asymtwo}
+With the same good-triple notation, four further avoidance responses force a bad seven-tuple if $T\le k$ and
+\[
+T\ge\max\left\{S,\ \frac k3+x,\ k-x+z,\ \frac{k+2x+3y+z}{3}\right\}.
+\]
+The construction is exactly integral, with all six permutations available.
+\end{lemma}
+\begin{proof}
+Request $H$ avoiding $X,Y,Z$ and
+\[
+p=\max(0,k-2(T-x)-y-z)
+\]
+points of the private part of $G$. This fits its host since $T\ge x$, and its total cost is $\max(S,k+3x-2T)\le T$. As in Lemma~\ref{lem:split}, write $A=F\cap H$, $B=G\cap H$, $C=E\cap H$, with sizes $a,b,c$. Then
+\[
+b\le2(T-x),\qquad c\le k-x-y,\qquad a+b+c\le k.
+\]
+All four triple cells vanish and the candidate pairs are $X\times B$, $Y\times A$, $Z\times C$.
+
+If $b>k+y+z-T$, split $B$ into two parts of size at most $T-x$, and use $X$ with each part as two requests. The third is $Y\cup Z\cup A\cup C$, of size at most $k-b+y+z<T$.
+
+Otherwise $b\le k+y+z-T\le2(T-x-y)$, where the last inequality is exactly $3T\ge k+2x+3y+z$. Split $B=B_1\sqcup B_2$ into two parts of size at most $T-x-y$. Start the three requests with
+\[
+X\cup Y\cup B_1,\qquad X\cup Y\cup B_2,\qquad Y\cup Z\cup C.
+\]
+The first two fit by construction; the third has size at most $k-x+z\le T$. The total base load plus $a$ is at most
+\[
+2x+3y+z+a+b+c\le k+2x+3y+z\le3T.
+\]
+Distribute $A$ into the residual integer capacities. Since every request contains $Y$, this covers $Y\times A$. The first two cover $X\times B$ and the third covers $Z\times C$. Both cases therefore yield a bad seven-tuple.
+\end{proof}
+
+\begin{lemma}[Two traces forced below a threshold]\label{lem:gapempty}
+Suppose $\mathcal G(L,H)$ holds, and a good triple has pair sizes $x,y,z$.
+Put $S=x+y+z$ and
+\[
+ p=(k-x-y-H)_+,\qquad t=(k-x-z-H)_+.
+\]
+The triple closes at integer budget $T\le k$ if
+\begin{equation}\label{eq:g0exact}
+ S+p+t\le T,\qquad k+3x+p+t\le3T,\qquad y+z+2L\le T.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Choose $p$ private points of $E$ and $t$ private points of $F$ and
+request them together with $X,Y,Z$. The private selections fit because
+$H\ge0$. The initial size is $C_0=S+p+t\le T$. Pad the request by
+$T-C_0$ private points of $G$; this fits because $C_0\ge S$ and $T\le k$.
+Let $K$ be a response. Its traces on $E$ and $F$ are at most $H$, hence
+at most $L$. All triple intersections among $E,F,G,K$ are empty.
+
+Write $A=F\cap K$, $B=G\cap K$, $C=E\cap K$. Their sizes satisfy
+$|A|,|C|\le L$ and $|B|\le k-T+x+p+t$.
+Split $B$ into two nearly equal parts $B_1,B_2$. The requests
+\[
+ X\cup B_1,\qquad X\cup B_2,\qquad Y\cup Z\cup A\cup C
+\]
+have sizes at most
+\[
+ x+\ceil{(k-T+x+p+t)/2}\le T,\qquad y+z+2L\le T.
+\]
+The first bound is equivalent to $k+3x+p+t\le3T$, since all quantities
+are integers. These requests cover the complementary products
+$X\times B$, $Y\times A$, and $Z\times C$.
+\end{proof}
+
+\begin{lemma}[One surviving triple cell and a threshold]\label{lem:gapsurvive}
+Suppose $\mathcal G(L,H)$ holds. For a good triple put $S=x+y+z$ and
+$Q=(S-T)_+$. The triple closes at integer budget $T\le k$ if
+\begin{align}
+ x+y&\le T,& k-x-y&\le H,& k-x-z+Q&\le H,\label{eq:g1exact}\\
+ 2x+2Q+k-y-z&\le2T,& y+z+2L&\le T,&
+ 2k+x-y+L+Q&\le3T.\nonumber
+\end{align}
+\end{lemma}
+\begin{proof}
+Request $K$ avoiding $X,Y$ and a subset of $Z$ of size
+$\min(z,T-x-y)$. Put
+\[
+ P=Z\cap K,\quad A=(F\cap K)\setminus P,\quad
+ B=(G\cap K)\setminus P,\quad C=E\cap K,
+\]
+with sizes $p,a,b,c$. Then $p\le Q$, $b\le k-y-z$, and
+\[
+ c\le k-x-y\le H,\qquad a+p\le k-x-z+Q\le H.
+\]
+These are actual pair intersections. Hence $\mathcal G(L,H)$ gives
+$c\le L$ and $a+p\le L$.
+
+Split $B=B_1\sqcup B_2$ into nearly equal parts and start the final
+three requests with
+\[
+ X\cup P\cup B_1,\qquad X\cup P\cup B_2,\qquad Y\cup Z\cup A\cup C.
+\]
+The first two sizes are at most
+$x+Q+\lceil(k-y-z)/2\rceil\le T$ by the fourth inequality in
+\eqref{eq:g1exact}. The third is at most $y+z+2L-p\le T$.
+All bases contain $P$. To make their union contain $E$, distribute
+$D=E\setminus(X\cup Y\cup C)$ among the remaining capacities.
+The total load including $D$ is
+\begin{align*}
+ k+x+z+2p+a+b
+ &\le k+x+z+p+L+b\\
+ &\le2k+x-y+L+Q\le3T.
+\end{align*}
+An integral distribution therefore exists. The candidate products are
+$P\times E$, $X\times B$, $Y\times A$, and $(Z\setminus P)\times C$.
+The first is covered because every request contains $P$ and their union
+contains $E$; the other three are covered by the stated bases.
+\end{proof}
+
+\begin{lemma}[Two large opposite pair cells]\label{lem:twolarge}
+Suppose all pair intersections in the family are at most $m$ or greater than $k/2$, where $m\le k/4$. Let $E,F,G,H$ be four $k$-edges with all triple intersections empty. Put $X=E\cap F$, $B=G\cap H$, of sizes $x,b>k/2$, and suppose the other four pair cells each have size at most $m$. Three further legal responses give a bad seven-tuple if $T\le k$ and
+\[
+T\ge\lceil k/2\rceil+2m,\qquad T\ge x+m,\qquad 3T\ge2x+b+\lceil k/2\rceil+2m.
+\]
+\end{lemma}
+\begin{proof}
+Put $Y=E\cap G$, $Z=F\cap G$, $A=F\cap H$, $C=E\cap H$, and let $U=Y\cup Z\cup A\cup C$. These six pair cells are disjoint. Write $s=|Y|+|Z|$, $t=|A|+|C|$, so $s,t\le2m$, and define
+\[
+p=\lceil k/2\rceil-\min(s,t),\qquad q=T-\lceil k/2\rceil-\max(s,t).
+\]
+Both are nonnegative. Moreover $p\le\lceil k/2\rceil\le b$ and $q\le T-\lceil k/2\rceil\le\lfloor k/2\rfloor<x$. Choose $B_0\subseteq B$, $X_0\subseteq X$ with sizes $p,q$, and request $I$ avoiding $U\cup B_0\cup X_0$, whose size is exactly $T$.
+
+The $G$-trace of $I$ has size at most
+\[
+k-s-p=\lfloor k/2\rfloor+\min(s,t)-s\le\lfloor k/2\rfloor,
+\]
+and the analogous statement holds for $H$. The global gap therefore forces both traces to have size at most $m$. In particular $d=|B\cap I|\le m$. Also $x_I=|X\cap I|\le x-q$.
+
+Choose $B_1\subseteq B$ containing $B\cap I$ and having size $\min(b,T-x)$. This is possible since $T-x\ge m\ge d$. Use the last two requests
+\[
+X\cup B_1,\qquad (X\cap I)\cup(B\setminus B_1).
+\]
+The first has size at most $T$. For the second, note that
+\[
+x+x_I+b\le2x+b-q\le2x+b-T+\lceil k/2\rceil+2m\le2T.
+\]
+It follows that its size $x_I+\max(0,b-T+x)$ is at most $T$ as well.
+
+A pair piercing $E,F,G,H$ belongs to $X\times B$, $Y\times A$ or $Z\times C$. The latter two products lie entirely in $U$ and hence miss $I$. For a remaining pair in $X\times B$, if its $B$-point belongs to $B_1$, the penultimate response misses both points. Otherwise its $B$-point lies outside $I$, since $B\cap I\subseteq B_1$; its $X$-point must then belong to $I$, and the last response misses both. This proves the lemma.
+\end{proof}
+
+\begin{lemma}[Two surviving triple cells]\label{lem:gaptwo}
+Suppose $\mathcal G(L,H)$ holds. For a good triple put $S=x+y+z$ and
+$g=(k-y-H)_+$. The triple closes at integer budget $T\le k$ if
+\begin{gather}
+ g\le\min(x,z),\qquad y+2g\le T,\label{eq:g2exact}\\
+ x+L\le T,\quad z+L\le T,\quad k+2y\le2T,\quad
+ 3k\le4T,\quad 3k+S\le5T.\nonumber
+\end{gather}
+\end{lemma}
+\begin{proof}
+Choose $g$ points from each of $X,Z$ and request them together with $Y$.
+Complete the part of the request inside $F$ to exactly $T-y$ points,
+first using remaining points of $X\cup Z$ and then private points of
+$F$. This is possible since $2g\le T-y\le k$. Let $K$ be a response.
+
+Put $P=E\cap F\cap K$ and $Q=F\cap G\cap K$, of sizes $p,q$.
+These are the only possible triple cells among the four edges because
+$Y\cap K=\varnothing$. Set
+\[
+ A=(F\cap K)\setminus(P\cup Q),\quad
+ B=(G\cap K)\setminus Q,\quad C=(E\cap K)\setminus P,
+\]
+with sizes $a,b,c$. Priority in the first request gives
+$p+q\le(S-T)_+$, and its size inside $F$ gives
+$d:=p+q+a=|F\cap K|\le k-T+y$.
+The two $g$-point cuts ensure $|E\cap K|,|G\cap K|\le H$, so both
+traces are at most $L$.
+
+Start the last three requests with
+\[
+ X\cup(G\cap K),\qquad Z\cup(E\cap K),\qquad Y\cup(F\cap K).
+\]
+Their sizes are at most $x+L$, $z+L$, and $k-T+2y$, hence at most $T$.
+Each contains both $P$ and $Q$.
+
+The still-unassigned parts of $E\cup G$ are
+$D=E\setminus(F\cup G\cup K)$ and
+$W=G\setminus(E\cup F\cup K)$. They are disjoint and have sizes
+$k-x-y-c$ and $k-y-z-b$. The total base load including these parts is
+\[
+ 2k-y+2(p+q)+a=2k-y+(p+q)+d\le3k-T+(S-T)_+\le3T.
+\]
+The last inequality follows from $3k\le4T$ when $S\le T$ and from
+$3k+S\le5T$ otherwise. Distribute $D\cup W$ integrally among the
+remaining capacities, so the union of the requests contains $E\cup G$.
+
+A candidate pair involving $P$ has its other point in $G$, while a pair
+involving $Q$ has its other point in $E$. Such pairs are covered because
+every request contains $P,Q$ and their union contains $E,G$. Every other
+candidate pair lies in $(X\setminus P)\times B$,
+$(Z\setminus Q)\times C$, or $Y\times A$, covered by the first, second,
+or third base respectively.
+\end{proof}
+

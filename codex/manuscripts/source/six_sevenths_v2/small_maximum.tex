@@ -1,0 +1,67 @@
+\section{Finishing when the largest small intersection is small}\label{app:smallmax}
+\begin{lemma}\label{lem:smallmax}
+Let $T$ be an integer with $6k/7\le T\le k$, satisfying
+\begin{equation}\label{eq:fourinteger}
+ \begin{gathered}
+ 6T>5k+1,\qquad 3T\ge2k+\ceil{k/2},\\
+ 2T\ge3k/2+1/2,\qquad 12T\ge10k+4.
+ \end{gathered}
+\end{equation}
+If every pair intersection in a $k$-uniform hypergraph with property
+$(7,2)$ is at most $2k/7$ or greater than $k/2$, then $\tau(\HH)\le T$.
+\end{lemma}
+\begin{proof}
+Suppose $\tau(\HH)>T$. Choosing an edge avoiding a $T$-subset of
+another gives an intersection at most $k-T$. Thus the largest pair
+intersection $m\le k/2$ exists, and $m\le2k/7$. Choose a pair attaining
+$m$ and use Lemma~\ref{lem:balanced}. Both new intersections are at most
+$k-\lfloor(T+m)/2\rfloor$.
+
+If both are at most $k/2$, then all three are at most $m$ by maximality.
+Lemma~\ref{lem:smalltriple} applies at a budget at most $T$, since
+\[
+ (2k+2m)/3\le6k/7,\qquad (3k+m)/4\le23k/28<6k/7.
+\]
+
+Otherwise, relabel the good triple so that
+\[
+ x=|E\cap F|>k/2,\qquad |E\cap G|=m,\qquad |F\cap G|\le m.
+\]
+At most one of the new intersections is greater than $k/2$, since they
+are disjoint subsets of the response edge. The balanced bound gives
+\begin{equation}\label{eq:smallmaxbounds}
+ x\le k-(T+m)/2+1/2,\qquad m\le k-T.
+\end{equation}
+For the second assertion, $T+m\ge k+1$ would imply
+$\lfloor(T+m)/2\rfloor\ge\lceil k/2\rceil$, contrary to $x>k/2$.
+Now $T\ge6k/7$ gives $m\le k/7<k/4$, and
+\[
+ x+2m\le(5k-4T+1)/2<T,
+\]
+since $6T>5k+1$. Request $H$ avoiding the three pair cells and enough
+private points of $G$ to make the request size $T$. The padding fits:
+the initial request size is $x+|E\cap G|+|F\cap G|$, and $T\le k$.
+All triple intersections among $E,F,G,H$ are now empty. The $E$- and
+$F$-traces of $H$ are less than $k/2$, because $x>k/2$, and are
+therefore at most $m$. Write
+\[
+ b=|G\cap H|\le k-T+x.
+\]
+If $b\le k/2$, apply Lemma~\ref{lem:smalltriple} to $E,G,H$,
+discarding $F$. The resulting bad subfamily has at most seven edges,
+even though eight edges may have been obtained over the whole argument.
+
+If $b>k/2$, the four edges satisfy the hypotheses of
+Lemma~\ref{lem:twolarge}. Its three budget requirements follow from
+\begin{align*}
+ \ceil{k/2}+2m
+   &\le\ceil{k/2}+2k-2T\le T,\\
+ x+m&\le3k/2-T+1/2\le T,\\
+ 2x+b+\ceil{k/2}+2m
+   &\le(9k+m-5T+4)/2\le3T.
+\end{align*}
+For the last inequality use $m\le k-T$ and $12T\ge10k+4$.
+The first two use the second and third inequalities of
+\eqref{eq:fourinteger}. The lemma produces a bad subfamily of at most seven
+edges, completing the contradiction.
+\end{proof}

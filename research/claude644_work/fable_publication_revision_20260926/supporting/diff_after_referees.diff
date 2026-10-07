@@ -1,0 +1,280 @@
+36c36,37
+< bound $\lceil 7k/8\rceil$ of Fon-Der-Flaass, Kostochka and Woodall; the
+---
+> asymptotic coefficient $7/8$ of Fon-Der-Flaass, Kostochka and Woodall
+> to $6/7$ and includes the rank $k=7$, not covered by their bound; the
+38,44c39,47
+< avoidance method. Its main new tool is a static allocation of
+< four avoidance requests that completes every ``good triple'' of edges
+< in which at most one pairwise intersection is of medium size. Gap
+< information about pairwise intersection sizes, bootstrapped in three
+< stages, handles the remaining triples. We also explain why $6/7$ is the natural
+< limit of the method: three independent constraints of the argument
+< coincide exactly there.
+---
+> avoidance method. Its main new tool is a static allocation of four
+> avoidance requests which, together with a symmetric allocation, closes
+> every ``good triple'' of edges whose pairwise intersections have at most
+> $T/2$ points, except those with exactly two intersections of medium
+> size; here $T=\lceil6k/7\rceil$. Gap information about pairwise
+> intersection sizes, bootstrapped in three stages, handles the remaining
+> triples. We also explain why $6/7$ appears to be the natural
+> limit of these constructions: three independent constraints of the
+> argument coincide exactly there.
+88,92c91,100
+< $f(k,6)=k$~\cite{EFKT}, because property $(7,2)$ implies property
+< $(6,2)$. The content of Theorem~\ref{thm:main} is therefore the range
+< $k\ge7$. The rank $k=7$ needs one additional construction
+< (Proposition~\ref{prop:rankseven}); for $k\ge8$ the general argument
+< suffices.
+---
+> the upper bound $f(k,6)\le k$ of~\cite{EFKT} (see also~\cite[Section~1]{FKW}):
+> property $(7,2)$ implies property $(6,2)$, and this holds in either
+> convention, since a family with at most six edges has a transversal of
+> at most $2\le k$ points by property $(7,2)$ itself. The content of
+> Theorem~\ref{thm:main} is therefore the range $k\ge7$. The rank $k=7$
+> needs one additional construction (Proposition~\ref{prop:rankseven}); for
+> $k\ge8$ the general argument suffices. The bound $\ceil{6k/7}$ is smaller
+> than $\ceil{7k/8}$ for every $k\ge49$ and for many smaller $k$; the two
+> coincide for $21$ values of $k$ between $8$ and $48$. For $k=7$ the
+> previously available bound was $f(7,7)\le f(7,6)=7$.
+120,123c128,132
+< (Section~\ref{sec:finish}). The triples with two medium cells, and the
+< triples containing a cell in $(T/2,k/2]$, genuinely need adaptive
+< requests and information about which intersection sizes occur. That
+< information is produced in three stages. The first stage uses no prior
+---
+> (Section~\ref{sec:finish}). The two static allocations do not close the
+> triples with two medium cells, nor the triples containing a cell in
+> $(T/2,k/2]$; we treat those with adaptive requests and with information
+> about which intersection sizes occur. That information is produced in
+> three stages. The first stage uses no prior
+301c310,313
+< the four edges. Most adaptive constructions first request an edge $K$
+---
+> the four edges. A response might coincide with an earlier edge (for
+> instance when its traces on the earlier edges are not forced to be smaller
+> than $k$). This is harmless: Lemma~\ref{lem:requestcover} counts distinct
+> edges, and Lemma~\ref{lem:foursets} holds also when $K$ is one of $E,F,G$. Most adaptive constructions first request an edge $K$
+529c541
+< Assume $\Gap(\ell,u)$ and put $Q=(S-T)_+$. A good triple closes at
+---
+> Assume $\Gap(\ell,u)$ and put $\Delta=(S-T)_+$. A good triple closes at
+532,533c544,545
+<  x+y\le T,\qquad k-x-y\le u,\qquad k-x-z+Q\le u,\\
+<  2x+2Q+k-y-z\le2T,\qquad y+z+2\ell\le T,\qquad 2k+x-y+\ell+Q\le3T.
+---
+>  x+y\le T,\qquad k-x-y\le u,\qquad k-x-z+\Delta\le u,\\
+>  2x+2\Delta+k-y-z\le2T,\qquad y+z+2\ell\le T,\qquad 2k+x-y+\ell+\Delta\le3T.
+617c629,630
+< which is implied by the dichotomy. Here $g=(k-z-\floor{k/2})_+$. Since
+---
+> which is implied by the dichotomy (note $0\le M\le\floor{k/2}<k$). Here
+> $g=(k-z-\floor{k/2})_+=\ceil{k/2}-z$, as $z\le\gamma<\ceil{k/2}$. Since
+619c632
+< $\ceil{k/2}-z\ge g$. The first request has size
+---
+> $\ceil{k/2}-z=g$. The first request has size
+665,666c678,679
+< \emph{Case $M\ge h+1$.} Apply Lemma~\ref{lem:balanced} to a pair
+< attaining $M$. As $T+M\ge k+1$, the new pair intersections are at most
+---
+> \emph{Case $M\ge h+1$.} (For $k=7$ this is the case $M\in\{2,3\}$.) Apply
+> Lemma~\ref{lem:balanced} to a pair attaining $M$. As $T+M\ge k+1$, the new pair intersections are at most
+689,691c702,704
+< using $T=k-h$, $M\le h$ and $k\ge6h+1$. Request $X\cup Y\cup Z$ together
+< with private points of $G$ to make a request of exactly $T$ points (there
+< are enough, as $|P_G|=k-|Y|-|Z|\ge T-x-|Y|-|Z|$), and let $H$ be a
+---
+> using $T=k-h$, $M\le h$ and $k\ge6h+1$. Request $X\cup Y\cup Z$, which has
+> $x+|Y|+|Z|\le x+2M\le T$ points, together with $T-x-|Y|-|Z|$ private
+> points of $G$ (there are enough, as $|P_G|=k-|Y|-|Z|$), and let $H$ be a
+724,728c737,742
+< Suppose $\tau(\HH)>6$, so requests have at most six points. A response
+< meets every earlier edge in $0$, $1$, or at least $4$ points; in
+< particular, \emph{a trace that is confined to at most three points has
+< at most one point}. An edge avoiding six points of another edge meets
+< it in at most one point.
+---
+> Suppose $\tau(\HH)>6$, so requests have at most six points. By
+> hypothesis, a response that misses some point of an earlier edge meets
+> that edge in $0$, $1$, or at least $4$ points; in particular,
+> \emph{if it meets the edge in at most three points, then it meets it in
+> at most one point}. An edge avoiding six points of another edge meets it
+> in at most one point.
+731c745,746
+< $E_1,E_2$ are disjoint. Request three points of each. The response $G$
+---
+> $E_1,E_2$ are disjoint: an edge avoiding six points of another meets it
+> in at most one point, hence in none. Request three points of each. The response $G$
+811,812c826,830
+< $4/21$, $4/21$. The three stages exclude pair intersections in
+< $(\alpha,\beta]$, then $[\delta,\gamma]$, then $(\beta,k/2]$.
+---
+> $4/21$, $4/21$. The first stage excludes pair intersections in
+> $(\alpha,\min(\beta,\floor{k/2})]$. The other two stages, which exclude
+> $[\delta,\gamma]$ and then $(\beta,k/2]$, are needed only when
+> $\beta<\floor{k/2}$; only then are $\delta$ and $\lambda$ used, and only
+> then is $\lambda\ge0$.
+872,873c890,891
+< using $S\ge x\ge3h$, $S\le x+2T-k$, $x\le3T-2k$, the case hypothesis
+< and $x\le\beta$.
+---
+> using $S\ge x\ge3h$, $x\ge h$ (for $k-d-x\le k-x$), $S\le x+2T-k$,
+> $x\le3T-2k$, the case hypothesis and $x\le\beta$.
+939c957
+< $2x+3z+y\le2S\le4T-2k$; if $z<J$ then $z<h/2$, $y\le\lambda\le2h+s$ and
+---
+> $2x+3z+y\le2S\le4T-2k$ (as $y\ge z$), so $k+2x+3z+y\le4T-k\le3T$; if $z<J$ then $z<h/2$, $y\le\lambda\le2h+s$ and
+959c977
+< $Q=S-T$. Write $\epsilon=k-2\floor{k/2}\in\{0,1\}$ and note
+---
+> $\Delta=S-T$. Write $\epsilon=k-2\floor{k/2}\in\{0,1\}$ and note
+963,965c981,983
+<  x+y&\le\floor{k/2}+\gamma\le T,\qquad k-x-z+Q=h+y\le\gamma,\\
+<  k-x-y&=h+z-Q<h+\lambda\le\gamma,\\
+<  2x+2Q+k-y-z&=4x+y+z+k-2T\le4\floor{k/2}+2(\gamma-h)+k-2T=2T-3\epsilon,\\
+---
+>  x+y&\le\floor{k/2}+\gamma\le T,\qquad k-x-z+\Delta=h+y\le\gamma,\\
+>  k-x-y&=h+z-\Delta<h+\lambda\le\gamma,\\
+>  2x+2\Delta+k-y-z&=4x+y+z+k-2T\le4\floor{k/2}+2(\gamma-h)+k-2T=2T-3\epsilon,\\
+967c985
+<  2k+x-y+\lambda+Q&=2k+2x+z+\lambda-T\le2k+2\floor{k/2}+2(\gamma-h)-T=3T-2\epsilon.
+---
+>  2k+x-y+\lambda+\Delta&=2k+2x+z+\lambda-T\le2k+2\floor{k/2}+2(\gamma-h)-T=3T-2\epsilon.
+974c992,993
+< Suppose $\tau(\HH)>T=\ceil{6k/7}$. If $\beta\ge\floor{k/2}$,
+---
+> For $2\le k\le6$ see the remark after Theorem~\ref{thm:main}. Let $k\ge7$
+> and suppose $\tau(\HH)>T=\ceil{6k/7}$. If $\beta\ge\floor{k/2}$,
+981c1000
+< For families of nonempty sets of size at most $k$, add to each edge new
+---
+> Finally, let $k\ge2$. For families of nonempty sets of size at most $k$, add to each edge new
+994,995c1013,1014
+< explain why they cannot all be relaxed by changing parameters. Write
+< $t=T/k$ and normalize sizes by $k$.
+---
+> indicate why they do not appear to be relaxable by changing parameters.
+> Write $t=T/k$ and normalize sizes by $k$.
+1002,1007c1021,1026
+< \emph{Starting the first stage.} A request built from two edges that
+< meet in $q$ points leaves $2-t-q$ of their private points available to
+< the response. Both traces can be forced to be small (at most $t-1/2$)
+< only if $2-t-q\le2t-1$, that is $q\ge3-3t$. The first stage must start
+< at $t/2$, where the finishing argument stops, so $3-3t\le t/2$, again
+< $t\ge6/7$.
+---
+> \emph{Starting the first stage.} A request of $T$ points built from two
+> edges that meet in $q$ points leaves $2-t-q$ of their private points
+> available to the response. Both traces can be forced to be small (at
+> most $t-1/2$) only if $2-t-q\le2t-1$, that is $q\ge3-3t$. The first stage
+> must start where the finishing argument stops, at $t/2$, so
+> $3-3t\le t/2$, again $t\ge6/7$.
+1011,1014c1030,1033
+< near-core construction, whose budget includes $2+M+z\le3t$; with
+< $M=t/2$ and $z=1-t$ this is once more $t\ge6/7$. Cells with $z>1-t$ are
+< closed by the two-cores construction, whose first request needs
+< $z\ge1-t$.
+---
+> near-core construction, whose budget includes $2+M+z\le3t$ (in the
+> alternative $S>T$ of Lemma~\ref{lem:nearcore}); with $M=t/2$ and $z=1-t$
+> this is once more $t\ge6/7$. Cells with $z>1-t$ are closed by the
+> two-cores construction, whose first request needs $z\ge1-t$.
+1017,1028c1036,1064
+< $t<6/7$ they separate, and in the window $4t-3<M<3-3t$ the balanced
+< request of Lemma~\ref{lem:balanced} can return triples
+< $(M,y,z)$ with $y\in(t-\tfrac12,\,1-\tfrac{t+M}2]$ and
+< $3t-2-M<z<1-t$. For these the near-core construction violates
+< $2+M+z\le3t$ and the two-cores construction violates $z\ge1-t$. A
+< computer search
+< over single adaptive requests followed by three static requests, used
+< only for exploration, did not find a closing construction for such
+< triples at budgets noticeably below $6/7$. Thus an improvement of the
+< coefficient seems to require a genuinely new kind of construction, for
+< instance two adaptive requests, rather than a retuning of the present
+< ones. The conjectured value $3/4$ remains open.
+---
+> $t<6/7$ they separate, and the window $4t-3<M<3-3t$ contains two kinds
+> of problematic configurations.
+> \begin{itemize}[leftmargin=2em]
+> \item If $M\le t/2$, the balanced request of Lemma~\ref{lem:balanced}
+> applied to a pair attaining the largest small intersection $M$ can
+> return triples with cells $M\ge y\ge z$, $t-\tfrac12<y\le1-\tfrac{t+M}2$
+> and $3t-2-M<z<1-t$; for $5/6<t<6/7$ these conditions are compatible
+> for every $M$ in the window with $M\le t/2$. For them both alternatives of Lemma~\ref{lem:nearcore} fail,
+> as does Lemma~\ref{lem:twocores}, in the orientations used in
+> Proposition~\ref{prop:localfinish}.
+> \item If $t/2<M<3-3t$, the first stage is not available, and any request
+> of $T$ points built from two edges meeting in $M$ points leaves
+> $2-t-M>2(t-\tfrac12)$ of their private points, so the response can
+> create a medium cell next to the cell of size $M>t/2$.
+> \end{itemize}
+> Exploratory computations, not used in any proof, are consistent with
+> this picture. They used continuous relaxations of the covering problems
+> (cell sizes normalized by $k$, request contents chosen by mixed integer
+> programming, adversarial responses bounded by column generation), at
+> $t=0.855$. Allowing oneself to discard one edge after the fourth
+> response and to close the resulting new good triple statically (the
+> device used in the small-maximum case of Theorem~\ref{thm:finish})
+> closed the tested configurations of the first kind. For configurations
+> of the second kind, the one-response constructions we tested, with or
+> without this device, required a budget above $0.855$ at every tested
+> point. Thus the obstruction moves but, as far as these experiments show,
+> reappears at the same coefficient. An improvement of $6/7$ seems to require a genuinely new
+> ingredient for triples that combine a cell slightly above $t/2$ with a
+> medium cell. The conjectured value $3/4$ remains open.
+1076c1112,1113
+< \emph{Case 1: $a<a_0$.} Split $C=C_2\sqcup C_3$ and use bases
+---
+> \emph{Case 1: $a<a_0$.} Split $C=C_2\sqcup C_3$ with $|C_2|\le T-y-a-z$ and
+> $|C_3|\le T-z$, and use bases
+1103c1140,1141
+< The choice of $\theta$ bounds the first two by $T$, and the third has
+---
+> The choice of $\theta$ bounds the first two by $T$ (the second has
+> $q+y+a+u+v-\theta=y+a+z+u-\theta$ points, as $q+v=z$), and the third has
+1149c1187
+< $T-S-p-t$ points of $P_G$; these fit, as $u\ge0$ and $T\le k+x$. No
+---
+> $T-S-p-t$ points of $P_G$; these fit, as $u\ge0$ and $T\le k$. No
+1162c1200
+< $C=E\cap K$, with sizes $p,a,b,c$; then $p\le Q$ and $b\le k-y-z$.
+---
+> $C=E\cap K$, with sizes $p,a,b,c$; then $p\le\Delta$ and $b\le k-y-z$.
+1164c1202
+< $|F\cap K|=a+p\le k-x-z+Q\le u$, so $c\le\ell$ and $a+p\le\ell$ by the gap.
+---
+> $|F\cap K|=a+p\le k-x-z+\Delta\le u$, so $c\le\ell$ and $a+p\le\ell$ by the gap.
+1170c1208
+< $x+Q+\ceil{(k-y-z)/2}\le T$ points, and the third at most
+---
+> $x+\Delta+\ceil{(k-y-z)/2}\le T$ points, and the third at most
+1175c1213
+<  k+x+z+2p+a+b\le k+x+z+p+\ell+b\le2k+x-y+\ell+Q\le3T .
+---
+>  k+x+z+2p+a+b\le k+x+z+p+\ell+b\le2k+x-y+\ell+\Delta\le3T .
+1221c1259,1260
+< $2x+k+p+a+b\le2k+x+m-z\le3T$. Every candidate pair is covered.
+---
+> $2x+k+p+a+b\le2k+x+m-z\le3T$; as $W$ may go to any request, these two
+> inequalities are all the conditions of Lemma~\ref{lem:allocation}. Every candidate pair is covered.
+1223,1224c1262,1264
+< \emph{Case 2: $p+a>m$.} Then $|E\cap K|=p+a>k/2$ by the dichotomy, so
+< $|G\cap K|=c<k/2$ and $c\le m$. Put $P$ in requests $1,2$; $X'$ and $C$ in
+---
+> \emph{Case 2: $p+a>m$.} Then $|E\cap K|=p+a>k/2$ by the dichotomy (this
+> includes the possibility $K=E$), so $|G\cap K|=c<k/2$; in particular
+> $K\ne G$, and the dichotomy gives $c\le m$. Put $P$ in requests $1,2$; $X'$ and $C$ in
+1247,1249c1287,1289
+< Put $Y=E\cap G$, $Z=F\cap G$, $A=F\cap H$, $C=E\cap H$ and
+< $U=Y\cup Z\cup A\cup C$; the six pair cells are disjoint. Write
+< $\sigma=|Y|+|Z|$ and $\rho=|A|+|C|$, both at most $2m$, and put
+---
+> Put $Y=E\cap G$, $Z=F\cap G$, $Y'=F\cap H$, $Z'=E\cap H$ and
+> $U=Y\cup Z\cup Y'\cup Z'$; the six pair cells are disjoint. Write
+> $\sigma=|Y|+|Z|$ and $\rho=|Y'|+|Z'|$, both at most $2m$, and put
+1269c1309
+< $E,F,G,H$ lie in $X\times B$, $Y\times A$ or $Z\times C$. The last two
+---
+> $E,F,G,H$ lie in $X\times B$, $Y\times Y'$ or $Z\times Z'$. The last two

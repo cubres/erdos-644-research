@@ -1,0 +1,16 @@
+ranks 7..120: all 2008516 branch checks passed
+  early          35
+  fin-2cores     32565
+  fin-hall       682039
+  fin-nearcore   22074
+  fin-symm       31458
+  s1-onecore     180996
+  s1-splitA      2753
+  s1-symm        3119
+  s2-2cores      193238
+  s2-hall        752725
+  s3-1core       34
+  s3-2traces     4204
+  s3-splitB      13593
+  small-hall     36184
+  two-large      53534

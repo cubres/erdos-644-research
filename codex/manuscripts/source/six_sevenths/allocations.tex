@@ -1,0 +1,239 @@
+\section{Integral allocations and a near-core construction}\label{app:allocation}
+We use the following elementary form of integral capacitated Hall's
+theorem. Suppose disjoint sets of points may each be assigned to a
+specified set of request indices, and each request has an integer
+remaining capacity. An assignment exists if and only if every collection
+of source sets has total size at most the sum of the capacities of its
+available request indices. Indeed, make a bipartite flow network, with
+source-set sizes and request capacities on its outer arcs. The min-cut
+conditions are exactly these inequalities; integral augmenting paths
+give an assignment of individual points. We will list every nonredundant
+condition when this fact is used.
+
+\begin{lemma}[Exact boxed-triangle allocation]\label{lem:triangle}
+Let $M_1,M_2,M_3$ be nonnegative integers and let $L_1,L_2,L_3$ be
+integers satisfying $L_i\le M_j+M_l$ whenever $\{i,j,l\}=\{1,2,3\}$.
+The minimum of $a_1+a_2+a_3$ over integral vectors satisfying
+\[
+ 0\le a_i\le M_i,\qquad a_j+a_l\ge L_i
+\]
+is the ceiling of
+\begin{equation}\label{eq:triangleexact}
+ \max\left\{0,L_1,L_2,L_3,
+ L_1+L_2-M_3,L_1+L_3-M_2,L_2+L_3-M_1,
+ \frac{L_1+L_2+L_3}{2}\right\}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+For a proposed integer total $t$, the conditions are equivalent to
+\[
+ 0\le a_i\le\min(M_i,t-L_i),\qquad \sum_i a_i=t.
+\]
+Integral coordinates exist if and only if all three upper bounds are
+nonnegative and their sum is at least $t$. Expand the sum of the three
+minima as the minimum of its eight affine expressions. The resulting
+conditions are
+\begin{gather*}
+ t\ge0,L_1,L_2,L_3,\qquad
+ t\ge L_i+L_j-M_l\quad(\{i,j,l\}=\{1,2,3\}),\\
+ 2t\ge L_1+L_2+L_3,\qquad t\le M_1+M_2+M_3,\qquad
+ L_i\le M_j+M_l.
+\end{gather*}
+The last three host inequalities hold by assumption. Every lower bound
+in \eqref{eq:triangleexact} is at most $M_1+M_2+M_3$, so the ceiling of
+the maximum also satisfies the upper bound on $t$. Coordinates of this
+total can be filled successively within their integral upper bounds.
+The same argument without ceilings gives the real minimum.
+\end{proof}
+
+\begin{lemma}[Exact symmetric static allocation]\label{lem:symmetric}
+Let a good triple have pair sizes $m\ge y\ge z\ge0$, and put $S=m+y+z$.
+The four-request construction below can be implemented at integer
+budget $T$ if and only if
+\begin{equation}\label{eq:symexact}
+ T\ge\max\left\{k+m-y-z,\frac{k+m}{2},
+             \frac{2k+m+y-z}{3},\frac{3k+S}{5}\right\}.
+\end{equation}
+Whenever it can be implemented, it closes the triple.
+In particular, at unit scale, the sufficient conditions
+\begin{equation}\label{eq:symconvenient}
+ y+z\ge m+1-\beta,\qquad m+y-z\le3\beta-2,\qquad
+ m+y+z\le5\beta-3
+\end{equation}
+with $0\le\beta\le1$ imply closure at every integer budget
+$T\ge\beta k$.
+\end{lemma}
+\begin{proof}
+Split the pair cells $M,Y,Z$ into selected parts of sizes $a,b,c$ and
+their complements. With the private cells denoted by $P_E,P_F,P_G$,
+use four requests
+\begin{align*}
+ R_0&=M_1\cup Y_1\cup Z_1,\\
+ R_M&=M\cup P_G\cup Y_2\cup Z_2,\\
+ R_Y&=Y\cup P_F\cup M_2\cup Z_2,\\
+ R_Z&=Z\cup P_E\cup M_2\cup Y_2.
+\end{align*}
+Their sizes are $a+b+c$, $k+m-b-c$, $k+y-a-c$, and $k+z-a-b$.
+Apply Lemma~\ref{lem:triangle} with hosts $(m,y,z)$ and requirements
+\[
+ L_1=k+m-T,\qquad L_2=k+y-T,\qquad L_3=k+z-T.
+\]
+The host conditions reduce to $T\ge k+m-y-z$. The individual
+requirements $L_i\le T$ reduce to $2T\ge k+m$; the two-$L$ requirements
+reduce to $3T\ge2k+m+y-z$; and the total requirement is
+$5T\ge3k+S$. This proves the exact criterion.
+
+Every pair meeting the good triple is contained in a request. A pair
+cell and its opposite private part lie in the corresponding request.
+For two different pair cells, if both points lie in selected parts they
+belong to $R_0$; otherwise one of the last three requests contains both.
+Thus four responses close the triple.
+
+Finally, \eqref{eq:symconvenient} directly bounds the first, third, and
+fourth forms in \eqref{eq:symexact} by $\beta$ at unit scale. Its first
+and third inequalities imply $2m+1-\beta\le5\beta-3$, so
+$m\le3\beta-2\le2\beta-1$. The second form is therefore at most
+$\beta$ as well. The exact criterion supplies integral splits without
+any rounding allowance. Its optimality concerns this specified
+construction only, not all possible closing constructions.
+\end{proof}
+
+\begin{lemma}[A static Hall allocation]\label{lem:hallstatic}
+A good triple with pair proportions $a,b,c$ closes at every integer
+budget $T\ge6k/7$ if
+\[
+ a\le3/7,\qquad b,c\le5/14,\qquad b+c\le4/7.
+\]
+\end{lemma}
+\begin{proof}
+We describe the allocation at unit scale with budget $t=6/7$.
+Let the pair cells be $X=E\cap F$, $Y=E\cap G$, $Z=F\cap G$,
+of sizes $a,b,c$. Give them request-index labels
+$\{1,2,3\}$, $\{2,4\}$, and $\{3,4\}$, respectively.
+A label lists all requests that contain its point. Assign points of the
+private cells as follows:
+\[
+ P_E:\{3\}\text{ or }\{4\},\qquad
+ P_F:\{2\}\text{ or }\{4\},\qquad
+ P_G:\{1\},\{2\}\text{ or }\{3\}.
+\]
+The four remaining capacities are
+\[
+ t-a,\quad t-a-b,\quad t-a-c,\quad t-b-c,
+\]
+which are nonnegative. The seven Hall inequalities for the three
+private cells are
+\begin{gather*}
+ 1+2c\le2t,\qquad 1+2b\le2t,\qquad 1+3a\le3t,\\
+ 2+b+c\le3t,\qquad 2+2a+c\le4t,\qquad
+ 2+2a+b\le4t,\qquad 3+a\le4t.
+\end{gather*}
+The first four and the last follow immediately from the stated bounds;
+the fifth and sixth have left side at most
+$2+6/7+5/14=45/14<24/7$.
+At integer scale, the same inequalities hold for every integer
+$T\ge6k/7$, and integral flow allocates the private points.
+
+Every pair meeting the good triple has intersecting labels. The three
+pair-cell labels intersect pairwise. The allowed labels of each private
+cell meet the label of its opposite pair cell. Hence each candidate
+pair is contained in one request and is missed by its response.
+\end{proof}
+
+\begin{lemma}[Near-core allocation]\label{lem:nearcore}
+Suppose every pair intersection in the family is at most $m$ or greater
+than $k/2$, where $m\le k/2$. Let $E,F,G$ be a good triple with pair
+sizes $x=|E\cap F|$, $y=|E\cap G|$, $z=|F\cap G|$, and put
+$\Delta=(x+y+z-T)_+$. The triple closes at integer budget $T$ if
+$y+z\le T$ and
+\begin{align}
+ m+z&\le T,& k+y-z&\le T,\label{eq:ncfirst}\\
+ 2k+x-2z&\le2T,&2k+x+m-z&\le3T,\nonumber\\
+ x+m&\le T,&&\nonumber\\
+ k-x+y+\Delta&\le T,&2k-2x+z+\Delta&\le2T,\label{eq:nclast}\\
+ 2k-z+\Delta&\le2T,&3k-x-y+\Delta&\le3T.\nonumber
+\end{align}
+If $x+y+z\le T$, the last four bounds may instead be replaced by
+\begin{equation}\label{eq:emptycore}
+ k-x+y\le T,\qquad 2k-2x+z\le2T.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Put $X=E\cap F$, $Y=E\cap G$, $Z=F\cap G$. Request an edge $H$
+avoiding $Y\cup Z$ and a subset of $X$ of size
+$\min(x,T-y-z)$. The only possibly nonempty triple cell is
+$P=E\cap F\cap H$, of size $p\le\Delta$.
+Define the disjoint cells
+\begin{align*}
+ X'&=X\setminus P, & A&=H\cap\bigl(E\setminus(F\cup G)\bigr),\\
+ B&=H\cap\bigl(F\setminus(E\cup G)\bigr), &C&=H\cap G,\\
+ W&=G\setminus(E\cup F\cup H).
+\end{align*}
+Write $a,b,c,w$ for the latter four sizes. Then
+\begin{gather*}
+ a\le k-x-y,\quad b\le k-x-z,\quad c\le k-y-z,\\
+ p+a+b+c\le k,\qquad c+w=k-y-z.
+\end{gather*}
+The complete candidate products for pairs meeting $E,F,G,H$ are
+\[
+ P\times(Y\cup Z\cup C\cup W),\qquad
+ X'\times C,\qquad Y\times B,\qquad Z\times A.
+\]
+A point in three edges lies in $P$; otherwise a covering pair must lie
+in complementary pair cells. This proves completeness of the list.
+
+\paragraph{Case 1: $p+a\le m$.}
+Put $P$ in all three remaining requests, $X'$ in requests $1,3$,
+$Y,B$ in request $1$, and $Z,A$ in request $2$. Partition $C$ between
+requests $1,3$, and then partition $W$ among all three. The initial
+loads are
+\[
+ L_1=x+y+b,\qquad L_2=p+z+a,\qquad L_3=x.
+\]
+They fit by $L_1\le k+y-z$, $L_2\le m+z$, and $L_3\le x+m$.
+The first partition fits because
+\[
+ L_1+L_3+c=2x+y+b+c\le2k+x-2z\le2T.
+\]
+After that partition, the total load including $W$ is
+\[
+ L_1+L_2+L_3+c+w=2x+k+p+a+b\le2k+x+m-z\le3T.
+\]
+All capacities are integral, so the partitions exist. Each candidate
+product is covered: $P$ lies in every request; the two possible labels
+of $C$ meet the label of $X'$; and $Y,B$ and $Z,A$ share requests.
+
+\paragraph{Case 2: $p+a>m$.}
+The global dichotomy gives $p+a>k/2$. The traces $E\cap H$ and
+$G\cap H$ are disjoint, so $c<k/2$ and hence $c\le m$.
+Put $P$ in requests $1,2$, $X',C$ in request $2$, $Y,B$ in request
+$1$, and $Z$ in requests $1,3$. Partition $A$ between requests $1,3$
+and $W$ between requests $1,2$. The initial loads are
+\[
+ L_1=p+y+z+b,\qquad L_2=x+c,\qquad L_3=z.
+\]
+They fit by $L_1\le\Delta+k-x+y$, $L_2\le x+m$, and $L_3\le m+z$.
+The three Hall conditions for the two flexible cells are
+\[
+ a\le2T-L_1-L_3,\qquad w\le2T-L_1-L_2,\qquad
+ a+w\le3T-L_1-L_2-L_3.
+\]
+They follow from
+\begin{align*}
+ L_1+L_3+a&\le\Delta+2k-2x+z\le2T,\\
+ L_1+L_2+w&=p+x+k+b\le\Delta+2k-z\le2T,\\
+ L_1+L_2+L_3+a+w&=p+x+k+z+a+b
+                  \le\Delta+3k-x-y\le3T.
+\end{align*}
+Thus an integral allocation exists. The labels of $P$ meet all allowed
+labels of $Y,Z,C,W$; $X',C$ share request $2$; $Y,B$ share request $1$;
+and both labels of $A$ meet the label $\{1,3\}$ of $Z$. Every candidate
+pair is therefore missed by a response.
+
+Finally, if $x+y+z\le T$, the first request omits the whole pair-cell
+union, so $P=\varnothing$. The cell $W$ has no candidate-pair neighbour
+and can be left out of every remaining request. In Case 2 only the
+allocation of $A$ between requests $1,3$ is needed. Its conditions are
+exactly the base-capacity bounds and \eqref{eq:emptycore}. Case 1 already
+works even if $W$ is included. This proves the empty-core variant.
+\end{proof}

@@ -1,0 +1,12 @@
+name: Finite diagnostics
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -B -S research/claude644_work/fable_publication_revision_20260926/manuscript/check_cases.py --max-rank 120
+      - run: python3 -B -S research/claude644_work/fable_publication_revision_20260926/k7/verify_k7.py

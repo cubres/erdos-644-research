@@ -1,0 +1,13 @@
+# Research continuation: 31/36 general bound, 5/6 conditional bound
+
+Goal ACTIVE; full 3/4 question open. Authoritative note is /Users/cubres/Documents/Clauding/erdos-hunt/note_644.md, through Section 7.43. Nothing published. External review and priority verification outstanding.
+
+Theorem 7.38: f(r,7)<=ceil(31r/36)+10, r>=1000. Exact checker p644_astra_31_36_check.py: 75 static templates, 81 chronological steps, 17126 nodes; high extension182 nodes; middle extension728 nodes; total18036. Exclusions [.199,.374] and [.391,.481], then high through.5 and middle; downward extension to5/36. Static rounding<=9, hand rounding<=4. Certificates logs/astra_interval_refine_31_36.json, astra_gap_high_31_36.json, astra_gap_middle_31_36.json. New partial-core gap Lemma7.37 handles S>=beta including the integer boundary strip.
+
+Theorem7.42: global pair gap <=r/4 or >r/2 implies tau<=ceil5r/6+4. This is conditional, not a general5/6 bound. Largest small intersection m, balanced third; either all traces small (Lemma7.18) or one x>half with m<r/6. Fourth edge avoids core with padding, opposite trace b<=r-T+x. If b<=half use small triple. Otherwise new Lemma7.41: four triple-free edges, complementary X,B sizes x,b>half; other four cells <=m. Set s=y+z,t=a+c,c0=ceilhalf. Fifth request avoids their union U, c0-min(s,t) of B, and T-c0-max(s,t) of X. Its G,H traces <=half, hence <=m. Choose B1 containing B intersect I, size min(b,T-x). Last requests X+B1 and (X intersect I)+(B minus B1). Conditions T>=c0+2m, T>=x+m,3T>=2x+b+c0+2m. Hand proof in note. p644_gap_second_adaptive.py checks both branches and the formerly sharp fixed allocation.
+
+Theorem7.40: conditional11/13 via packing Lemma7.39. Fixed matching optimum at weights(20,26,5,5,5,5)r/39 is33r/39. Exact checker p644_astra_gap_matching_check.py enumerates5832templates and10pricevertices. Later adaptivity improves this fixed-stage limit.
+
+Checkpoint outputs/certificates_31_36 has143 content files and SHA256manifest. All13 standard-library checkers freshly passed there: 31_36,gap_matching,interval_bound,global_bound,maxsmall,partial_tree_obstruction,frontier,certificate,pocket,two_types,obstruction,static,static_obstruction. outputs/note_644.md and VERIFICATION.md current.
+
+Active computation: p644_interval_refine_lower.py 6/7, session42516, logs/astra_interval_refine_6_7.out and eventual JSON. Uses1/1000mesh, chronological unconditional regions, up to5rounds. Coarse6/7 exclusions[.27,.355] and[.435,.475];17/20 exclusions[.295,.345] and[.455,.465]. No theorem below31/36 yet. New conditional5/6 suggests finer exclusions or new conditional response regions. Continue credible research.

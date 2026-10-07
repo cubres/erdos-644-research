@@ -1,0 +1,938 @@
+[
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_65_69_75_lo_64_68_74.cnf",
+    "bytes": 38312991,
+    "sha256": "048c064b823a617b0ac4212c4ea10e98ef7b5360ce13ed855a8801fef84b9b73",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_65_69_76_lo_64_68_75.cnf",
+    "bytes": 38039112,
+    "sha256": "4cd6c3c6160e5fe25afcf642470e403746f280520461130072d21ea51281ba02",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_65_70_75_lo_64_69_74.cnf",
+    "bytes": 37447589,
+    "sha256": "faa6da634c5c2c4ef1827ed8595b6c7ae148b5837f6aa9bf266ad04ad8196857",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_65_70_76_lo_64_69_75.cnf",
+    "bytes": 37473121,
+    "sha256": "5edbe016be51a44727ee6e0a3d38f56f89ba48001aa11149925c8d031f81edbc",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_65_77_79_lo_64_76_78.cnf",
+    "bytes": 37615322,
+    "sha256": "5c48b6d3b87b67eba630d9e7e6cc1efba57314ec9090f1fae2dc2e876d59d0e9",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_65_77_80_lo_64_76_79.cnf",
+    "bytes": 38144882,
+    "sha256": "80b8364c01041bfca247f6944217c93f1ecffd6fda9850de5f824d86bf6bbd93",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_65_78_79_lo_64_77_78.cnf",
+    "bytes": 36967726,
+    "sha256": "7971006e04c6827d1c5206eb3519e097fd901ff7d343a2c2e61f53eac1d13a48",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_65_78_80_lo_64_77_79.cnf",
+    "bytes": 37252348,
+    "sha256": "32469a6c53f4bdaf8c1363fdd95dcd1093f25b7488ac3160125eada2b5766bbb",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_66_69_75_lo_65_68_74.cnf",
+    "bytes": 37271178,
+    "sha256": "a06029f0ab22c78001119237299e18234e15e82ec05108498c2bf6b84941953f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_66_69_76_lo_65_68_75.cnf",
+    "bytes": 37152754,
+    "sha256": "4004fc0f8efc730c23e1d02cdd8321357669338f7c4c43eadca12fd42dcc4430",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_66_70_75_lo_65_69_74.cnf",
+    "bytes": 36525368,
+    "sha256": "54189609f0c4f5a41b90c7711bc60408defb659c4e59622bbda09f7918c07f8d",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_66_70_76_lo_65_69_75.cnf",
+    "bytes": 36952454,
+    "sha256": "2d7a12d479c29d073373e5da5496b1da137f7aabe02645fda97897ac33d0f3c2",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_66_77_79_lo_65_76_78.cnf",
+    "bytes": 37134761,
+    "sha256": "61111bff1c2994639c5aa3ea3da0b2abd40897fd8dab7e9f4de3817eaec13063",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_66_77_80_lo_65_76_79.cnf",
+    "bytes": 37531342,
+    "sha256": "da028b6c2e46a1c1e12b1de80026c747236e552ff39919b13d6d4e4c38046ffa",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_66_78_79_lo_65_77_78.cnf",
+    "bytes": 36303980,
+    "sha256": "d2cbc7af4b07765fc06ae1d9f12b7252f011edb66986b2280c648e478e11e2a1",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_66_78_80_lo_65_77_79.cnf",
+    "bytes": 36729566,
+    "sha256": "3639391a9a9168ea221d3933a058a210cb1a4296fc8174fda375302ac47eb260",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_67_69_75_lo_66_68_74.cnf",
+    "bytes": 37587517,
+    "sha256": "e0f05c1d6bacc9c9bad0f7341f224ab8c4e5f6d496367d901ea22c488d7d17bb",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_67_69_76_lo_66_68_75.cnf",
+    "bytes": 37549980,
+    "sha256": "4414d35a22ee53067eae09dd8ff9375ae7c1c42afc5bacbc816f8b940f1e960a",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_67_70_75_lo_66_69_74.cnf",
+    "bytes": 36616092,
+    "sha256": "448baab638051a0dfcfb177eb206d1f0b45c178dd14f27ac391711ac6252f736",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_67_70_76_lo_66_69_75.cnf",
+    "bytes": 36719939,
+    "sha256": "b515da05fdfb708db4f4e9a140f8cc255c448f874f2af3e41dde4ad3da023a4d",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_67_77_79_lo_66_76_78.cnf",
+    "bytes": 37256971,
+    "sha256": "fa7921ad28904229e6f942301209b1cbae89f397624813913e35bf98eece40ba",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_67_77_80_lo_66_76_79.cnf",
+    "bytes": 37730641,
+    "sha256": "05bc4fe0c4e28a8228d5443d4448b2ea6737fdf4aa09850a33617acf48a39830",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_67_78_79_lo_66_77_78.cnf",
+    "bytes": 36564482,
+    "sha256": "509e901f44a672d1238649fb1053643a9e76f651d5e1e13b4fc1b7e5ebfee5b7",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_67_78_80_lo_66_77_79.cnf",
+    "bytes": 36974223,
+    "sha256": "f5f8dc3d3e6bd01ccfed80eb12e01f75a6cdaac4f4901360f7bb1919e5128682",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_68_69_75_lo_67_68_74.cnf",
+    "bytes": 38278488,
+    "sha256": "7a76065aacca1dd29e3feace24c556ff5a01accd9d3cbd58199715b3e46085ad",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_68_69_76_lo_67_68_75.cnf",
+    "bytes": 38178320,
+    "sha256": "cae727d970cbadaf85c291d2ec916408951f2775e363931d2b321a52bce1012c",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_68_70_75_lo_67_69_74.cnf",
+    "bytes": 37460040,
+    "sha256": "9732003c77dc2fcb2bbed22ac6a38087fadd9b689f4bd3e10f7fd7c32f4d0b3f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_68_70_76_lo_67_69_75.cnf",
+    "bytes": 37337938,
+    "sha256": "67eeedef03b987ab3c3d3c121fbfb224377b542e50011f8b8dcbd9542b8e2a6c",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_68_77_79_lo_67_76_78.cnf",
+    "bytes": 38029363,
+    "sha256": "3bb425ef66a278af676eee646c20e8c536a9bcd4e8b1c13eb4e7a0c71760c0e9",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_68_77_80_lo_67_76_79.cnf",
+    "bytes": 38565917,
+    "sha256": "ae2d2ccf84f90c1ef42a75d228693bf6af1a007a6ef0ecf3388f5c836deea2f8",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_68_78_79_lo_67_77_78.cnf",
+    "bytes": 37167776,
+    "sha256": "42284b85e069f5ac4f09a81f67a17fc9df9c6eb640b0c75849afbddcbf6128db",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_68_78_80_lo_67_77_79.cnf",
+    "bytes": 37611892,
+    "sha256": "8cf0f80f329ba939a64d3d951d4dd6e8d858999b5689366a82081c877fc85c5f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_69_75_lo_68_68_74.cnf",
+    "bytes": 38293589,
+    "sha256": "960060c8038a5ecf6b065502c87fc9720490fd620d226b82c2f9a73b71ed1dac",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_69_76_lo_68_68_75.cnf",
+    "bytes": 38200544,
+    "sha256": "69802185ca77f36ae59ce24f3006bdb4a96754cb5c6930022e271f01ca9e81b8",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_70_75_lo_68_69_74.cnf",
+    "bytes": 37573779,
+    "sha256": "10b44333746f92de29a6decfbf5f1f79b9e44086ea20c7ae8ef2264b77b1cc13",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_70_76_lo_68_69_75.cnf",
+    "bytes": 37306367,
+    "sha256": "096806e46a95e24fe8b5826e6f895e4492d30e049946d431be29614e8a620db5",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_71_75_lo_68_70_74.cnf",
+    "bytes": 38254182,
+    "sha256": "cf17af4d4e7574ab1dea00679fdd6161fd66a383ccfcfc92ee0c526d60589d7c",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_71_76_lo_68_70_75.cnf",
+    "bytes": 38189487,
+    "sha256": "40b55c8025952b640d0bcb022055da63c7d76b932cd2d1db873c6982b2990ce1",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_72_75_lo_68_71_74.cnf",
+    "bytes": 38122067,
+    "sha256": "d69c29b2fffbf79752e8a66214503a60fa2b7559665dd6a444f0c77c6f66aa7c",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_72_76_lo_68_71_75.cnf",
+    "bytes": 38407627,
+    "sha256": "91ef0f27f1ea7b37d8f1d81c55ab51fa9127661b2f80118bbe358a42f539e5f5",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_73_75_lo_68_72_74.cnf",
+    "bytes": 37849075,
+    "sha256": "916ca4b4a6dda9c04b83bef29c0f67814a75e91065f0c6942ec5000063070544",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_73_76_lo_68_72_75.cnf",
+    "bytes": 37600139,
+    "sha256": "f97b49e96d9b50a338029df98495ec1474ab6e576b17fd50c021389807086127",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_74_75_lo_68_73_74.cnf",
+    "bytes": 38758592,
+    "sha256": "9d4d9c0b2465ff1c253e7550943da310b50c3fa0366909ca1f40727bfba53c42",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_74_76_lo_68_73_75.cnf",
+    "bytes": 39194038,
+    "sha256": "52cfae01023ad26ddc0d34401bf8661bef05989832e65cba83a5049797903023",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_75_75_lo_68_74_74.cnf",
+    "bytes": 38352948,
+    "sha256": "68cdcdacbc4037fb80c1224fe82065ef58def5214c14f17af753a85c26ddbb88",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_75_76_lo_68_74_75.cnf",
+    "bytes": 38162887,
+    "sha256": "c317473e898c2721de2fd878519a6290e64e3758d79d6069e422e8bcf1b7767c",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_75_77_lo_68_74_76.cnf",
+    "bytes": 38745539,
+    "sha256": "f580174ab6f22148a884b16bc2ead1a93733ded7c64e7b49daf3301b6a1504ca",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_75_78_lo_68_74_77.cnf",
+    "bytes": 37749801,
+    "sha256": "ba95821e543224801049a32977a8c37fbd44d1d7b04beb87cf439cf9da846b30",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_75_79_lo_68_74_78.cnf",
+    "bytes": 37892187,
+    "sha256": "9580032775d416826a9ebad353f66e29dd91a0c78440f39b47d6fcd47cbd59f6",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_75_80_lo_68_74_79.cnf",
+    "bytes": 38179885,
+    "sha256": "a108087c48fcc0599f0b1ab0156413a3b70cf6ebc0c7f0a38f96ada76cb343ad",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_76_75_lo_68_75_74.cnf",
+    "bytes": 38058604,
+    "sha256": "7a07119dc7785a022f2f6f5f241cdac1164423ef719a52abbfb09ee176d8f544",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_76_76_lo_68_75_75.cnf",
+    "bytes": 38133902,
+    "sha256": "b3b5b67dd7b5d2eb50416795cbe67a6a688183197e00a95caa33f97da475ea0e",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_76_77_lo_68_75_76.cnf",
+    "bytes": 38648827,
+    "sha256": "728f54787f5beb7cb68895dfae0c1d8c0b3eb832da252d0f17740769637ca3ff",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_76_78_lo_68_75_77.cnf",
+    "bytes": 37808490,
+    "sha256": "6f366f8d8dea2ba1f2479fe738e2502a75c938169b16fead5cd35f38e7534f6a",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_76_79_lo_68_75_78.cnf",
+    "bytes": 37693086,
+    "sha256": "b516b94b62fd07dc5ac68e1ed4f5cf64b0919113fe6111bf81d5c802720e0118",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_76_80_lo_68_75_79.cnf",
+    "bytes": 38120108,
+    "sha256": "bc27abec01836edda3b2293149018fa0b112d8ebc160972c2a2b7f46f9dc2f53",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_77_79_lo_68_76_78.cnf",
+    "bytes": 38226439,
+    "sha256": "c13c9b0d88df998f976d078d72f226f7e68bd7e06de31a43d08c7af7b29333d3",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_77_80_lo_68_76_79.cnf",
+    "bytes": 38607796,
+    "sha256": "d9acb031e504ad56bca94f2d2f3dae078de5e221546e80d2a1ae8f18071a3637",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_78_79_lo_68_77_78.cnf",
+    "bytes": 37580185,
+    "sha256": "1eecd5ed620483bc62cfa9eae3ce5ea3b7902483484a711e11fa909af3cf3b41",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_69_78_80_lo_68_77_79.cnf",
+    "bytes": 37844927,
+    "sha256": "2badaa21c04798d2a46e7383782e65bd27139e4f0d2e49ad6ec86b0e5f7d7091",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_69_75_lo_69_68_74.cnf",
+    "bytes": 37394970,
+    "sha256": "f2a7080fe48d705e8187c2bb1e3ebf11b2c179d6b40e6836f14af99923e73c6d",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_69_76_lo_69_68_75.cnf",
+    "bytes": 37215737,
+    "sha256": "b0e466306edbcc09454b7c1e272c72d21dcdd4c5f34973ecaf29f854505e86ff",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_70_75_lo_69_69_74.cnf",
+    "bytes": 36716086,
+    "sha256": "763b25288bdb19a8c416e23f43c9c00e071dac90af87a6a53ae0c8e3f18e48d5",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_70_76_lo_69_69_75.cnf",
+    "bytes": 36876048,
+    "sha256": "7baf6fcf647665dacfc02b6d429509d42289ddf87670ac1e8022919f0eda44d4",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_71_75_lo_69_70_74.cnf",
+    "bytes": 37584629,
+    "sha256": "076b0b1c7e879a7ca893e94dab05a036385fa8e6aab4926f7d6467f80d7b54a1",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_71_76_lo_69_70_75.cnf",
+    "bytes": 37380039,
+    "sha256": "6a21da01bc0007b1fdc11fb80456858edb56b68737af131dc4c32bd757ba0d3a",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_72_75_lo_69_71_74.cnf",
+    "bytes": 37537965,
+    "sha256": "d44d4e93500571d5b46675bd344e0f8bc9835a687a3618b25748b932309c8369",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_72_76_lo_69_71_75.cnf",
+    "bytes": 37646634,
+    "sha256": "4d1a007f293dc2051ec78a4444a406d58f4858f6c09ec4f90c863838b6172e45",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_73_75_lo_69_72_74.cnf",
+    "bytes": 37077906,
+    "sha256": "5b010a33dc9f1dced38bb36c12817297a8ae5580df94d7f37e5cf074d380bbc2",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_73_76_lo_69_72_75.cnf",
+    "bytes": 37115640,
+    "sha256": "4f3a4797f6f2acb5a2a31b68b4c253be933e1785a775124f77e6f21b68cc909c",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_74_75_lo_69_73_74.cnf",
+    "bytes": 38139560,
+    "sha256": "fa954c06789e88ec2631f8a063355535b19bff5e71f38969011eb07e0b138998",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_74_76_lo_69_73_75.cnf",
+    "bytes": 38123141,
+    "sha256": "0335f48a970f79bae6d8815518456a938bfa8ae0065250c92ca5e582c8b93029",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_75_75_lo_69_74_74.cnf",
+    "bytes": 37585906,
+    "sha256": "e868c883c9768f8c1268f27a38a5505e5e0348326fa648259d4222ec0f440be6",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_75_76_lo_69_74_75.cnf",
+    "bytes": 37503235,
+    "sha256": "47249fbcb1ab1e9042e3ff37d899b4112e4b30a64056a843f1742b8ae9d5aee4",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_75_77_lo_69_74_76.cnf",
+    "bytes": 38166098,
+    "sha256": "873708e363cfb809ff1bdbd24e04eb5a03f80af77a2f3ac1f32bb797ad50f935",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_75_78_lo_69_74_77.cnf",
+    "bytes": 37222556,
+    "sha256": "adcb1c85ee11c936f236d6d7e74d03dc53b711db9d058928a15697c5efc0d734",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_75_79_lo_69_74_78.cnf",
+    "bytes": 37234536,
+    "sha256": "dbf9d18f0b6f6d010190ca9fc937340eccb7be6bf3581257e1d4dc1f1dc5b53f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_75_80_lo_69_74_79.cnf",
+    "bytes": 37528298,
+    "sha256": "805ca61133609c46be84a17e0157e3fe1155dc4e01a6b0e35fff4d1af7b47c49",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_76_75_lo_69_75_74.cnf",
+    "bytes": 37476220,
+    "sha256": "a9e3982a32de15397cdead0304aa497053050fee2239b41b1cdcea668143f32f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_76_76_lo_69_75_75.cnf",
+    "bytes": 37411207,
+    "sha256": "0662c8c2aa88b593e6272ad26b316304f1ae16a8cb8b6b8abf76de7319809c7d",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_76_77_lo_69_75_76.cnf",
+    "bytes": 38239060,
+    "sha256": "bf30ffcc08066a1993f54e1b501e7d3b886b7c4ba2f46efe84e2fb8f0d566c4f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_76_78_lo_69_75_77.cnf",
+    "bytes": 37088160,
+    "sha256": "53406c3d47785cc6e99f25b20c8f2f4bd802ae57bc5c98695b6a54780a680210",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_76_79_lo_69_75_78.cnf",
+    "bytes": 37146466,
+    "sha256": "90c715fe63f2460a8e217aeb37f3fc4423ba3113a91ab9666839b518dae68348",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_76_80_lo_69_75_79.cnf",
+    "bytes": 37523673,
+    "sha256": "c2b6f69fdf23ed5a6299679e823565b43535a87c1312ad2fa3226cae9d1183bd",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_77_79_lo_69_76_78.cnf",
+    "bytes": 37529946,
+    "sha256": "c6f7c66f7c337d997262563fc1060710c1843f3cd4880473d8c5eb4543778a95",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_77_80_lo_69_76_79.cnf",
+    "bytes": 38164904,
+    "sha256": "1b0c1661b2d4a2fa46636b0e8b14d7b505ad60123c1a3ed5d75fc9f105355118",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_78_79_lo_69_77_78.cnf",
+    "bytes": 36798045,
+    "sha256": "bb65a072f1fec8423bcdc6e9874f2d20e64dde9570938518f2c16ce79d364115",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_70_78_80_lo_69_77_79.cnf",
+    "bytes": 37311877,
+    "sha256": "e46c112b97e651f09cff8c16b7e5c24e7eb47234343987fcad985eafe00ea435",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_71_77_79_lo_70_76_78.cnf",
+    "bytes": 38547719,
+    "sha256": "bd1eaff2d3ba10a2735d7794180c6fe31e6a571f61010406c79bbcdbab4ea671",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_71_77_80_lo_70_76_79.cnf",
+    "bytes": 38756976,
+    "sha256": "b181745e7d26b7629b6e5aabda12a69411c2903732b058c12e685a3bc316e93b",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_71_78_79_lo_70_77_78.cnf",
+    "bytes": 37741473,
+    "sha256": "0ac90276191d288ae1dd75d378a08d1fcff4aafcbe20c1b13736ac4b8a91486e",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_71_78_80_lo_70_77_79.cnf",
+    "bytes": 38151570,
+    "sha256": "5b2cc3e2322f0fe9e1fba427a533be95ef289046766357924e549654054983c9",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_72_77_79_lo_71_76_78.cnf",
+    "bytes": 38421409,
+    "sha256": "290b65dfabadb57e9350d4198e1f4187e04be5af9b293f8d95e30c9887602657",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_72_77_80_lo_71_76_79.cnf",
+    "bytes": 38741196,
+    "sha256": "76085efd3df05b8c1fb8f29812c23ecba56c28051ab137fbd3e52bd3db54c7cf",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_72_78_79_lo_71_77_78.cnf",
+    "bytes": 37685203,
+    "sha256": "e184ca31ccfe61cfbd6c4ed8e8df1628383415b73e2af9646032458eede10258",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_72_78_80_lo_71_77_79.cnf",
+    "bytes": 37989774,
+    "sha256": "ca3d738cb051509f0fc166a5fa6d63f610f27c3cbc2724467172862667fdb951",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_73_77_79_lo_72_76_78.cnf",
+    "bytes": 37751416,
+    "sha256": "c36023d2ebebc3ee50f367c0505fdcd165cd3af53adf5cf7137795dcea42f73f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_73_77_80_lo_72_76_79.cnf",
+    "bytes": 38312968,
+    "sha256": "a64662fe4b9c7a4a9324f280597b97078252c6cad950b4128234126458014414",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_73_78_79_lo_72_77_78.cnf",
+    "bytes": 37111811,
+    "sha256": "d7e567ee8b5caecaa5098b27a09438d0230d6078ba7dc0b31f13ce84e737063b",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_73_78_80_lo_72_77_79.cnf",
+    "bytes": 37556184,
+    "sha256": "793df60fb38f420439d9ed3af0a37a8a18f891a2d357c8a930f9af6fc60aec0a",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_74_77_79_lo_73_76_78.cnf",
+    "bytes": 38971059,
+    "sha256": "7b3031c36b90264f083834744b4fd159d67157fb562b0eb3e06ab1f6dfa2ce10",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_74_77_80_lo_73_76_79.cnf",
+    "bytes": 39498191,
+    "sha256": "b0300ed4c0a98737938afdcb19cfdb6b87a2c27ec62643154daaf3d8d3347c3d",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_74_78_79_lo_73_77_78.cnf",
+    "bytes": 37933091,
+    "sha256": "bc7c709b54dd634b54665b0107a302b371f83eb589ac7239632b1ec91e64cd3c",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_74_78_80_lo_73_77_79.cnf",
+    "bytes": 38601052,
+    "sha256": "fe5c70b29f88bc98037b041add2c21c06cf5b34f2809c93a57a23f85c600fb94",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_75_77_79_lo_74_76_78.cnf",
+    "bytes": 38385009,
+    "sha256": "407a10797653693d87c94e6caf598decd06d171e9058fc04949a7e47f6f2f1b5",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_75_77_80_lo_74_76_79.cnf",
+    "bytes": 38658843,
+    "sha256": "5d9915483fd231b2c5fe98cecf38f8cd0ad84a7c5a562f2c35659d7dc24a66f3",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_75_78_79_lo_74_77_78.cnf",
+    "bytes": 37696693,
+    "sha256": "3aa04c7a115d940952fff0f29e68be41ce6212836e0abc5e62bc3571af33cf03",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_75_78_80_lo_74_77_79.cnf",
+    "bytes": 38280217,
+    "sha256": "ef8c25728265ca02b215c216f07ea73db63345cee7f441b643e1a972bb3b9ef0",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_76_77_79_lo_75_76_78.cnf",
+    "bytes": 38261266,
+    "sha256": "8ec6e9d8f50331e0910f3a7f9a2465dcdb320e14222049e4965017d517892647",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_76_77_80_lo_75_76_79.cnf",
+    "bytes": 38691528,
+    "sha256": "d483a3068d70f1c9e65ed5aa96ba5c4f3d755d5936e4495e7dd5c461f408628e",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_76_78_79_lo_75_77_78.cnf",
+    "bytes": 37631155,
+    "sha256": "9df1abb5fa7ee0e86bf3a764b48a3751c034b7c7df8485461f2c5d04c10369e5",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_76_78_80_lo_75_77_79.cnf",
+    "bytes": 37924166,
+    "sha256": "e87092cdc2ea7182b8d2383c6ca2d1ba3f73383bc5ce5519d0c509a641c00f1c",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_77_77_79_lo_76_76_78.cnf",
+    "bytes": 38741589,
+    "sha256": "d967e290d3f3ce8f721050645bf98849e51be2317a0cc72c470d8526a38e0460",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_77_77_80_lo_76_76_79.cnf",
+    "bytes": 39015954,
+    "sha256": "99a10975710e230ea25cb6dceb559fbec5ff81617f9fa56a11482ebd9e8140f2",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_77_78_79_lo_76_77_78.cnf",
+    "bytes": 37805414,
+    "sha256": "7d34b9f9f863ad07a11d1d7bf5ecd686c6b17cfa7384fc2ba63f0be1ef3166f3",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_77_78_80_lo_76_77_79.cnf",
+    "bytes": 38113970,
+    "sha256": "021c78532c2783b87fb2bee723c5685ab2da69972d16cc88ff2e6cdca3496e4e",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_77_79_79_lo_76_78_78.cnf",
+    "bytes": 37781365,
+    "sha256": "12f5b4b9a81e00e5143f8c4924c05862ad977996ffd9b3904edd4c0166b76c00",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_77_79_80_lo_76_78_79.cnf",
+    "bytes": 38041528,
+    "sha256": "eee5f9a04f2cfe1780ec0e7ebd909b760f2cc83eb0269066ba4068c36aa9b34e",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_77_80_79_lo_76_79_78.cnf",
+    "bytes": 37967814,
+    "sha256": "54f1cb76ced37d16bc9f4507c589b8c3d7d24073597a5077a3f5703ea69eacad",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_77_80_80_lo_76_79_79.cnf",
+    "bytes": 38403615,
+    "sha256": "1eb22bfe9fa5db86dc95611d324e684606905eb435fa3e5ee61e40aa32515dbb",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_78_77_79_lo_77_76_78.cnf",
+    "bytes": 37985669,
+    "sha256": "6301c649fbc380980bc3d88f4748fc91a3e54e25f2a64e5b0adfac66791c2474",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_78_77_80_lo_77_76_79.cnf",
+    "bytes": 37967472,
+    "sha256": "aaec4e555526fe2bc87a529640caf8846ed6d5e4c5262bbd3ffec637380aab3f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_78_78_79_lo_77_77_78.cnf",
+    "bytes": 37131743,
+    "sha256": "ba2f33ecce57237940fd1c94a522f54973573502ac44ad6144bab0e12ff30f23",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_78_78_80_lo_77_77_79.cnf",
+    "bytes": 37779573,
+    "sha256": "cf40d7d7247d890c33dd798bea53559b60076e4dffa1f4cfe13e3e35b93be057",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_78_79_79_lo_77_78_78.cnf",
+    "bytes": 36886923,
+    "sha256": "d21badd4c408da96824a43c3f4c604cab0e5a0a99963bbb79adfff1af189ce86",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_78_79_80_lo_77_78_79.cnf",
+    "bytes": 37273599,
+    "sha256": "358d26aef6cd5c0f2516fccd727efb12d0a338aee4734d8378ffbc9b3cc2f120",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_78_80_79_lo_77_79_78.cnf",
+    "bytes": 37384606,
+    "sha256": "f014e5c35e670d5ccbd159babe686a1919d6f2fc6a95d478ac90dbb6735e64e7",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/capture/w4_cells/logs/astra_continuous_type_cells/b3_80_78_80_80_lo_77_79_79.cnf",
+    "bytes": 37719245,
+    "sha256": "9dfe081c836cdc198013c1a144d54c649447dc34ec3114a5d2e2e9d073602290",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/genp_sep/certs/gcertp_moT31_1_10.jsonl.gz.body",
+    "bytes": 89456449,
+    "sha256": "663422518203b29f408a266e6317012860762afa5c30b19ceb96db1f264ba45f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/genp_sep/certs/gcertp_mon40_0.jsonl.gz",
+    "bytes": 29913040,
+    "sha256": "a86e017426e2a8155ac1c6e61092413b24707447f9811e40358ac077ac59e5b2",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_LWA0.body.gz",
+    "bytes": 182053471,
+    "sha256": "6c454ce13f846971ff9fffc9c7e1de8fbbd8ef8d090b50b4ea8d6e756c79dd05",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_LWA1.body.gz",
+    "bytes": 222321940,
+    "sha256": "b262711c6455e18ff78acdd267855a0465a2b8ba11592f1f6ec7e00272a39aa0",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_LWA2.body.gz",
+    "bytes": 152292853,
+    "sha256": "2b33423468773b93cf8d84d7ffa7a83eb09dc48ca8d02a75d92e139515046283",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_LWA3.body.gz",
+    "bytes": 52933970,
+    "sha256": "b50cd6e716d9e66f003b1739a1c65af1fb3015d955143bc5bfdb92c87a139c26",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_MWA3.body.gz",
+    "bytes": 105420861,
+    "sha256": "745adc85a3f0606da795d06de1f2a16325889f2733406cec354f047968da2a2a",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_mGM_0.body.gz",
+    "bytes": 88857751,
+    "sha256": "70efbb252523131183ff9469934755509b666d9871ce0ca9189993ea0cda57f0",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_mM_1_20.body.gz",
+    "bytes": 135371447,
+    "sha256": "a9ef73b7cb9b175061d965878e53533af01af37f3eb404ad2d8faf150fe02efc",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_mM_3_40.body.gz",
+    "bytes": 103786557,
+    "sha256": "9e99e6c93dc7bbd4cb38b0510348f2939cef63e2c08c79efc7bee9f11d93ddbb",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/claude644_work/typeclosed3/boundary/certs/gcert5_mMc_0.body.gz",
+    "bytes": 159110811,
+    "sha256": "e4805fd4d553dc9e1f03b2f4e8b346007de2b13052cb9a7753a53df528f2e8c2",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_box_case_pipeline/113.cpc",
+    "bytes": 26160402,
+    "sha256": "87e564e1465860697717f3973728efe3dcc4c10adc47a5b37912a5821ff1dd8f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_box_case_pipeline/113.cpc_raw",
+    "bytes": 26160109,
+    "sha256": "3c43b5f37de441ff1c323c6a383e615b4168ebe0fd926ee5899e3e0d4c25d1de",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_box_case_pipeline/123.cpc",
+    "bytes": 29291599,
+    "sha256": "80ef7bd6ff51a9aed11b7e03185adb4f76c2ce335f6013719ef3d34097603ccb",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_box_case_pipeline/123.cpc_raw",
+    "bytes": 29291306,
+    "sha256": "762855f268c2b4cbc24c0860993709c337021c1f0de4a565ee4db34e80cd7304",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_box_case_pipeline/133.cpc",
+    "bytes": 26256570,
+    "sha256": "b4c911dc5f836fc1a1ce956fb2a7033820a6fa959f529ec27d62b3eca5143bc9",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_box_case_pipeline/133.cpc_raw",
+    "bytes": 26256277,
+    "sha256": "05e561a8d502e34aabe167e1f0316bf29fb8e9fd8d1e3c4ffcfdbed6a9167b34",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_continuous_type_cells/40_32_32_32_T30_fano_regions_parents.drat",
+    "bytes": 660613093,
+    "sha256": "abea7a22c13b5699132f9c621618db03fd3bac19cbd575d70bbfc05252bba2a9",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_continuous_type_cells/40_32_32_32_T30_fano_regions_parents.lrat",
+    "bytes": 201362344,
+    "sha256": "69d4e3b2932e4e8413dcf783e2a42dea53499093f1d22bc413d5f2c1e1d58525",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_continuous_type_cells/40_32_32_32_T30_fano_regions_parents.static.drat",
+    "bytes": 409572868,
+    "sha256": "066be6ba892bee186984630cbf315bc17f853cf2e5dd6ec14ee6dace0ac8ec3d",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_continuous_type_cells/40_32_32_32_T30_fano_regions_parents.trimmed.drat",
+    "bytes": 248406152,
+    "sha256": "4c4ca592000f6b3b3c94a4822f1d6ff8746502377e443658a867e8fb4a99cb99",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "research/logs/astra_type_request_cegis/4-5_4-5_4-5.smt2",
+    "bytes": 28080140,
+    "sha256": "e810528c994ece9d366405fa38e75a7da2063b018f6e64d2381c24767a869e78",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "codex/outputs/three_part_box_certificate/logs/astra_box_case_pipeline/113.cpc",
+    "bytes": 26160402,
+    "sha256": "87e564e1465860697717f3973728efe3dcc4c10adc47a5b37912a5821ff1dd8f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "codex/outputs/three_part_box_certificate/logs/astra_box_case_pipeline/123.cpc",
+    "bytes": 29291599,
+    "sha256": "80ef7bd6ff51a9aed11b7e03185adb4f76c2ce335f6013719ef3d34097603ccb",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "codex/outputs/three_part_box_certificate/logs/astra_box_case_pipeline/133.cpc",
+    "bytes": 26256570,
+    "sha256": "b4c911dc5f836fc1a1ce956fb2a7033820a6fa959f529ec27d62b3eca5143bc9",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "codex/outputs/three_part_general_box_certificate/intersecting/logs/astra_box_case_pipeline/113.cpc",
+    "bytes": 26160402,
+    "sha256": "87e564e1465860697717f3973728efe3dcc4c10adc47a5b37912a5821ff1dd8f",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "codex/outputs/three_part_general_box_certificate/intersecting/logs/astra_box_case_pipeline/123.cpc",
+    "bytes": 29291599,
+    "sha256": "80ef7bd6ff51a9aed11b7e03185adb4f76c2ce335f6013719ef3d34097603ccb",
+    "reason": "oversized generated proof trace; retained locally"
+  },
+  {
+    "origin": "codex/outputs/three_part_general_box_certificate/intersecting/logs/astra_box_case_pipeline/133.cpc",
+    "bytes": 26256570,
+    "sha256": "b4c911dc5f836fc1a1ce956fb2a7033820a6fa959f529ec27d62b3eca5143bc9",
+    "reason": "oversized generated proof trace; retained locally"
+  }
+]

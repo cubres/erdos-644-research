@@ -1,0 +1,541 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\HH}{\mathcal H}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\pos}[1]{\left(#1\right)_+}
+\newcommand{\bt}{\frac67}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{2em}
+\title{A six-sevenths bound for transversals in hypergraphs with property $(7,2)$}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+A hypergraph has property $(7,2)$ if every subfamily of at most seven
+edges has a transversal of size at most two. We prove that every
+$k$-uniform hypergraph with this property satisfies
+$\tau(\HH)\le\lceil6k/7\rceil+1$ for $k\ge7$.
+This improves the previously established asymptotic upper coefficient
+$7/8$ to $6/7$. The proof combines sharper local avoidance constructions
+with three successive exclusions of pair-intersection sizes and a
+maximal-intersection argument. All constructions admit integral
+allocations of points among at most four requests.
+\end{abstract}
+
+\section{Introduction}
+A \emph{transversal} of a hypergraph is a set meeting every edge, and its
+\emph{transversal number} $\tau(\HH)$ is the minimum size of such a set.
+For integers $k\ge2$ and $r\ge3$, let $f(k,r)$ be the largest transversal
+number of a finite $k$-uniform hypergraph in which every subfamily of at
+most $r$ edges has a transversal of size at most two. The use of ``at most''
+avoids vacuous exceptions for families with fewer than $r$ edges.
+
+Erd\H{o}s, Fon-Der-Flaass, Kostochka and Tuza studied these local
+transversal conditions in~\cite{EFKT}. For $r=7$, Fon-Der-Flaass,
+Kostochka and Woodall proved the bounds
+\[
+ \ceil{3k/4}\le f(k,7)\le\ceil{7k/8}
+\]
+for the upper-bound range $k\ge8$; see~\cite{FKW}.
+The question whether $f(k,7)=(3/4+o(1))k$ remains the motivating problem.
+Here we improve the coefficient in the upper bound to $6/7$.
+
+\begin{theorem}\label{thm:main}
+Let $k\ge7$. Every finite $k$-uniform hypergraph with property $(7,2)$
+satisfies
+\[
+ \tau(\HH)\le\ceil{6k/7}+1.
+\]
+Consequently $\limsup_{k\to\infty}f(k,7)/k\le6/7$.
+\end{theorem}
+
+Our proof refines the avoidance method of Fon-Der-Flaass, Kostochka
+and Woodall~\cite{FKW}, which already uses good triples, intersection
+gaps, and a maximal small intersection. The improvement comes from
+stronger local completion constructions and their three-stage
+combination. Broader local-cover problems were subsequently studied
+by Kostochka~\cite{Kostochka} and Buci\'c, Kor\'andi and Sudakov~\cite{BKS}.
+
+The proof uses the elementary consequence of $\tau(\HH)>T$ that each
+set of at most $T$ points is avoided by an edge of $\HH$. Starting from
+three edges with empty common intersection, we construct four such
+requests so that no pair of points can meet all seven resulting edges.
+Some constructions use a previously established gap in the possible
+pair-intersection sizes. This permits three successive exclusions,
+after which a pair with largest intersection at most $k/2$ supplies the
+final contradiction.
+
+The main argument is given in Sections~\ref{sec:gaps} and~\ref{sec:finish}.
+The elementary setup is in Section~\ref{sec:prelim}. For completeness,
+Appendices~\ref{app:allocation}--\ref{app:smallmax} contain full proofs of
+all local constructions used in the argument. The additive constant is
+handled within these constructions; a single budget
+$T=\lceil6k/7\rceil+1$ is used throughout.
+
+\section{Avoidance requests and good triples}\label{sec:prelim}
+Throughout the main argument, $\HH$ is a finite $k$-uniform hypergraph
+with property $(7,2)$ and $\tau(\HH)>T$, where $T$ is an integer. An \emph{avoidance request} is a set $D$ of at most $T$ points.
+There is an edge disjoint from $D$, called a response to the request.
+We construct responses successively. The requests need not be disjoint,
+and their sizes are bounded individually.
+
+A triple $E,F,G$ is \emph{good} if $E\cap F\cap G=\varnothing$.
+Write
+\[
+ X=E\cap F,\qquad Y=E\cap G,\qquad Z=F\cap G,
+\]
+and write $P_E,P_F,P_G$ for the private parts of its three edges.
+The six cells $X,Y,Z,P_E,P_F,P_G$ are disjoint. Any pair meeting the
+three edges either lies in two distinct pair cells or lies in a pair
+cell and the opposite private part. Points outside $E\cup F\cup G$
+are irrelevant, because their partner alone cannot meet a good triple.
+This observation verifies the static constructions below.
+
+For four edges with all triple intersections empty, a pair meeting all
+four must lie in two complementary pair cells. If precisely one triple
+cell survives, there is in addition the product of that cell with the
+opposite edge. These descriptions will be used explicitly in the local
+proofs.
+
+\begin{lemma}[Balanced request]\label{lem:balanced}
+Suppose $E,F$ have intersection size $M\le T\le k$. There is a request
+of size $T$ containing $E\cap F$ such that an avoiding response $G$
+forms a good triple and
+\[
+ |E\cap G|,|F\cap G|\le k-\floor{(T+M)/2}.
+\]
+\end{lemma}
+\begin{proof}
+Include the $M$ common points and distribute the remaining $T-M$
+requested points as evenly as possible between $E\setminus F$ and
+$F\setminus E$. Both selections fit because $T\le k$. Each new trace
+has size at most $k-M-\lfloor(T-M)/2\rfloor$, which is the asserted
+quantity.
+\end{proof}
+
+Most scalar inequalities will be written after division by $k$.
+Thus lower-case pair sizes in Sections~\ref{sec:gaps} and~\ref{sec:finish}
+are proportions. The appendices use actual integer sizes unless stated
+otherwise. A triple \emph{closes at budget $T$} if four further requests
+of size at most $T$ force a subfamily of at most seven edges with no
+transversal of size at most two. Each closing result is therefore
+incompatible with property $(7,2)$ under the assumption $\tau(\HH)>T$.
+
+Throughout the main proof put
+\begin{equation}\label{eq:budget}
+ \beta=\frac67,\qquad T=\ceil{\beta k}+1.
+\end{equation}
+For $k\ge7$ we have $T\le k$. Every local result below is implemented
+with this same integer budget. In particular, the losses in different
+requests are not added together.
+
+\section{Three gaps in the intersection spectrum}\label{sec:gaps}
+We first explain the initial request used to obtain each gap. Suppose
+$|E\cap F|=qk$. Choose $u$ and put $v(q)=2-\beta-q-u$.
+If $0\le u,v(q)\le1-q$, retain subsets of the private parts of $E,F$
+of sizes $\lfloor uk\rfloor$ and $\lfloor v(q)k\rfloor$, and request
+all remaining points of $E\cup F$. The request contains $E\cap F$ and
+has size
+\[
+ 2k-qk-\floor{uk}-\floor{v(q)k}<\beta k+2.
+\]
+Its size is an integer and is therefore at most $T$. The response gives
+a good triple whose other two pair proportions are at most $u,v(q)$.
+
+The choices needed are displayed in Table~\ref{tab:gaps}. In each row,
+the host conditions $0\le u,v(q)\le1-q$ hold throughout the stated
+interval. In the second and third rows, gaps already proved reduce the
+raw response bounds to the bounds in the final column.
+\begin{table}[ht]
+\centering
+\begin{tabular}{ccccc}
+\toprule
+Stage & Initial $q$ & $u$ & $v(q)$ & Response bounds\\
+\midrule
+1 & $[3/7,10/21]$ & $5/14$ & $11/14-q$ & $y,z\le5/14$\\
+2 & $[4/21,5/14]$ & $10/21$ & $2/3-q$ & $y,z<3/7$\\
+3 & $[10/21,1/2]$ & $1/3$ & $17/21-q$ & $y,z<4/21$\\
+\bottomrule
+\end{tabular}
+\caption{Successive exclusions of pair-intersection sizes.}\label{tab:gaps}
+\end{table}
+
+\subsection{The first gap}
+\begin{proposition}\label{prop:gapone}
+Under \eqref{eq:budget} and $\tau(\HH)>T$, no pair of edges has
+intersection proportion in $[3/7,10/21]$.
+\end{proposition}
+\begin{proof}
+The first row of Table~\ref{tab:gaps} reduces the assertion to closing
+a good triple with
+\[
+ 3/7\le x\le10/21,\qquad 0\le z\le y\le5/14.
+\]
+Put $s=y+z$, $d=y-z$, and $S=x+s$.
+
+\paragraph{Case 1: $d>x-1/7$.}
+Use Lemma~\ref{lem:asymone} in orientation $(x,y,z)$.
+Since $s+d=2y\le5/7$, its four bounds are verified by
+\begin{align*}
+ S&<6/7,& 1/2+y&\le6/7,\\
+ (1+2x-d)/2&<(8/7+x)/2\le17/21,\\
+ (1+2x+2s-d)/3&<(20/7-x)/3\le17/21.
+\end{align*}
+
+\paragraph{Case 2: $d\le x-1/7$ and $s\le11/7-2x$.}
+Use Lemma~\ref{lem:fourcase} in orientation $(y,z,x)$.
+Its nine terms satisfy
+\begin{align*}
+ s&\le5/7,&1/2+y, 1/2+z&\le6/7,\\
+ 1+d-x&\le6/7,&1-d-x&\le4/7,\\
+ 1-S/3&\le6/7,&(3+S)/5&\le88/105,\\
+ (1+s+2x)/3&\le6/7,&(2+3x)/4&\le6/7.
+\end{align*}
+Here $S\ge x\ge3/7$ and $S\le25/21$.
+
+\paragraph{Case 3: $s>11/7-2x$.}
+Use the symmetric allocation of Lemma~\ref{lem:symmetric}.
+Since $x\le10/21$,
+\[
+ s>x+1/7,\qquad x+y-z=x+d<3x-6/7\le4/7,\qquad S\le25/21<9/7.
+\]
+The second inequality uses $d\le5/7-s$. These are precisely the three
+hypotheses of that lemma. Its integral allocation fits $T$ with no
+rounding loss. The three cases exhaust the domain.
+\end{proof}
+
+\subsection{The middle gap}
+\begin{proposition}\label{prop:gaptwo}
+Under the same assumptions, no pair has intersection proportion in
+$[4/21,5/14]$.
+\end{proposition}
+\begin{proof}
+The second row of Table~\ref{tab:gaps} gives two new traces of proportion
+at most $10/21$. Proposition~\ref{prop:gapone} forces both below $3/7$.
+It suffices to close a good triple with
+\[
+ 4/21\le x\le5/14,\qquad 0\le z\le y\le3/7.
+\]
+If $x+z\le11/21$, then $z\le1/3<5/14$. Apply
+Lemma~\ref{lem:hallstatic} with distinguished pair size $a=y$ and
+remaining sizes $b=x,c=z$: its conditions follow from
+$a\le3/7$, $b,c\le5/14$ and $b+c\le11/21<4/7$.
+
+If $x+z\ge11/21$, use Lemma~\ref{lem:gaptwo} with orientation
+$(y,x,z)$ and the established gap $[\ell,h]=[3/7,10/21]$.
+Its domain conditions hold because $y\ge z$ and
+$x+z\ge11/21=1-h$. Its six budget terms are bounded by
+\begin{align*}
+ 2-2h-x&=22/21-x\le6/7,\\
+ y+\ell, z+\ell&\le6/7, &1/2+x&\le6/7,\\
+ 3/4&<6/7, &(3+x+y+z)/5&\le59/70<6/7.
+\end{align*}
+The lemma's integer construction uses $T=\lceil\beta k\rceil+1$.
+\end{proof}
+
+\subsection{The final gap}
+\begin{proposition}\label{prop:gapthree}
+Under the same assumptions, no pair has intersection proportion in
+$[10/21,1/2]$.
+\end{proposition}
+\begin{proof}
+The last row of Table~\ref{tab:gaps} gives new traces at most $1/3$.
+Proposition~\ref{prop:gaptwo} forces both below $4/21$. We therefore
+consider a good triple with
+\[
+ 10/21\le x\le1/2,\qquad 0\le z\le y\le4/21.
+\]
+Write $S=x+y+z$, and set $\ell=4/21$, $h=5/14$.
+
+\paragraph{Case 1: $S\le5/7$.}
+Lemma~\ref{lem:split} applies, since
+\[
+ (1+S)/2\le6/7,\qquad 1-x+|y-z|\le5/7,\qquad 1/3+x\le5/6.
+\]
+
+\paragraph{Case 2: $5/7\le S\le6/7$ and $z\le1/14$.}
+Apply Lemma~\ref{lem:asymtwo} in orientation $(x,z,y)$.
+Besides $S\le\beta$, its bounds follow from
+\[
+ 1/3+x\le5/6,\qquad 1-x+y\le5/7,\qquad
+ 2x+y+3z\le59/42<11/7.
+\]
+
+\paragraph{Case 3: $5/7\le S\le6/7$ and $z\ge1/14$.}
+Apply Lemma~\ref{lem:gapempty} with the gap $[\ell,h]$.
+The nine required inequalities follow from
+\begin{align*}
+ S&\le6/7,&1-h+y, 1-h+z&\le5/6,\\
+ 2-2h-x&\le17/21,&1/3+x&\le5/6,\\
+ 2x-y, 2x-z&\le13/14,&x-y-z&=2x-S\le2/7,\\
+ 2\ell+y+z&\le16/21.
+\end{align*}
+In particular, the two terms with numerator $(2-h)+2x-y$ or
+$(2-h)+2x-z$ are at most $(23/14+13/14)/3=6/7$, and the term with
+numerator $3-2h+x-y-z$ is at most $(16/7+2/7)/3=6/7$.
+
+\paragraph{Case 4: $S\ge6/7$.}
+Apply Lemma~\ref{lem:gapsurvive}. Its domain condition is this case,
+and its six bounds follow from
+\begin{align*}
+ x+y&\le29/42,&1-h+y, 1-h+z&\le5/6,\\
+ 1/4+x+(y+z)/4&\le71/84,&2\ell+y+z&\le16/21,\\
+ 1/2+x/2+(z+\ell)/4&\le71/84.
+\end{align*}
+This exhausts the domain.
+\end{proof}
+
+Propositions~\ref{prop:gapone} and~\ref{prop:gapthree} together show that
+there is no pair intersection in $[3k/7,k/2]$. We now prove that the
+weaker condition ``at most $3k/7$ or greater than $k/2$'' already suffices
+for a slightly stronger bound, with no additive allowance when $k\ge8$.
+
+\section{The maximal-intersection argument}\label{sec:finish}
+\begin{proposition}\label{prop:localfinish}
+Suppose every pair intersection in $\HH$ is at most $mk$ or greater
+than $k/2$. A good triple with sorted pair proportions $m\ge y\ge z$
+whose largest pair intersection is $mk$ closes at integer budget
+$T_0=\lceil6k/7\rceil$ whenever
+\begin{equation}\label{eq:finishdomain}
+ 0\le m\le3/7.
+\end{equation}
+\end{proposition}
+\begin{proof}
+In this proof put $T=T_0$ and $S=m+y+z$. In particular
+$S\le3m\le9/7$.
+
+\paragraph{Case 1: $y\le5/14$.}
+If $y-z>m-1/7$, apply Lemma~\ref{lem:asymone} in orientation
+$(m,y,z)$. Its terms satisfy
+\begin{align*}
+ S&<2y+1/7\le6/7,&1/2+y&\le6/7,\\
+ (1+2m-y+z)/2&<(1+m+1/7)/2\le11/14,\\
+ (1+2m+y+3z)/3&<(10/7+4y-m)/3\le5/6.
+\end{align*}
+If $y-z\le m-1/7$ and $S<3/7$, use the same lemma in orientation
+$(z,y,m)$. Its last two terms are at most $(1+S)/2<5/7$ and
+$(1+3S)/3<16/21$, respectively.
+
+In the remaining subcase, $y-z\le m-1/7$ implies $m\ge1/7$.
+Use Lemma~\ref{lem:fourcase} in orientation $(z,y,m)$. Its nine bounds
+follow from
+\begin{gather*}
+ y+z\le5/7,\quad 1/2+y, 1/2+z\le6/7,\quad
+ m+y-z\ge m\ge1/7,\quad m-y+z\ge1/7,\\
+ S\ge3/7,\qquad (3+S)/5\le29/35,\qquad
+ (1+y+z+2m)/3\le6/7,\qquad (2+3m)/4\le23/28.
+\end{gather*}
+
+\paragraph{Case 2: $y>5/14$ and $1/7<z\le5/14$.}
+Use the full-gap construction of Lemma~\ref{lem:gaptwo}, with orientation
+$(m,z,y)$, $h=1/2$ and $\ell=m$. This version is valid when intersections
+are at most $mk$ or greater than $k/2$: its proof uses only the implication
+that an intersection at most $k/2$ is at most $mk$. The two domain
+conditions follow from $m+z\ge y+z>1/2$. We check its initial integer
+request separately to remove the additive allowance in that lemma.
+Write $Z=zk$ for the integer pair size used in its middle coordinate.
+The exact initial request size is
+\[
+ Z+2(k-Z-\lfloor k/2\rfloor)_+
+   =\max\{Z,k-Z+(k\bmod2)\}.
+\]
+Since $Z>k/7$, integrality gives $Z\ge\lfloor k/7\rfloor+1$, so
+this request fits $T=k-\lfloor k/7\rfloor$. The domain inequalities
+also ensure that the cuts fit their hosts when $k$ is odd. All subsequent
+allocations in the cited proof are integral. Its six homogeneous bounds
+are
+\[
+ \begin{gathered}
+ 1-z\le6/7,\quad 2m\le6/7,\quad y+m\le6/7,\\
+ 1/2+z\le6/7,\quad 3/4<6/7,\quad (3+S)/5\le59/70.
+ \end{gathered}
+\]
+In this version, the relevant strict trace bounds in the lemma's proof
+become weak bounds; all capacity estimates remain valid.
+
+\paragraph{Case 3: $y>5/14$ and $z\ge5/14$.}
+Apply Lemma~\ref{lem:symmetric}. Indeed,
+\[
+ y+z>5/7>m+1/7,\qquad S\le3m\le9/7.
+\]
+Moreover $m+y-z\le2m-z\le6/7-5/14=1/2<4/7$.
+
+\paragraph{Case 4: $y>5/14$ and $z\le1/7$.}
+Use Lemma~\ref{lem:nearcore} in orientation $(x,y,z)=(m,z,y)$.
+The full-gap parameter in that lemma is still $m$, and
+$5/14<y\le m\le3/7$.
+The domain condition and the first five bounds of the lemma follow from
+\begin{align*}
+ z+y&\le4/7,&m+y&\le6/7,\\
+ 1+z-y&<11/14,&2+m-2y&\le17/7-2y<12/7,\\
+ 2+2m-y&<5/2<18/7,&2m&\le6/7.
+\end{align*}
+If $S\le6/7$, use its empty-core variant. The two remaining bounds are
+\[
+ 1-m+z<11/14,\qquad 2-2m+y\le2-m<23/14<12/7.
+\]
+If $S\ge6/7$, put $\Delta=S-6/7$. The four remaining bounds, after
+substituting this value, become
+\begin{gather*}
+ 1+2z+y\le12/7,\qquad 2-m+z+2y\le18/7,\\
+ 2+m+z\le18/7,\qquad 3+y\le24/7.
+\end{gather*}
+They follow from
+\[
+ 1+2z+y\le12/7,\qquad 2-m+z+2y\le2+y+z\le18/7,
+\]
+$m+z\le4/7$, and $3+y\le24/7$.
+All these inequalities were checked at the real budget $6k/7$.
+Increasing it to the integer $T$ decreases the actual $\Delta$ and
+increases every capacity. The integral construction of
+Lemma~\ref{lem:nearcore} therefore applies.
+\end{proof}
+
+\begin{theorem}[Conditional finishing theorem]\label{thm:finish}
+Let $k\ge8$. If a $k$-uniform hypergraph has property $(7,2)$ and every
+pair intersection is at most $3k/7$ or greater than $k/2$, then
+$\tau(\HH)\le\lceil6k/7\rceil$. The same hypotheses give
+$\tau(\HH)\le7$ when $k=7$.
+\end{theorem}
+\begin{proof}
+For $k\ge8$ set $T=\lceil6k/7\rceil=k-\lfloor k/7\rfloor$;
+for $k=7$ set $T=7$. Suppose $\tau(\HH)>T$.
+An edge avoiding a $T$-subset of another edge gives a pair intersection
+at most $k-T<k/2$. Therefore a largest pair intersection $M\le k/2$
+exists, and the hypothesis implies $M\le3k/7$.
+
+If $M\le2k/7$, use Lemma~\ref{lem:smallmax}. Its four arithmetic
+conditions hold for this $T$. For $k\ge14$, the bounds $T\ge6k/7$
+give respective margins at least $k/7-1$, $k/14-1/2$,
+$3k/14-1/2$, and $2k/7-4$, with the required strictness in the first.
+For $8\le k\le13$, $T=k-1$, and the four conditions reduce to
+$k>7$, $k-3\ge\lceil k/2\rceil$, $k\ge5$, and $k\ge8$.
+They also hold directly for $k=T=7$.
+Otherwise choose a pair attaining $M$ and apply
+Lemma~\ref{lem:balanced}. The other two intersections $Y\ge Z$ satisfy
+\[
+ Y,Z\le k-\floor{(T+M)/2}.
+\]
+Also $T\ge6k/7$ and $M>2k/7$ give
+\[
+ Y\le k-\floor{(T+M)/2}<3k/7+1/2\le k/2
+\]
+for $k\ge7$. By maximality, $Y,Z\le M$. Dividing by $k$ gives the hypotheses of
+Proposition~\ref{prop:localfinish}, which produces the required
+contradiction. For $k=7$, the local proposition closes at budget
+$T_0=6$, and its requests are also available under $\tau(\HH)>7$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Suppose $\tau(\HH)>T$. The three propositions in
+Section~\ref{sec:gaps} exclude all pair intersections in $[3k/7,k/2]$.
+Theorem~\ref{thm:finish} then contradicts $\tau(\HH)>T$.
+\end{proof}
+
+\begin{corollary}
+The conclusion of Theorem~\ref{thm:main} also holds for finite families
+of nonempty sets of rank at most $k$.
+\end{corollary}
+\begin{proof}
+Pad each edge to size $k$ with points private to that edge. Old
+transversals still meet the padded edges. Conversely, replace each
+private point of a transversal by an arbitrary point of its original
+nonempty edge. This gives a transversal of the original family of no
+larger size. Thus padding preserves the transversal number, and it
+preserves property $(7,2)$ because every original two-point transversal
+still works. Apply Theorem~\ref{thm:main} to the padded family.
+\end{proof}
+
+\begin{corollary}\label{cor:arithmetic}
+For every integer $n\ge1$,
+\[
+ f(42n,7)\le36n,\qquad f(42n-1,7)\le36n.
+\]
+Thus the additive point in Theorem~\ref{thm:main} can be omitted when
+$k\equiv0$ or $41\pmod{42}$.
+\end{corollary}
+\begin{proof}
+Set $k=42n$ and $T=6k/7=36n$. Use the same three gap stages as in
+Section~\ref{sec:gaps}. All fixed caps and gap thresholds used there
+are integral multiples of a point:
+\[
+ 5k/14=15n,\quad 10k/21=20n,\quad k/3=14n,\quad
+ 4k/21=8n,\quad 3k/7=18n,\quad k/2=21n.
+\]
+The second cap in each initial request is also integral, since it is
+$2k-T-qk$ minus the first cap. Hence those requests have size exactly
+$T$, with no floor loss.
+
+Lemmas~\ref{lem:split}, \ref{lem:fourcase}, \ref{lem:asymone},
+\ref{lem:asymtwo}, \ref{lem:hallstatic}, and \ref{lem:symmetric} already
+have integral constructions at every integer budget satisfying their
+homogeneous bounds. The three gap-dependent constructions also fit this
+budget. In Lemma~\ref{lem:gapempty}, $hk$ is integral, so the initial
+request and the numerator of its split bound incur no rounding error.
+That numerator is at most $3T$, and each split request therefore has
+size at most $\lceil(3T-T)/2\rceil=T$. The third request is smaller
+than $T$. In Lemma~\ref{lem:gapsurvive}, the first two bases are integer
+sets of size at most $T+1/2$, hence at most $T$; the total-load argument
+then uses integral residual capacities. In Lemma~\ref{lem:gaptwo},
+$hk$ is again integral, so the first request fits $T$ exactly, and all
+later allocations are integral.
+
+Thus all three gap exclusions hold with this smaller budget.
+Theorem~\ref{thm:finish} completes the proof for $k=42n$.
+For $k=42n-1$, privately pad to rank $42n$ and apply the first assertion.
+The resulting bound $36n$ equals $\lceil6(42n-1)/7\rceil$.
+\end{proof}
+
+\appendix
+\input{allocations.tex}
+\input{local_closures.tex}
+\input{small_maximum.tex}
+
+\section*{Research assistance}
+Claude (Anthropic) and Codex (OpenAI) were used for literature searches,
+mathematical exploration, computational experiments, and manuscript
+preparation. The proofs presented here are self-contained hand arguments;
+no numerical output or software execution is required to verify them.
+
+\begin{thebibliography}{9}
+\bibitem{EFKT}
+P.~Erd\H{o}s, D.~G.~Fon-Der-Flaass, A.~V.~Kostochka and Zs.~Tuza,
+\emph{Small transversals in uniform hypergraphs},
+Siberian Advances in Mathematics \textbf{2} (1992), 82--88.
+
+\bibitem{FKW}
+D.~G.~Fon-Der-Flaass, A.~V.~Kostochka and D.~R.~Woodall,
+\emph{Transversals in uniform hypergraphs with property $(7,2)$},
+Discrete Mathematics \textbf{207} (1999), 277--284.
+\href{https://doi.org/10.1016/S0012-365X(99)00114-4}
+{doi:10.1016/S0012-365X(99)00114-4}.
+\bibitem{Kostochka}
+A.~V.~Kostochka,
+\emph{Transversals in uniform hypergraphs with property $(p,2)$},
+Combinatorica \textbf{22} (2002), 275--285.
+\href{https://doi.org/10.1007/s004930200013}{doi:10.1007/s004930200013}.
+
+\bibitem{BKS}
+M.~Buci\'c, D.~Kor\'andi and B.~Sudakov,
+\emph{Covering graphs by monochromatic trees and Helly-type results
+for hypergraphs}, Combinatorica \textbf{41} (2021), 319--352.
+\href{https://doi.org/10.1007/s00493-020-4292-9}
+{doi:10.1007/s00493-020-4292-9}.
+\end{thebibliography}
+\end{document}

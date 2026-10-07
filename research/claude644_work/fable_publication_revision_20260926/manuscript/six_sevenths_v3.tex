@@ -1,0 +1,1362 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,microtype,enumitem}
+\usepackage[hidelinks]{hyperref}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\HH}{\mathcal H}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\Gap}{\mathrm{Gap}}
+\allowdisplaybreaks[2]
+\setlength{\emergencystretch}{2em}
+
+\title{A six-sevenths bound for transversals of hypergraphs\\ with property $(7,2)$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A hypergraph has property $(7,2)$ if every subfamily of at most seven
+edges has a transversal of at most two points. We prove that every
+finite $k$-uniform hypergraph with property $(7,2)$ has transversal
+number at most $\lceil 6k/7\rceil$, for every $k\ge2$. This improves the
+asymptotic coefficient $7/8$ of Fon-Der-Flaass, Kostochka and Woodall
+to $6/7$ and includes the rank $k=7$, not covered by their bound; the
+conjectured asymptotic value is $3k/4$. The proof refines their
+avoidance method. Its main new tool is a static allocation of four
+avoidance requests which, together with a symmetric allocation, closes
+every ``good triple'' of edges whose pairwise intersections have at most
+$T/2$ points, except those with exactly two intersections of medium
+size (between $T-\lceil k/2\rceil$ and $T/2$); here $T=\lceil6k/7\rceil$. Gap information about pairwise
+intersection sizes, bootstrapped in three stages, handles the remaining
+triples. We also explain why $6/7$ appears to be the natural
+limit of these constructions: three independent constraints of the
+argument coincide exactly there.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+A \emph{transversal} of a hypergraph is a set of points meeting every
+edge, and the \emph{transversal number} $\tau(\HH)$ is the least size
+of a transversal. Following Erd\H{o}s, Hajnal and Tuza~\cite{EHT}, a
+hypergraph has \emph{property $(p,t)$} if every subfamily of at most $p$
+edges has a transversal of size at most $t$. For integers $k\ge2$ and
+$p\ge3$ let $f(k,p)$ denote the largest transversal number of a finite
+$k$-uniform hypergraph with property $(p,2)$. (Using ``at most $p$
+edges'' avoids vacuous exceptions for families with fewer than $p$
+edges; for $p=7$ this is also the convention of the proof
+in~\cite{FKW}.)
+
+Erd\H{o}s, Fon-Der-Flaass, Kostochka and Tuza~\cite{EFKT} determined
+$f(k,p)$ for $3\le p\le6$; in particular $f(k,6)=k$. For $p=7$ the
+behaviour changes. Fon-Der-Flaass, Kostochka and Woodall~\cite{FKW}
+proved
+\[
+ f(k,7)\le\ceil{7k/8}\qquad(k\ge8),
+\]
+and constructed $4m$-uniform families with property $(7,2)$ and
+transversal number $3m+1$ (for $m\ge10$, and by their remark for $m\ge4$).
+Whether $f(k,7)=(3/4+o(1))k$ is Problem~644 in Bloom's list of Erd\H{o}s
+problems~\cite{Bloom}; it remains open. Kostochka~\cite{Kostochka} and
+Buci\'c, Kor\'andi and Sudakov~\cite{BKS} studied the general parameters
+for large $p$; their results do not apply at $p=7$.
+
+We improve the coefficient $7/8$ to $6/7$.
+
+\begin{theorem}\label{thm:main}
+Let $k\ge2$. Every finite $k$-uniform hypergraph $\HH$ with property
+$(7,2)$ satisfies
+\[
+ \tau(\HH)\le\ceil{6k/7}.
+\]
+The same bound holds for finite families of nonempty sets of size at
+most $k$. In particular $f(k,7)\le\ceil{6k/7}$ for all $k\ge2$, and
+$\limsup_{k\to\infty}f(k,7)/k\le6/7$.
+\end{theorem}
+
+For $2\le k\le6$ we have $\ceil{6k/7}=k$, and the theorem follows from
+the upper bound $f(k,6)\le k$ of~\cite{EFKT} (see also~\cite[Section~1]{FKW}).
+Indeed, property $(7,2)$ in our sense implies property $(6,2)$ in either
+convention; and if $f(k,6)\le k$ is read in the convention of exactly six
+edges, families with at most six edges are covered directly, since they
+have a transversal of at most $2\le k$ points by property $(7,2)$ itself. The content of
+Theorem~\ref{thm:main} is therefore the range $k\ge7$. The rank $k=7$
+needs one additional construction (Proposition~\ref{prop:rankseven}); for
+$k\ge8$ the general argument suffices. The bound $\ceil{6k/7}$ is smaller
+than $\ceil{7k/8}$ for every $k\ge49$ and for many smaller $k$; the two
+coincide for $21$ values of $k$ between $8$ and $48$. For $k=7$ the
+previously available bound was $f(7,7)\le f(7,6)=7$.
+
+\subsection*{The method}
+The proof refines the avoidance method of~\cite{FKW}. If
+$\tau(\HH)>T$, then every set of at most $T$ points is disjoint from
+some edge; we call such a set a \emph{request} and such an edge a
+\emph{response}. Three edges with empty common intersection form a
+\emph{good triple}; its three pairwise intersections are its \emph{pair
+cells}. Four further requests, chosen so that every two-point
+transversal of the edges obtained so far lies inside some request,
+produce a subfamily of at most seven edges without a two-point
+transversal, contradicting property $(7,2)$. We say that the triple
+\emph{closes}. Fon-Der-Flaass, Kostochka and Woodall used exactly this
+scheme, together with case distinctions on pairwise intersection sizes
+and a final argument based on a largest ``small'' intersection. We
+inherit that framework. What is new is the set of closing constructions
+and the way they are combined.
+
+Put $T=\ceil{6k/7}$ and $h=k-T=\floor{k/7}$. Call a pair cell
+\emph{small} if its size is at most $\gamma=T-\ceil{k/2}$, and
+\emph{medium} if its size lies in $(\gamma,T/2]$. Normalized by $k$, the
+thresholds are $5/14$ and $3/7$. The key new ingredient is the
+following static observation (Corollary~\ref{cor:hall}): \emph{a good
+triple closes by four requests fixed in advance, with no adaptivity,
+whenever one pair cell has size at most $T/2$, the other two are small,
+and those two have total size at most $3T-2k$.} Together with a
+symmetric static allocation, this settles every triple whose cells are
+at most $T/2$, except those with exactly two medium cells
+(Section~\ref{sec:finish}). The two static allocations do not close all
+triples with two medium cells, nor all triples containing a cell in
+$(T/2,k/2]$; we treat these with adaptive requests and with information
+about which intersection sizes occur. That information is produced in
+three stages. The first stage uses no prior
+information and excludes intersection sizes just above $T/2$. The
+second uses the first to exclude an interval of small sizes. The third
+uses the second to exclude the rest of $(T/2,k/2]$
+(Section~\ref{sec:gaps}). The second stage and the finishing argument
+have the same structure: static closure unless two cells are medium,
+and a gap lemma in that case.
+
+The coefficient $6/7$ is not an artefact of rounding. Three independent
+constraints of the argument meet exactly at $T=6k/7$: the load
+inequality $3k+a\le4T$ of the static allocation at $a=T/2$; the
+requirement that a request built from a pair meeting in $q$ points
+forces small traces, which needs $q\ge3k-3T$; and the budget
+$2k+M+z\le3T$ of the near-core construction at $M=T/2$, $z=k-T$. We
+explain this in Section~\ref{sec:limits}. It suggests that improving
+the coefficient requires a new type of construction rather than a
+retuning of parameters.
+
+\subsection*{Organization}
+Section~\ref{sec:framework} sets up requests, labels, integral
+allocations and good triples. Section~\ref{sec:static} proves the two
+static closures. Section~\ref{sec:adaptive} states the adaptive
+closures; their proofs are in Appendix~\ref{app:adaptive}.
+Section~\ref{sec:finish} proves that it suffices to exclude pair
+intersections in $(T/2,k/2]$, and Section~\ref{sec:gaps} excludes them.
+Section~\ref{sec:proofmain} completes the proof, and
+Section~\ref{sec:limits} discusses the limits of the method. Every step is a hand argument with exact integer quantities;
+no computation is used in the proof.
+Table~\ref{tab:dependencies} lists, for each step of the global
+argument, the lemma that closes each of its cases.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}p{0.54\textwidth}}
+\toprule
+Step & Lemma used in each case\\
+\midrule
+Local finisher, Proposition~\ref{prop:localfinish}
+ & Corollary~\ref{cor:hall}; Lemma~\ref{lem:symmetric}; Lemma~\ref{lem:twocores}; Lemma~\ref{lem:nearcore}\\
+Small maximum, Theorem~\ref{thm:finish}
+ & Corollary~\ref{cor:hall} (twice); Lemma~\ref{lem:twolarge}\\
+Rank seven, Proposition~\ref{prop:rankseven}
+ & explicit requests; Corollary~\ref{cor:hall}\\
+First gap, Proposition~\ref{prop:gapone}
+ & Lemma~\ref{lem:splitA}; Lemma~\ref{lem:onecore}; Lemma~\ref{lem:symmetric}\\
+Middle gap, Proposition~\ref{prop:gaptwo}
+ & Corollary~\ref{cor:hall}; Lemma~\ref{lem:twocores}\\
+Upper gap, Proposition~\ref{prop:gapthree}
+ & Lemma~\ref{lem:splitB}; Lemma~\ref{lem:gaptraces}; Lemma~\ref{lem:gapcore}\\
+\bottomrule
+\end{tabular}
+\caption{Case structure of the proof. Each case is closed by one lemma.}
+\label{tab:dependencies}
+\end{table}
+
+\section{The framework}\label{sec:framework}
+
+Throughout Sections~\ref{sec:framework}--\ref{sec:adaptive}, $\HH$ is a
+finite $k$-uniform hypergraph and $T$ is an integer with $0\le T\le k$
+and $\tau(\HH)>T$. A \emph{request} is a set of at most $T$ points. Since
+$\tau(\HH)>T$, every request is disjoint from some edge of $\HH$, a
+\emph{response} to it. A subfamily is \emph{bad} if it has no
+transversal of size at most two. A bad subfamily of at most seven edges
+contradicts property~$(7,2)$.
+
+\subsection{Covering by requests}
+\begin{lemma}[Request-cover principle]\label{lem:requestcover}
+Let $A_1,\dots,A_t$ be edges and $D_1,\dots,D_r$ requests, $t+r\le7$.
+If every transversal of $\{A_1,\dots,A_t\}$ of size at most two is
+contained in some $D_j$, then $A_1,\dots,A_t$ together with responses
+to $D_1,\dots,D_r$ form a bad subfamily of at most seven edges.
+\end{lemma}
+\begin{proof}
+A transversal of size at most two of the whole subfamily meets
+$A_1,\dots,A_t$, so it lies in some $D_j$ and misses the response to
+$D_j$. Repeated edges only decrease the number of distinct edges.
+\end{proof}
+
+Requests may be chosen adaptively: a request may depend on earlier
+responses. A transversal of size one is contained in a transversal of
+size two whenever there are at least two points, so we only discuss
+pairs of points. A pair $\{u,v\}$ of points is a \emph{candidate pair}
+of a family of edges if it meets every edge of the family.
+
+\emph{Labels.} Given requests $R_1,\dots,R_r$, the \emph{label} of a
+point is the set of indices $j$ with the point in $R_j$. A pair $\{u,v\}$
+lies in a common request exactly when the labels of $u$ and $v$
+intersect. We often partition the points into \emph{cells} and
+prescribe the labels allowed in each cell; then two cells whose points
+form candidate pairs must receive labels that pairwise intersect.
+
+\subsection{Integral allocation}
+Most constructions place some cells in prescribed requests and then
+distribute other cells among several allowed requests. The following
+form of the supply--demand theorem guarantees integral distributions.
+
+\begin{lemma}[Integral allocation]\label{lem:allocation}
+Let $W_1,\dots,W_n$ be disjoint finite sets. Suppose each $W_i$ has a
+set $N_i\subseteq\{1,\dots,r\}$ of allowed indices, and each index $j$
+has an integer capacity $c_j\ge0$. The points of $\bigcup W_i$ can be
+assigned so that every point of $W_i$ receives one index of $N_i$ and
+index $j$ receives at most $c_j$ points if and only if
+\[
+ \sum_{i\in I}|W_i|\le\sum_{j\in N(I)}c_j
+ \qquad\text{for every } I\subseteq\{1,\dots,n\},\quad
+ N(I)=\bigcup_{i\in I}N_i .
+\]
+\end{lemma}
+\begin{proof}
+Necessity is clear. For sufficiency, form the network with arcs from a
+source to $W_i$ of capacity $|W_i|$, arcs of infinite capacity from $W_i$
+to each $j\in N_i$, and arcs from $j$ to a sink of capacity $c_j$.
+Consider a cut of finite capacity and let $I$ be the set of indices $i$
+such that $W_i$ lies on the source side. No arc of infinite capacity is
+cut, so $N(I)$ lies on the source side as well, and the capacity of the
+cut is at least $\sum_{i\notin I}|W_i|+\sum_{j\in N(I)}c_j$, which by
+hypothesis is at least $\sum_i|W_i|$. By the max-flow min-cut theorem and the integrality
+of maximum flows with integer capacities, there is an integral flow
+saturating every source arc; it gives the assignment.
+\end{proof}
+
+When $n=1$ the condition is $|W_1|\le\sum_{j\in N_1}c_j$. Adding a
+point to a request never destroys a covering, so a construction may
+always put a cell into more requests than necessary, as long as the
+sizes stay at most $T$.
+
+\subsection{Good triples}
+A triple $E,F,G$ of edges is \emph{good} if $E\cap F\cap G=\varnothing$.
+Throughout we write
+\[
+ X=E\cap F,\quad Y=E\cap G,\quad Z=F\cap G,\qquad
+ x=|X|,\ y=|Y|,\ z=|Z|,\ S=x+y+z,
+\]
+and $P_E=E\setminus(F\cup G)$, $P_F=F\setminus(E\cup G)$,
+$P_G=G\setminus(E\cup F)$, of sizes $k-x-y$, $k-x-z$, $k-y-z$. Because
+the triple is good, the six cells $X,Y,Z,P_E,P_F,P_G$ are disjoint.
+A pair meets all three edges exactly when it lies in two different pair
+cells, or in a pair cell and the opposite private part; so the candidate
+pairs are
+\begin{equation}\label{eq:triplecand}
+ X\times Y,\ X\times Z,\ Y\times Z,\qquad
+ X\times P_G,\ Y\times P_F,\ Z\times P_E .
+\end{equation}
+Points outside $E\cup F\cup G$ belong to no candidate pair.
+
+A triple \emph{closes at budget $T$} if four further requests of size at
+most $T$, chosen possibly adaptively, force a bad subfamily of at most
+seven edges. Since only sizes of cells enter the constructions, the
+statement that a triple with given pair sizes closes does not depend on
+the names of its edges; we permute $E,F,G$ freely and say which cell
+plays which role.
+
+After a fourth edge $K$ is obtained, candidate pairs of $\{E,F,G,K\}$
+are described as follows. Label each point by the set of edges among
+$E,F,G,K$ containing it.
+
+\begin{lemma}[Four edges]\label{lem:foursets}
+Let $E,F,G$ be a good triple and $K$ an edge. The candidate pairs of
+$\{E,F,G,K\}$ are exactly the pairs in
+\begin{gather*}
+ (X\cap K)\times G,\qquad (Y\cap K)\times F,\qquad (Z\cap K)\times E,\\
+ (X\setminus K)\times(K\cap P_G),\quad
+ (Y\setminus K)\times(K\cap P_F),\quad
+ (Z\setminus K)\times(K\cap P_E).
+\end{gather*}
+\end{lemma}
+\begin{proof}
+A pair meets the four edges exactly when the union of the labels of its
+points is $\{E,F,G,K\}$. No label contains $\{E,F,G\}$. If one label has
+three elements, it is $\{E,F,K\}$, $\{E,G,K\}$ or $\{F,G,K\}$ and the
+other point must lie in the missing edge; this gives the first row. If
+both labels have at most two elements, they are complementary
+two-element sets, and one of them contains $K$; this gives the second
+row. A label with at most one element can only be completed by a
+three-element label.
+\end{proof}
+
+The sets $X\cap K$, $Y\cap K$, $Z\cap K$ are the \emph{triple cells} of
+the four edges. A response might coincide with an earlier edge (for
+instance when its traces on the earlier edges are not forced to be smaller
+than $k$). This is harmless: Lemma~\ref{lem:requestcover} counts distinct
+edges, and Lemma~\ref{lem:foursets} holds also when $K$ is one of $E,F,G$. Most adaptive constructions first request an edge $K$
+avoiding all or most of the pair cells, so that few triple cells
+survive.
+
+\subsection{Intersection gaps}
+For integers $0\le\ell\le u<k$ we write $\Gap(\ell,u)$ for the statement
+that no two distinct edges of $\HH$ meet in a number of points in
+$\{\ell+1,\dots,u\}$; equivalently, $|A\cap B|\le u$ implies
+$|A\cap B|\le\ell$ for distinct edges $A,B$. Because $u<k$, an edge
+meeting a given edge in at most $u$ points is distinct from it, so
+$\Gap(\ell,u)$ applies to every trace of a response that we bound by
+$u$. We also use the \emph{dichotomy with threshold $m$}: every two
+distinct edges meet in at most $m$ or in more than $k/2$ points. Two
+disjoint subsets of one edge cannot both have more than $k/2$ points.
+
+\subsection{Seed requests}
+\begin{lemma}[Balanced request]\label{lem:balanced}
+If two edges $E,F$ meet in $M\le T$ points, a response $G$ to a suitable
+request of size $T$ forms a good triple with them and satisfies
+\[
+ |E\cap G|,\ |F\cap G|\le k-\floor{(T+M)/2}.
+\]
+\end{lemma}
+\begin{proof}
+Request $E\cap F$ together with $\floor{(T-M)/2}$ points of $E\setminus F$
+and $\ceil{(T-M)/2}$ points of $F\setminus E$; these fit since $T\le k$.
+The response avoids $E\cap F$, and each of its traces is at most
+$k-M-\floor{(T-M)/2}=k-\floor{(T+M)/2}$.
+\end{proof}
+
+\begin{lemma}[Capped request]\label{lem:caps}
+Suppose two edges meet in $q$ points and $K\ge0$ is an integer with
+$0\le2k-T-q\le2K$ and $K\le k-q$. Then a response to a suitable request
+of size $T$ forms a good triple with the two edges, with both new pair
+intersections at most $K$.
+\end{lemma}
+\begin{proof}
+Choose integers $u,v\in[0,K]$ with $u+v=2k-T-q$. Keep $u$ points of the
+first private part and $v$ of the second (possible as $K\le k-q$) and
+request all other points of the union of the two edges, which has
+$2k-q-u-v=T$ points and contains their intersection.
+\end{proof}
+
+\section{Static closures}\label{sec:static}
+
+A static closure uses four requests fixed in advance. By
+Lemma~\ref{lem:requestcover} and~\eqref{eq:triplecand}, four requests
+close a good triple when the three pair cells receive pairwise
+intersecting labels and each private part receives labels meeting every
+label of the opposite pair cell.
+
+\begin{lemma}[Hall allocation]\label{lem:hall}
+Let a good triple have pair sizes $a=|X|$, $b=|Y|$, $c=|Z|$. It closes at
+budget $T$ by a static allocation if
+\begin{gather}
+ T-a\ge0,\quad T-a-b\ge0,\quad T-a-c\ge0,\quad T-b-c\ge0,\label{eq:hallbase}\\
+ k+2b\le2T,\quad k+2c\le2T,\quad k+3a\le3T,\quad 2k+b+c\le3T,\label{eq:hallseven}\\
+ 2k+2a+b\le4T,\quad 2k+2a+c\le4T,\quad 3k+a\le4T.\notag
+\end{gather}
+\end{lemma}
+\begin{proof}
+Give the points of $X$, $Y$, $Z$ the labels $\{1,2,3\}$, $\{2,4\}$,
+$\{3,4\}$; these pairwise intersect. Every point of $P_G$ will receive
+one of $\{1\},\{2\},\{3\}$, every point of $P_F$ one of $\{2\},\{4\}$,
+and every point of $P_E$ one of $\{3\},\{4\}$. Each of these meets the
+label of the opposite pair cell, so all candidate
+pairs~\eqref{eq:triplecand} are covered. After the pair cells are placed,
+the remaining capacities of the four requests are $T-a$, $T-a-b$,
+$T-a-c$, $T-b-c$, which are nonnegative by~\eqref{eq:hallbase}. The
+three private parts have sizes $k-a-b$, $k-a-c$, $k-b-c$ and allowed
+index sets $\{3,4\}$, $\{2,4\}$, $\{1,2,3\}$. The seven conditions of
+Lemma~\ref{lem:allocation} are, for $P_E$, $P_F$, $P_G$, $P_E\cup P_F$,
+$P_E\cup P_G$, $P_F\cup P_G$ and all three, exactly the seven
+inequalities~\eqref{eq:hallseven}; for example, for $P_G$ the condition
+is $k-b-c\le(T-a)+(T-a-b)+(T-a-c)$, that is $k+3a\le3T$, and for all
+three it is $3k-2a-2b-2c\le4T-3a-2b-2c$, that is $3k+a\le4T$.
+\end{proof}
+
+The next corollary is the form in which the Hall allocation is used.
+
+\begin{corollary}\label{cor:hall}
+Let $T\ge6k/7$. A good triple closes at budget $T$ if one pair cell has
+size $a\le T/2$ and the other two have sizes $b,c\le T-k/2$ with
+$b+c\le3T-2k$.
+\end{corollary}
+\begin{proof}
+We check Lemma~\ref{lem:hall}. We have $T-a\ge T/2$,
+$T-a-b\ge T-T/2-(T-k/2)=(k-T)/2\ge0$, likewise $T-a-c\ge0$, and
+$T-b-c\ge T-(3T-2k)=2(k-T)\ge0$. Next $k+2b,\,k+2c\le2T$ and $2k+b+c\le3T$
+hold by hypothesis. Finally, using $T\ge6k/7$,
+\begin{gather*}
+ k+3a\le k+\tfrac32T\le3T,\qquad
+ 2k+2a+b\le2k+T+(T-\tfrac k2)=\tfrac32k+2T\le4T,\\
+ 3k+a\le3k+\tfrac T2\le4T .
+\end{gather*}
+The last inequality is equivalent to $7T\ge6k$.
+\end{proof}
+
+The second static closure treats triples whose three cells are all of
+roughly the same size. It rests on an exact allocation lemma.
+
+\begin{lemma}[Boxed triangle]\label{lem:triangle}
+Let $M_1,M_2,M_3\ge0$ and $L_1,L_2,L_3$ be integers with
+$L_i\le M_j+M_l$ whenever $\{i,j,l\}=\{1,2,3\}$, and let $t\ge0$ be an
+integer. There are integers $0\le a_i\le M_i$ with $a_j+a_l\ge L_i$ for
+all $\{i,j,l\}=\{1,2,3\}$ and $a_1+a_2+a_3\le t$ if and only if
+\[
+ t\ge\max\Bigl\{L_1,L_2,L_3,\ L_1+L_2-M_3,\ L_1+L_3-M_2,\ L_2+L_3-M_1,\
+ \tfrac12(L_1+L_2+L_3)\Bigr\}.
+\]
+\end{lemma}
+\begin{proof}
+If such $a_i$ exist with $\sigma=a_1+a_2+a_3\le t$, then $\sigma\ge L_i$
+because $a_i\ge0$; adding $a_2+a_3\ge L_1$ and $a_1+a_3\ge L_2$ gives
+$\sigma+a_3\ge L_1+L_2$, so $\sigma\ge L_1+L_2-M_3$, and similarly for the
+other two pairs; and adding all three constraints gives
+$2\sigma\ge L_1+L_2+L_3$.
+
+Conversely, suppose $t$ satisfies the displayed inequality. Every
+displayed quantity is at most $M_1+M_2+M_3$: for instance
+$L_1+L_2-M_3\le(M_2+M_3)+(M_1+M_3)-M_3$ and
+$L_1+L_2+L_3\le2(M_1+M_2+M_3)$. So $t'=\min(t,M_1+M_2+M_3)$ also
+satisfies it, and we look for $a_i$ with $a_1+a_2+a_3=t'$. Then the
+constraints become $0\le a_i\le\min(M_i,t'-L_i)$, and integers with sum
+$t'$ exist if and only if each upper bound is nonnegative and the three
+upper bounds sum to at least $t'$. The first requirement is $t'\ge L_i$.
+Expanding the sum of three minima as the minimum of eight sums, the
+second requirement is $M_1+M_2+M_3\ge t'$, $M_j+M_l+t'-L_i\ge t'$ (the
+host conditions), $M_i+2t'-L_j-L_l\ge t'$, and $3t'-L_1-L_2-L_3\ge t'$.
+All hold.
+\end{proof}
+
+\begin{lemma}[Symmetric allocation]\label{lem:symmetric}
+Let a good triple have pair sizes $m\ge y\ge z$ (in any order of the
+cells) and $S=m+y+z$. It closes at budget $T$ by a static allocation if
+\[
+ T\ge k+m-y-z,\qquad 2T\ge k+m,\qquad 3T\ge2k+m+y-z,\qquad 5T\ge3k+S.
+\]
+\end{lemma}
+\begin{proof}
+Call the pair cells $\mathsf M,\mathsf Y,\mathsf Z$ (sizes $m,y,z$) and
+the opposite private parts $P_{\mathsf M},P_{\mathsf Y},P_{\mathsf Z}$.
+Split $\mathsf M=\mathsf M_1\sqcup \mathsf M_2$,
+$\mathsf Y=\mathsf Y_1\sqcup \mathsf Y_2$,
+$\mathsf Z=\mathsf Z_1\sqcup \mathsf Z_2$ with
+$|\mathsf M_1|=a_1$, $|\mathsf Y_1|=a_2$, $|\mathsf Z_1|=a_3$, and use
+the requests
+\begin{align*}
+ R_0&=\mathsf M_1\cup \mathsf Y_1\cup \mathsf Z_1,&
+ R_{\mathsf M}&=\mathsf M\cup P_{\mathsf M}\cup \mathsf Y_2\cup \mathsf Z_2,\\
+ R_{\mathsf Y}&=\mathsf Y\cup P_{\mathsf Y}\cup \mathsf M_2\cup \mathsf Z_2,&
+ R_{\mathsf Z}&=\mathsf Z\cup P_{\mathsf Z}\cup \mathsf M_2\cup \mathsf Y_2.
+\end{align*}
+The parts $\mathsf M_1,\mathsf Y_1,\mathsf Z_1$ have labels
+$\{0,\mathsf M\},\{0,\mathsf Y\},\{0,\mathsf Z\}$, the parts
+$\mathsf M_2,\mathsf Y_2,\mathsf Z_2$ all have label
+$\{\mathsf M,\mathsf Y,\mathsf Z\}$, and $P_{\mathsf M},P_{\mathsf Y},
+P_{\mathsf Z}$ have labels $\{\mathsf M\},\{\mathsf Y\},\{\mathsf Z\}$.
+Any two labels of different pair cells intersect, and each private label
+meets both labels of its opposite pair cell, so all candidate pairs are
+covered. The sizes of the four requests are
+\[
+ a_1+a_2+a_3,\quad k+m-a_2-a_3,\quad k+y-a_1-a_3,\quad k+z-a_1-a_2 .
+\]
+Hence it suffices to find integers $0\le a_1\le m$, $0\le a_2\le y$,
+$0\le a_3\le z$ with $a_2+a_3\ge k+m-T$, $a_1+a_3\ge k+y-T$,
+$a_1+a_2\ge k+z-T$ and $a_1+a_2+a_3\le T$. Apply
+Lemma~\ref{lem:triangle} with $(M_1,M_2,M_3)=(m,y,z)$,
+$(L_1,L_2,L_3)=(k+m-T,k+y-T,k+z-T)$ and $t=T$. The host conditions
+reduce to $T\ge k+m-y-z$ (the other two are weaker since $m\ge y\ge z$).
+The largest single $L_i$ gives $2T\ge k+m$; the largest of the three
+two-term expressions is $L_1+L_2-M_3$, which gives $3T\ge2k+m+y-z$;
+and the last expression gives $5T\ge3k+S$.
+\end{proof}
+
+\section{Adaptive closures}\label{sec:adaptive}
+
+The following lemmas each describe one adaptive construction: a first
+request produces a fourth edge $K$, and three further requests,
+depending on $K$, cover all candidate pairs of $\{E,F,G,K\}$ given by
+Lemma~\ref{lem:foursets}. The hypotheses are exact integer conditions.
+Proofs are given in Appendix~\ref{app:adaptive}. We use the notation of
+Section~\ref{sec:framework} and assume $T\le k$ throughout; each lemma
+may be applied to any assignment of the names $E,F,G$ to the edges of a
+good triple, which permutes $x,y,z$.
+
+\subsection{Without gap information}
+The first lemma requests an edge avoiding two pair cells and as much of
+the third as possible; at most one triple cell survives. The next two
+avoid all three pair cells.
+
+\begin{lemma}[One surviving cell]\label{lem:onecore}
+A good triple closes at budget $T$ if
+\begin{gather*}
+ T\ge x+y,\quad 2T\ge k+2x,\quad 2T\ge k+2y,\quad
+ T\ge k+x-y-z,\quad T\ge k-x+y-z,\\
+ 3T\ge3k-S,\quad 5T\ge3k+S,\quad 3T\ge k+x+y+2z,\quad 4T\ge2k+3z.
+\end{gather*}
+\end{lemma}
+
+\begin{lemma}[First asymmetric split]\label{lem:splitA}
+A good triple closes at budget $T$ if
+\[
+ T\ge S,\qquad 2T\ge k+2y,\qquad 2T\ge k+2x-y+z,\qquad 3T\ge k+2x+y+3z.
+\]
+\end{lemma}
+
+\begin{lemma}[Second asymmetric split]\label{lem:splitB}
+A good triple closes at budget $T$ if
+\[
+ T\ge S,\qquad 3T\ge k+3x,\qquad T\ge k-x+z,\qquad 3T\ge k+2x+3y+z.
+\]
+\end{lemma}
+
+\subsection{With gap information}
+In the next three lemmas $\Gap(\ell,u)$ holds for integers
+$0\le\ell\le u<k$. The first request is designed so that some traces of
+$K$ are at most $u$, and hence at most $\ell$.
+
+\begin{lemma}[Two forced traces]\label{lem:gaptraces}
+Assume $\Gap(\ell,u)$ and put $p=(k-x-y-u)_+$ and $t=(k-x-z-u)_+$.
+A good triple closes at budget $T$ if
+\[
+ S+p+t\le T,\qquad k+3x+p+t\le3T,\qquad y+z+2\ell\le T.
+\]
+\end{lemma}
+
+\begin{lemma}[Forced traces and one core]\label{lem:gapcore}
+Assume $\Gap(\ell,u)$ and put $\Delta=(S-T)_+$. A good triple closes at
+budget $T$ if
+\begin{gather*}
+ x+y\le T,\qquad k-x-y\le u,\qquad k-x-z+\Delta\le u,\\
+ 2x+2\Delta+k-y-z\le2T,\qquad y+z+2\ell\le T,\qquad 2k+x-y+\ell+\Delta\le3T.
+\end{gather*}
+\end{lemma}
+
+\begin{lemma}[Two cores]\label{lem:twocores}
+Assume $\Gap(\ell,u)$ and put $g=(k-y-u)_+$. A good triple closes at
+budget $T$ if
+\begin{gather*}
+ g\le\min(x,z),\qquad y+2g\le T,\qquad x+\ell\le T,\qquad z+\ell\le T,\\
+ k+2y\le2T,\qquad 3k\le4T,\qquad 3k+S\le5T.
+\end{gather*}
+\end{lemma}
+
+The last two lemmas use the dichotomy with threshold $m$, where
+$2m\le k$.
+
+\begin{lemma}[Near core]\label{lem:nearcore}
+Assume the dichotomy with threshold $m$ and put $\Delta=(S-T)_+$. A good
+triple closes at budget $T$ if
+\begin{gather*}
+ y+z\le T,\quad m+z\le T,\quad x+m\le T,\quad k+y-z\le T,\\
+ 2k+x-2z\le2T,\quad 2k+x+m-z\le3T,
+\end{gather*}
+and either
+\begin{gather*}
+ k-x+y+\Delta\le T,\quad 2k-2x+z+\Delta\le2T,\quad
+ 2k-z+\Delta\le2T,\quad 3k-x-y+\Delta\le3T,
+\end{gather*}
+or $S\le T$, $k-x+y\le T$ and $2k-2x+z\le2T$.
+\end{lemma}
+
+\begin{lemma}[Two large opposite cells]\label{lem:twolarge}
+Assume the dichotomy with threshold $m$, where $4m\le k$. Let $E,F,G,H$
+be edges with all four triple intersections empty, such that
+$X=E\cap F$ and $B=G\cap H$ have sizes $x,b>k/2$ and the other four
+pairwise intersections have at most $m$ points. Three further requests
+force a bad subfamily of at most seven edges if
+\[
+ T\ge\ceil{k/2}+2m,\qquad T\ge x+m,\qquad 3T\ge2x+b+\ceil{k/2}+2m.
+\]
+\end{lemma}
+
+\section{The finishing theorem}\label{sec:finish}
+
+In this section we show that it is enough to exclude pair intersections
+of size in $(T/2,k/2]$. Write
+\[
+ h=k-T,\qquad \gamma=T-\ceil{k/2}.
+\]
+An integer $w$ satisfies $w\le\gamma$ if and only if $w\le T-k/2$. We
+call a pair cell \emph{small} if its size is at most $\gamma$ and
+\emph{medium} if its size lies in $(\gamma,T/2]$.
+
+\begin{proposition}[Local finisher]\label{prop:localfinish}
+Let $6k/7\le T\le k$ and let $M\le T/2$ be an integer. Assume the
+dichotomy with threshold $M$. Then every good triple with pair sizes
+$M\ge y\ge z$ closes at budget $T$.
+\end{proposition}
+
+\begin{proof}
+We say that the triple has \emph{two medium cells} if $y>\gamma\ge z$.
+(Its cell of size $M$ is then medium as well.) There are four cases.
+
+\paragraph{Case 1: not two medium cells, and $y+z\le3T-2k$.}
+If $z>\gamma$ then $y+z\ge2\gamma+2\ge2T-k+1>3T-2k$, so here $z\le y\le\gamma$.
+Corollary~\ref{cor:hall} applies with $a=M$, $b=y$, $c=z$.
+
+\paragraph{Case 2: not two medium cells, and $y+z>3T-2k$.}
+Either $y\le\gamma$, or $z>\gamma$. We check
+Lemma~\ref{lem:symmetric} with $m=M$. First, $M\le T/2\le4T-3k$ because
+$7T\ge6k$, so $k+M-T\le3T-2k<y+z$. Next $2T\ge k+T/2\ge k+M$. For the
+third and fourth conditions we show
+\[
+ M+y-z<k-T/2\qquad\text{and}\qquad S\le3T/2 .
+\]
+If $z>\gamma$, then $y-z<M-(T-k/2)$, so $M+y-z<2M-T+k/2\le k/2\le k-T/2$;
+and $S\le3M\le3T/2$. If $y\le\gamma$, then $y-z=2y-(y+z)<2(T-k/2)-(3T-2k)=k-T$,
+so $M+y-z<k-T/2$; and $S\le T/2+2(T-k/2)\le3T/2$. Consequently
+$2k+M+y-z<3k-T/2\le3T$ and $3k+S\le3k+3T/2\le5T$, both because $7T\ge6k$.
+
+\paragraph{Case 3: two medium cells and $z>h$.}
+Apply Lemma~\ref{lem:twocores} with the cell of size $z$ in the role of
+$Y$ and the cells of sizes $M,y$ in the roles of $X,Z$; that is, with
+$(x,y,z)$ of the lemma equal to $(M,z,y)$, and with $\Gap(M,\floor{k/2})$,
+which is implied by the dichotomy (note $0\le M\le\floor{k/2}<k$). Here
+$g=(k-z-\floor{k/2})_+=\ceil{k/2}-z$, as $z\le\gamma\le\floor{k/2}$. Since
+$M+z\ge y+z>(T-k/2)+(k-T)=k/2$, both $M$ and $y$ are at least
+$\ceil{k/2}-z=g$. The first request has size
+$z+2g=\max\{z,\,k-z+(k-2\floor{k/2})\}\le T$, because $z\ge h+1$. The
+remaining conditions are
+\[
+ M+M\le T,\quad y+M\le T,\quad k+2z\le k+2\gamma\le2T,\quad 3k\le4T,
+\]
+and $3k+S\le3k+2M+\gamma\le3k+T+T-k/2=\tfrac52k+2T\le5T$.
+
+\paragraph{Case 4: two medium cells and $z\le h$.}
+Apply Lemma~\ref{lem:nearcore} with $m=M$ and $(x,y,z)$ of the lemma equal
+to $(M,z,y)$. With $c=T-k/2$ we have $y>c$, $z\le h$ and $h\le c$. The
+common conditions are
+\begin{gather*}
+ z+y\le h+T/2=k-T/2\le T,\qquad M+y\le2M\le T,\qquad M+M\le T,\\
+ k+z-y<k+h-c=\tfrac52k-2T\le T,\qquad
+ 2k+M-2y<2k+\tfrac T2-2c=3k-\tfrac32T\le2T,\\
+ 2k+2M-y<2k+T-c=\tfrac52k\le3T .
+\end{gather*}
+If $S\le T$ we use the second alternative:
+$k-M+z\le k-y+z<T$ and $2k-2M+y\le2k-M<2k-c=\tfrac52k-T\le2T$. If $S>T$
+then $\Delta=S-T$ and the four remaining conditions become
+\begin{align*}
+ k+y+2z&\le k+\tfrac T2+2h=3k-\tfrac32T\le2T,&
+ 2k-M+2y+z&\le2k+y+z\le3k-\tfrac T2\le3T,\\
+ 2k+M+z&\le2k+\tfrac T2+h=3k-\tfrac T2\le3T,&
+ 3k+y&\le3k+\tfrac T2\le4T,
+\end{align*}
+where we used $y\le M\le T/2$ and $z\le h$; each final inequality is
+equivalent to $T\ge6k/7$ or weaker.
+
+The four cases cover all triples.
+\end{proof}
+
+\begin{theorem}[Finishing theorem]\label{thm:finish}
+Let $k\ge7$ and $T=\ceil{6k/7}$. If every two distinct edges of a finite
+$k$-uniform hypergraph $\HH$ with property $(7,2)$ meet in at most $T/2$
+or in more than $k/2$ points, then $\tau(\HH)\le T$.
+\end{theorem}
+
+\begin{proof}
+Suppose $\tau(\HH)>T$. An edge avoiding a $T$-subset of another edge
+meets it in at most $h=k-T\le k/2$ points, so the largest size $M$ of a
+pair intersection that is at most $k/2$ exists. By hypothesis
+$M\le T/2$, and by the choice of $M$ the dichotomy with threshold $M$
+holds. Write $k=7h+s$ with $0\le s\le6$; then $h=\floor{k/7}\ge1$.
+
+\emph{Case $M\ge h+1$.} (For $k=7$ this is the case $M\in\{2,3\}$.) Apply
+Lemma~\ref{lem:balanced} to a pair attaining $M$. As $T+M\ge k+1$, the new pair intersections are at most
+$k-\ceil{k/2}=\floor{k/2}$, hence at most $M$. The resulting good
+triple closes by Proposition~\ref{prop:localfinish}, a contradiction.
+
+\emph{Case $M\le h$ and $k=7$.} Then $h=1$, so every two edges meet in
+at most one or at least four points, and
+Proposition~\ref{prop:rankseven} below gives a contradiction.
+
+\emph{Case $M\le h$ and $k\ge8$.} Then $h+s\ge2$. We record $\gamma\ge h$, $2h\le3T-2k$ and $4h\le k$,
+which follow from $k\ge7h$. Apply Lemma~\ref{lem:balanced} to edges
+$E,G$ with $|E\cap G|=M$, obtaining $F$. If both $|E\cap F|$ and
+$|F\cap G|$ are at most $k/2$, they are at most $M$, and the triple
+closes by Corollary~\ref{cor:hall}, as all three cells are at most
+$h\le\gamma$ and the two cells other than $E\cap G$ sum to at most
+$2h\le3T-2k$. Otherwise exactly one of them exceeds $k/2$, since they
+are disjoint subsets of $F$; by symmetry
+\[
+ x=|E\cap F|>k/2,\qquad |E\cap G|=M,\qquad |F\cap G|\le M,
+\]
+and $x\le k-\floor{(T+M)/2}\le k-(T+M-1)/2$. Then
+\[
+ x+2M\le k-\tfrac T2+\tfrac32M+\tfrac12\le\tfrac k2+2h+\tfrac12\le T,
+\]
+using $T=k-h$, $M\le h$ and $k\ge6h+1$. Request $X\cup Y\cup Z$, which has
+$x+|Y|+|Z|\le x+2M\le T$ points, together with $T-x-|Y|-|Z|$ private
+points of $G$ (there are enough, as $|P_G|=k-|Y|-|Z|$), and let $H$ be a
+response. All triple intersections of $E,F,G,H$ are empty. Since $H$
+avoids $X$, its traces on $E$ and $F$ have at most $k-x<k/2$ points,
+hence at most $M$. Its trace on $G$ has $b\le k-T+x$ points.
+
+If $b\le k/2$, then $b\le M$ and $E,G,H$ is a good triple (as $H$ avoids
+$Y=E\cap G$) with all cells at most $M\le h$; it closes by
+Corollary~\ref{cor:hall} exactly as above. We discard $F$: the resulting
+bad subfamily consists of $E,G,H$ and four responses.
+
+If $b>k/2$, apply Lemma~\ref{lem:twolarge} to $E,F,G,H$ with $m=M$. Its
+conditions hold:
+\begin{gather*}
+ \ceil{k/2}+2M\le\tfrac{k+1}2+2h\le k-h=T,\qquad
+ x+M\le k-\tfrac T2+\tfrac M2+\tfrac12\le\tfrac k2+h+\tfrac12\le T,\\
+ 2x+b+\ceil{k/2}+2M\le3x+h+\tfrac{k+1}2+2M
+ \le\tfrac72k-\tfrac32T+\tfrac M2+h+2\le2k+3h+2\le3T,
+\end{gather*}
+where the final step is $k\ge6h+2$, that is $h+s\ge2$. The resulting bad
+subfamily has seven edges. In every case property $(7,2)$ is violated.
+\end{proof}
+
+At $k=7$ the last inequality fails: for $x=|E\cap F|=4$, $b=|G\cap H|=5$
+and $M=1$, the third condition of Lemma~\ref{lem:twolarge} reads
+$18\ge19$. A differently aimed fourth request repairs this.
+
+\begin{proposition}[Rank seven]\label{prop:rankseven}
+Let $\HH$ be a finite $7$-uniform hypergraph with property $(7,2)$ in
+which every two distinct edges meet in at most one or at least four
+points. Then $\tau(\HH)\le6$.
+\end{proposition}
+
+\begin{proof}
+Suppose $\tau(\HH)>6$, so requests have at most six points. By
+hypothesis, a response that misses some point of an earlier edge meets
+that edge in $0$, $1$, or at least $4$ points; in particular,
+\emph{if it meets the edge in at most three points, then it meets it in
+at most one point}. An edge avoiding six points of another edge meets it
+in at most one point.
+
+\emph{Case 1: no two edges meet in exactly one point.} Then some edges
+$E_1,E_2$ are disjoint: an edge avoiding six points of another meets it
+in at most one point, hence in none. Request three points of each. The response $G$
+meets each $E_i$ within four points, hence in $0$ or $4$ points, and not
+in $4$ points of both since $|G|=7$. If $G$ is disjoint from both, the
+edges $E_1,E_2,G$ are pairwise disjoint and form a bad subfamily.
+Otherwise, say, $Q=G\cap E_1$ has four points and $G\cap E_2=\varnothing$.
+Every candidate pair of $\{E_1,E_2,G\}$ has a point of $E_2$, and its
+other point lies in $E_1\cap G=Q$. Partition $E_2$ into sets
+$S_1,\dots,S_4$ of sizes $2,2,2,1$; the four requests $Q\cup S_i$ cover
+$Q\times E_2$.
+
+\emph{Case 2: two edges $E,F$ meet in one point $p$.} Request $p$, three
+points of $E\setminus F$ and two points of $F\setminus E$. The response
+$G$ avoids $p$, so $E,F,G$ is a good triple; $|G\cap E|\le1$ since $G$
+meets $E$ within three points, and $|G\cap F|\in\{0,1,4\}$. If
+$|G\cap F|\le1$, all three pair cells have at most one point and the
+triple closes by Corollary~\ref{cor:hall} ($T=6=6k/7$, and
+$a\le3$, $b,c\le1\le T-k/2$, $b+c\le2\le3T-2k$).
+
+It remains to treat $|G\cap F|=4$. Rename $A=F$, $B=G$, $C=E$. Then
+$X=A\cap B$ has four points, $A\cap C=\{y\}$ with $y=p$, $Z=B\cap C$ has
+at most one point, and $A\cap B\cap C=\varnothing$. Put $A'=A\setminus B$
+(three points, including $y$), $B'=B\setminus A$ (three points, including
+$Z$) and $P_C=C\setminus(A\cup B)$ ($5$ or $6$ points). Choose
+$x_1\in X$, $c_1\in P_C$ and $b^*\in B'$ with $Z\subseteq\{b^*\}$, and
+request
+\[
+ D=\{x_1\}\cup A'\cup\{b^*,c_1\}\qquad(|D|=6).
+\]
+Let $H$ be a response; it differs from $A,B,C$. Its traces satisfy:
+$H\cap A\subseteq X\setminus\{x_1\}$, so $|H\cap A|\le1$ and $H\cap A=H\cap X$;
+$H\cap B\subseteq(X\setminus\{x_1\})\cup(B'\setminus\{b^*\})$ has at most
+$1+2$ points, so $|H\cap B|\le1$; and $H\cap C\subseteq P_C\setminus\{c_1\}$,
+so $\eta=|H\cap C|\in\{0,1,4,5\}$. Consequently $H$ meets at most one of
+$X$ and $B'$, each in at most one point.
+
+A candidate pair of $\{A,B,C,H\}$ contains a point of $X$, or consists of
+$u\in A'$ and $v\in B'$. In the first case the other point lies in $C$
+(as $X\cap C=\varnothing$), and in $H$ unless the $X$-point is in $H$. In
+the second case $u\notin H$, so $v\in H\cap B'$; then $v\ne b^*$, so
+$v\notin C$, and $u\in C$ forces $u=y$. Hence the candidate pairs are
+\[
+ \{x\}\times C\ \text{ if } H\cap X=\{x\},\qquad
+ (X\setminus H)\times(H\cap C),\qquad \{y\}\times(H\cap B').
+\]
+Write $X=\{x_1,x_2,x_3,x_4\}$ and, when $\eta=5$,
+$H\cap C=\{v_1,\dots,v_5\}$. The following requests, all of size at most
+six, cover these pairs; together with $A,B,C,H$ there are at most seven
+edges.
+
+\emph{$H\cap X=\{x\}$.} Then $H\cap B'=\varnothing$. Let $x'\in X\setminus\{x\}$.
+If $\eta\le1$, choose $S\subseteq C\setminus H$ with $|S|=2-\eta$ and use
+$X\cup(H\cap C)\cup S$ and $\{x\}\cup(C\setminus(H\cup S))$. If $\eta=4$, use
+$\{x,x'\}\cup(H\cap C)$, $(X\setminus\{x,x'\})\cup(H\cap C)$ and
+$\{x\}\cup(C\setminus H)$. If $\eta=5$, use $X\cup\{v_1,v_2\}$,
+$\{x\}\cup(C\setminus\{v_1,v_2\})$ and $(X\setminus\{x\})\cup\{v_3,v_4,v_5\}$.
+
+\emph{$H\cap X=\varnothing$.} Put $Y_b=\{y\}\cup(H\cap B')$, of at most two
+points. If $\eta\le1$, use $X\cup(H\cap C)$ and $Y_b$. If $\eta=4$, use
+$\{x_1,x_2\}\cup(H\cap C)$, $\{x_3,x_4\}\cup(H\cap C)$ and $Y_b$. If
+$\eta=5$, use $X\cup\{v_1,v_2\}$, $\{x_1\}\cup Y_b\cup\{v_3,v_4,v_5\}$ and
+$\{x_2,x_3,x_4,v_3,v_4,v_5\}$.
+
+In each case every candidate pair lies in one of the listed requests,
+which completes the proof.
+\end{proof}
+
+\section{Three intersection gaps}\label{sec:gaps}
+
+In Sections~\ref{sec:gaps} and~\ref{sec:proofmain} (up to the final
+padding step) fix $k\ge7$ and write
+\[
+ h=\floor{k/7},\qquad s=k-7h,\qquad T=k-h=\ceil{6k/7},
+\]
+so that $h\ge1$, $0\le s\le6$ and $6k/7\le T\le k$. Assume
+$\tau(\HH)>T$ for a finite $k$-uniform family $\HH$ with property
+$(7,2)$. Define the integers
+\begin{equation}\label{eq:endpoints}
+ \alpha=\floor{T/2},\quad \beta=\floor{(4T-2k)/3},\quad
+ \gamma=T-\ceil{k/2},\quad \delta=2k-T-2\beta,\quad \lambda=\delta-1.
+\end{equation}
+Normalized by $k$, these are approximately $3/7$, $10/21$, $5/14$,
+$4/21$, $4/21$. The first stage excludes pair intersections in
+$(\alpha,\min(\beta,\floor{k/2})]$. The other two stages, which exclude
+$[\delta,\gamma]$ and then $(\beta,k/2]$, are needed only when
+$\beta<\floor{k/2}$; only then are $\delta$ and $\lambda$ used, and only
+then do we need $\lambda\ge0$, which Lemma~\ref{lem:endpoints} guarantees
+(outside this branch $\lambda$ can be negative, for instance $\lambda=-1$
+for $k=11$).
+
+\begin{lemma}[Endpoints]\label{lem:endpoints}
+Put $r=\floor{(h+2s)/3}$. Then
+\[
+ \alpha=3h+\floor{s/2},\quad \beta=3h+r,\quad
+ \gamma=\floor{(5h+s)/2},\quad \delta=2h+s-2r,\quad
+ \lambda=2h+s-2r-1,
+\]
+and
+\begin{equation}\label{eq:endpointfacts}
+ 0\le\gamma\le\alpha\le\beta,\qquad \beta\ge3h,\qquad
+ \lambda\le\gamma-h,\qquad 4\lambda\le T,\qquad k-\beta-1+\lambda\le T .
+\end{equation}
+If $\beta<\floor{k/2}$, then $h<\delta\le\gamma$, so $0\le\lambda<\gamma<k$,
+and moreover $T+\beta-k\le\gamma-1$.
+\end{lemma}
+
+\begin{proof}
+The formulas follow from $k=7h+s$ and $T=6h+s$. Clearly $\gamma\ge0$, and
+$\gamma\le\alpha$ follows from $T\le k$. As $T\ge4k/5$ we have
+$(4T-2k)/3\ge T/2$, so $\beta\ge\alpha$; and $\beta\ge3h$ is clear. For
+$\lambda\le\gamma-h=\floor{(3h+s)/2}$ it suffices that
+$2r+1\ge\ceil{(h+s)/2}$; since $r\ge\floor{(h+s)/3}$, this follows from
+$\ceil{n/2}\le2\floor{n/3}+1$ for integers $n\ge0$ (write $n=3a+b$ with
+$0\le b\le2$; then $n\le4a+2$). Writing $h+2s=3r+e$ with $0\le e\le2$,
+we get $4\lambda-T=2e-2r-s-4\le0$ and
+$k-\beta-1+\lambda-T=s-3r-2\le-h-s\le0$.
+
+If $\beta<\floor{k/2}$, then $2\beta<k$ gives $\delta>k-T=h$, and
+$\delta=\lambda+1\le\gamma-h+1\le\gamma$. Finally
+$T+\beta-k=\beta-h\le\floor{(7h+s)/2}-1-h=\floor{(5h+s)/2}-1=\gamma-1$.
+\end{proof}
+
+\begin{proposition}[First gap]\label{prop:gapone}
+No two edges meet in $q$ points with $\alpha<q\le\min(\beta,\floor{k/2})$.
+\end{proposition}
+
+\begin{proof}
+Apply Lemma~\ref{lem:caps} with cap $\gamma$: we have
+$\gamma\le\floor{k/2}\le k-q$, and
+$2k-T-2\gamma=3h+(k-2\floor{k/2})\le\alpha+1\le q\le2k-T$. The resulting
+good triple has cells $x=q$ and $\gamma\ge y\ge z\ge0$. Put $d=y-z$,
+$v=y+z$ and $S=x+v$. We use $2y\le2\gamma\le2T-k$, $3h<x\le\beta$, and
+$\beta\le(4T-2k)/3\le3T-2k$ (the latter as $T\ge4k/5$).
+
+\paragraph{Case 1: $d>x-h$.} Lemma~\ref{lem:splitA} applies to $(x,y,z)$.
+From $v+d=2y\le2T-k$ we get $S\le x+2T-k-d<2T-k+h=T$. Next $2T\ge k+2y$.
+Then $k+2x-y+z=k+2x-d<k+x+h\le2T$, as $x\le3T-2k$. Finally
+$k+2x+y+3z=k+2x+2v-d<k+2x+4T-2k-3(x-h)=T+2k-x\le3T$, as $x\ge2h$.
+
+\paragraph{Case 2: $d\le x-h$ and $v\le3T-k-2x$.} Lemma~\ref{lem:onecore}
+applies with $(x,y,z)$ of the lemma equal to $(y,z,x)$. Its nine
+conditions read
+\begin{gather*}
+ v\le2T-k\le T,\quad k+2y\le2T,\quad k+2z\le2T,\quad
+ k+d-x\le k-h=T,\quad k-d-x\le T,\\
+ 3k-S\le3k-3h=3T,\quad 3k+S\le2k+x+2T\le5T,\quad k+v+2x\le3T,\quad
+ 2k+3x\le4T,
+\end{gather*}
+using $S\ge x\ge3h$, $d\ge0$ and $x\ge h$ (for $k-d-x\le k-x\le T$), $S\le x+2T-k$,
+$x\le3T-2k$, the case hypothesis and $x\le\beta$.
+
+\paragraph{Case 3: $v>3T-k-2x$.} Lemma~\ref{lem:symmetric} applies with
+$m=x$, the largest cell. Indeed $k+x-v<2k+3x-3T\le T$; $k+x\le2T$ because
+$x\le\beta\le2T-k$; $d=2y-v\le2T-k-v<2x-T$, so $2k+x+d<2k+3x-T\le3T$; and
+$3k+S\le5T$ as in Case~2. Here $2k+3x-T\le3T$ is again $x\le\beta$.
+\end{proof}
+
+If $\beta\ge\floor{k/2}$, Proposition~\ref{prop:gapone} already excludes
+every pair intersection in $(\alpha,k/2]$. For the next two stages we
+therefore assume
+\begin{equation}\label{eq:branch}
+ \beta<\floor{k/2},
+\end{equation}
+so that Lemma~\ref{lem:endpoints} gives $h<\delta\le\gamma$ and
+$0\le\lambda<\gamma$, and Proposition~\ref{prop:gapone} gives
+$\Gap(\alpha,\beta)$.
+
+\begin{proposition}[Middle gap]\label{prop:gaptwo}
+Under~\eqref{eq:branch}, no two edges meet in $q$ points with
+$\delta\le q\le\gamma$.
+\end{proposition}
+
+\begin{proof}
+Apply Lemma~\ref{lem:caps} with cap $\beta$: $\beta<\floor{k/2}\le k-q$
+and $0\le2k-T-q\le2k-T-\delta=2\beta$. Both new cells are at most $\beta$,
+hence at most $\alpha$ by $\Gap(\alpha,\beta)$. So the good triple has
+cells $\delta\le x\le\gamma$ and $\alpha\ge y\ge z\ge0$. This is the
+structure of the finishing argument: $x$ is small and $y,z\le T/2$.
+
+\paragraph{Case 1: $x+z\le k-\beta-1$.} Apply Corollary~\ref{cor:hall}
+with $a=y$, $b=x$, $c=z$. Here $x\le\gamma$,
+$z\le k-\beta-1-\delta=T+\beta-k-1\le\gamma$ by
+Lemma~\ref{lem:endpoints}, and $x+z\le k-\beta-1\le k-3h-1<3T-2k$.
+
+\paragraph{Case 2: $x+z\ge k-\beta$.} Apply Lemma~\ref{lem:twocores} with
+$(x,y,z)$ of the lemma equal to $(y,x,z)$ and $\Gap(\alpha,\beta)$. Then
+$g=(k-x-\beta)_+\le\min(y,z)$ because $z\ge k-\beta-x$ and $y\ge z$. The
+first request has size $x+2g=\max(x,2k-x-2\beta)\le T$ because
+$x\ge\delta$. The remaining conditions are $y+\alpha,\,z+\alpha\le2\alpha\le T$,
+$k+2x\le k+2\gamma\le2T$, $3k\le4T$, and
+$3k+S\le3k+\gamma+2\alpha\le\tfrac52k+2T\le5T$.
+\end{proof}
+
+\begin{proposition}[Upper gap]\label{prop:gapthree}
+Under~\eqref{eq:branch}, no two edges meet in $q$ points with
+$\beta<q\le\floor{k/2}$.
+\end{proposition}
+
+\begin{proof}
+Apply Lemma~\ref{lem:caps} with cap $\gamma$, as in
+Proposition~\ref{prop:gapone} (now $q\ge\beta+1\ge3h+1$). Both new cells
+are at most $\gamma$, hence below $\delta$ by
+Proposition~\ref{prop:gaptwo}; that is, $\Gap(\lambda,\gamma)$ holds and
+the triple has cells
+\[
+ \beta<x\le\floor{k/2},\qquad \lambda\ge y\ge z\ge0 .
+\]
+Put $S=x+y+z$ and $J=2k-\gamma+2\floor{k/2}-3T=\floor{(h-s)/2}$. We use
+$\lambda\le\gamma-h$, $4\lambda\le T$ and $k-x+y\le k-\beta-1+\lambda\le T$
+from Lemma~\ref{lem:endpoints}.
+
+\paragraph{Case 1: $S\le T$, and $S\le2T-k$ or $z<J$.}
+Apply Lemma~\ref{lem:splitB} with $(x,y,z)$ of the lemma equal to
+$(x,z,y)$. Its conditions are $S\le T$, $k+3x\le\tfrac52k\le3T$,
+$k-x+y\le T$, and $k+2x+3z+y\le3T$. For the last, if $S\le2T-k$ then
+$2x+3z+y\le2S\le4T-2k$ (as $y\ge z$), so $k+2x+3z+y\le4T-k\le3T$; if $z<J$ then $z<h/2$, $y\le\lambda\le2h+s$ and
+$2x\le k$ give $k+2x+3z+y\le2k+\tfrac32h+2h+s\le18h+3s=3T$.
+
+\paragraph{Case 2: $2T-k<S\le T$ and $z\ge J$.}
+Apply Lemma~\ref{lem:gaptraces} with $\Gap(\lambda,\gamma)$. Here
+\[
+ S+p+t=\max(S,\ k-\gamma+z,\ k-\gamma+y,\ 2k-2\gamma-x)\le T,
+\]
+since $k-\gamma+y\le k-h=T$ and $2k-2\gamma-T=3h+(k-2\floor{k/2})\le\beta+1\le x$.
+Similarly
+\[
+ k+3x+p+t=\max(k+3x,\ 2k-\gamma+2x-y,\ 2k-\gamma+2x-z,\ 3k-2\gamma+2x-S)\le3T:
+\]
+the first term is at most $\tfrac52k$; the middle two are at most
+$2k-\gamma+2\floor{k/2}-J=3T$; and the last is at most
+$3k-2\gamma+2\floor{k/2}-(2T-k)=6k-4T\le3T$, using
+$\gamma=T-\ceil{k/2}$. Finally $y+z+2\lambda\le4\lambda\le T$.
+
+\paragraph{Case 3: $S>T$.}
+Apply Lemma~\ref{lem:gapcore} with $\Gap(\lambda,\gamma)$ and
+$\Delta=S-T$. Write $\epsilon=k-2\floor{k/2}\in\{0,1\}$ and note
+$\gamma-h=2T-k-\ceil{k/2}$. Using $y,z\le\lambda\le\gamma-h$ and
+$x\le\floor{k/2}$,
+\begin{align*}
+ x+y&\le\floor{k/2}+\gamma\le T,\qquad k-x-z+\Delta=h+y\le\gamma,\\
+ k-x-y&=h+z-\Delta<h+\lambda\le\gamma,\\
+ 2x+2\Delta+k-y-z&=4x+y+z+k-2T\le4\floor{k/2}+2(\gamma-h)+k-2T=2T-3\epsilon,\\
+ y+z+2\lambda&\le4\lambda\le T,\\
+ 2k+x-y+\lambda+\Delta&=2k+2x+z+\lambda-T\le2k+2\floor{k/2}+2(\gamma-h)-T=3T-2\epsilon.
+\end{align*}
+\end{proof}
+
+\section{Proof of the main theorem}\label{sec:proofmain}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For $2\le k\le6$ see the paragraph after Theorem~\ref{thm:main}. Let $k\ge7$
+and suppose $\tau(\HH)>T=\ceil{6k/7}$. If $\beta\ge\floor{k/2}$,
+Proposition~\ref{prop:gapone} shows that no pair intersection lies in
+$(\alpha,k/2]$. Otherwise Propositions~\ref{prop:gapone}
+and~\ref{prop:gapthree} show the same. Since $\alpha=\floor{T/2}$, every
+pair intersection is at most $T/2$ or greater than $k/2$, and
+Theorem~\ref{thm:finish} gives $\tau(\HH)\le T$, a contradiction.
+
+Finally, let $k\ge2$. For families of nonempty sets of size at most $k$, add to each edge new
+points private to that edge until it has $k$ points. A transversal of
+the original family is one of the padded family. Conversely, replacing
+each private point of a transversal of the padded family by an arbitrary
+point of the corresponding original edge gives a transversal of the
+original family of no larger size. So padding preserves the transversal
+number, and it preserves property $(7,2)$ since a two-point transversal
+of original edges meets the padded edges.
+\end{proof}
+
+\section{Where six-sevenths comes from}\label{sec:limits}
+
+We record the three inequalities that determine the coefficient and
+indicate why they do not appear to be relaxable by changing parameters.
+Write $t=T/k$ and normalize sizes by $k$.
+
+\emph{Static allocation.} Corollary~\ref{cor:hall} with $a=T/2$ needs
+$3+t/2\le4t$, that is $t\ge6/7$; this is the load of the Hall
+allocation, in which the distinguished cell lies in three of the four
+requests and every private point in one.
+
+\emph{Starting the first stage.} A request of $T$ points built from two
+edges that meet in $q$ points leaves $2-t-q$ of their private points
+available to the response. Both traces can be forced to be small (at
+most $t-1/2$) only if $2-t-q\le2t-1$, that is $q\ge3-3t$. The first stage
+must start where the finishing argument stops, at $t/2$, so
+$3-3t\le t/2$, again $t\ge6/7$.
+
+\emph{The two-medium triples.} In Proposition~\ref{prop:localfinish}, a
+triple with two medium cells and a third cell $z\le1-t$ is closed by the
+near-core construction, whose budget includes $2+M+z\le3t$ (in the
+alternative $S>T$ of Lemma~\ref{lem:nearcore}); with $M=t/2$ and $z=1-t$
+this is once more $t\ge6/7$. Cells with $z>1-t$ are closed by the
+two-cores construction, whose first request needs $z\ge1-t$.
+
+At $t=6/7$ the three thresholds coincide: $4t-3=t/2=3-3t=3/7$. For
+$t<6/7$ they separate, and the window $4t-3<M<3-3t$ contains two kinds
+of problematic configurations.
+\begin{itemize}[leftmargin=2em]
+\item If $M\le t/2$, the balanced request of Lemma~\ref{lem:balanced}
+applied to a pair attaining the largest pair intersection $M$ of size at
+most $k/2$ (the $M$ of Theorem~\ref{thm:finish}) can
+return triples with cells $M\ge y\ge z$, $t-\tfrac12<y\le1-\tfrac{t+M}2$
+and $3t-2-M<z<1-t$; for $5/6<t<6/7$ these conditions are compatible
+for every $M$ in the window with $M\le t/2$. For them both alternatives of Lemma~\ref{lem:nearcore} fail,
+as does Lemma~\ref{lem:twocores}, in the orientations used in
+Proposition~\ref{prop:localfinish}.
+\item If $t/2<M<3-3t$, the first stage is not available, and any request
+of $T$ points built from two edges meeting in $M$ points leaves
+$2-t-M>2(t-\tfrac12)$ of their private points, so the response can
+create a medium cell next to the cell of size $M>t/2$.
+\end{itemize}
+Exploratory computations, not used in any proof, are consistent with
+this picture. They used continuous relaxations of the covering problems
+(cell sizes normalized by $k$, request contents chosen by mixed integer
+programming, adversarial responses bounded by column generation), at
+$t=0.855$. Allowing oneself to discard one edge after the fourth
+response and to close the resulting new good triple statically (the
+device used in the small-maximum case of Theorem~\ref{thm:finish})
+closed the tested configurations of the first kind. For configurations
+of the second kind, the one-response constructions we tested, with or
+without this device, required a budget above $0.855$ at every tested
+point. Thus the obstruction moves but, as far as these experiments show,
+reappears at the same coefficient. An improvement of $6/7$ seems to require a genuinely new
+ingredient for triples that combine a cell slightly above $t/2$ with a
+medium cell. The conjectured value $3/4$ remains open.
+
+\appendix
+\section{Proofs of the adaptive closures}\label{app:adaptive}
+
+We use the notation of Section~\ref{sec:framework}. In each proof, $K$
+is the response to the first request, and the three final requests are
+described by their \emph{bases}, sets that they must contain; remaining
+points are then distributed by Lemma~\ref{lem:allocation}. By
+Lemma~\ref{lem:foursets} it suffices to cover the candidate pairs listed
+there. When no triple cell survives, these are the three
+\emph{complementary products}
+\[
+ (X\setminus K)\times(K\cap P_G),\qquad
+ (Y\setminus K)\times(K\cap P_F),\qquad
+ (Z\setminus K)\times(K\cap P_E).
+\]
+
+\begin{proof}[Proof of Lemma~\ref{lem:onecore}]
+Request $K$ avoiding $X$, $Y$ and a set $Z_0\subseteq Z$ of
+$\min(z,T-x-y)$ points; this is legal as $T\ge x+y$. Put
+$Q=Z\cap K$, $A=(F\cap K)\setminus Q$, $B=(G\cap K)\setminus Q$,
+$C=E\cap K$, $V=Z\setminus Q$ and $D=E\setminus(X\cup Y\cup C)$, with
+sizes $q,a,b,c,v,d$. Then $A\subseteq P_F$, $B\subseteq P_G$,
+$C\subseteq P_E$, $q\le(S-T)_+$, $q+a+b+c\le k$,
+\[
+ a\le k-x-z,\qquad b\le k-y-z,\qquad c\le k-x-y,\qquad d=k-x-y-c .
+\]
+By Lemma~\ref{lem:foursets} the candidate pairs are $Q\times E$,
+$X\times B$, $Y\times A$ and $V\times C$. We make all three final
+requests contain $Q$ and their union contain $E$, and cover the other
+three products by bases.
+
+Since $G\cap K=Q\cup B$ avoids $Y\cup Z_0$, we have $q+b\le k-y-|Z_0|$, so
+$q+x+b\le\max(k+x-y-z,\ k+2x-T)\le T$; similarly
+$q+y+a\le\max(k-x+y-z,\ k+2y-T)\le T$. Also $z\le4T/5\le T$, as
+$4T\ge2k+3z\ge5z$.
+
+\emph{Case 0: $c\le T-z$.} Use bases $Q\cup X\cup B$, $Q\cup Y\cup A$,
+$Z\cup C$; each has at most $T$ points. Their total size plus $d$ is
+$k+2q+a+b+z$. Using $a+b\le2k-x-y-2z$ and $q\le(S-T)_+$, this is at most
+$\max(3k-S,\,3k+S-2T)\le3T$. Distribute $D$ among the residual
+capacities (Lemma~\ref{lem:allocation}). All candidate pairs are
+covered: $Q\subseteq Z$ lies in all three requests, and
+$E=X\cup Y\cup C\cup D$ lies in their union.
+
+In the remaining cases $c>T-z$. Put $a_0=k+x+z-2T$ and $b_0=k+y+z-2T$.
+
+\emph{Case 1: $a<a_0$.} Split $C=C_2\sqcup C_3$ with $|C_2|\le T-y-a-z$ and
+$|C_3|\le T-z$, and use bases
+$Q\cup X\cup B$, $Y\cup A\cup Z\cup C_2$, $Z\cup C_3$. The split is
+possible because $y+a+z<k+x+y+2z-2T\le T$ and
+$a+c<(k+x+z-2T)+(k-x-y)$, so $c<(T-y-a-z)+(T-z)$ by $2k+3z\le4T$. The
+total size plus $d$ is $k+q+a+b+2z\le2k+2z-c<2k+3z-T\le3T$; distribute
+$D$. The products $X\times B$ and $Y\times A$ are covered by the first
+two bases, $V\times C$ by the last two (both contain $Z\supseteq V$),
+and $Q\times E$ as before.
+
+\emph{Case 2: $b<b_0$.} Interchange the roles of $(X,B,x,b)$ and
+$(Y,A,y,a)$ in Case~1.
+
+\emph{Case 3: $a\ge a_0$ and $b\ge b_0$.} Put $u=c+z-T$, so $0<u\le c$.
+Choose $C_{12}\subseteq C$ with $|C_{12}|=u$, put $C_3=C\setminus C_{12}$,
+and choose an integer $\theta$ with
+\[
+ \max(0,\ y+a+z+u-T)\le\theta\le\min(v,\ T-q-x-b-u).
+\]
+Such $\theta$ exists: $q+b+c\le k-a\le2T-x-z$ gives $T-q-x-b-u\ge0$;
+$q+a+c\le k-b\le2T-y-z$ gives $y+a+z+u-T\le v$; and
+$y+a+z+u-T\le T-q-x-b-u$ is equivalent to $q+a+b+2c+x+y+3z\le4T$, which
+follows from $q+a+b+c\le k$, $c\le k-x-y$ and $2k+3z\le4T$. Split
+$V=V_{13}\sqcup V_{23}$ with $|V_{13}|=\theta$ and use bases
+\[
+ Q\cup X\cup B\cup C_{12}\cup V_{13},\qquad
+ Q\cup Y\cup A\cup C_{12}\cup V_{23},\qquad Z\cup C_3 .
+\]
+The choice of $\theta$ bounds the first two by $T$ (the second has
+$q+y+a+u+v-\theta=y+a+z+u-\theta$ points, as $q+v=z$), and the third has
+exactly $T$ points. The total size plus $d$ is
+$k+q+a+b+2z+u\le2k+3z-T\le3T$; distribute $D$. The first two bases cover
+$X\times B$, $Y\times A$ and $V\times C_{12}$, the third covers
+$V\times C_3$, and $Q\times E$ is covered as before.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:splitA}]
+Request $K$ avoiding $X\cup Y\cup Z$ and $T-S$ points of $P_F$; this is
+possible as $0\le T-S\le k-x-z$. No triple cell survives. Put
+$A=F\cap K$, $B=G\cap K$, $C=E\cap K$, of sizes $a,b,c$; then
+$a\le k-T+y$, $b\le k-y-z$ and $a+b+c\le k$. The candidate pairs are
+$X\times B$, $Y\times A$, $Z\times C$.
+
+If $a\le T-y-z$, split $B=B_1\sqcup B_2$ with $|B_i|\le T-x-z$ (possible
+since $2(T-x-z)\ge k-y-z\ge b$) and use bases $X\cup Z\cup B_1$,
+$X\cup Z\cup B_2$, $Y\cup Z\cup A$. Their total size plus $c$ is at most
+$k+2x+y+3z\le3T$, so $C$ can be distributed. As every request contains
+$Z$, all three products are covered.
+
+If $a>T-y-z$, then $b+c\le k-a<k-T+y+z\le2(T-x-z)$. Split $B\cup C$ into
+two parts of size at most $T-x-z$ and use $X\cup Z$ together with one
+part, twice, and $Y\cup A$, of size at most $k-T+2y\le T$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:splitB}]
+Request $K$ avoiding $X\cup Y\cup Z$ and $p=\max(0,k-2(T-x)-y-z)$ points of
+$P_G$. This fits ($p\le k-y-z$ as $T\ge x$), and the request has
+$\max(S,k+3x-2T)\le T$ points. No triple cell survives; with
+$A=F\cap K$, $B=G\cap K$, $C=E\cap K$ we have $b\le2(T-x)$,
+$c\le k-x-y$ and $a+b+c\le k$.
+
+If $b>k+y+z-T$, split $B$ into two parts of size at most $T-x$ and use
+$X$ with each part, and $Y\cup Z\cup A\cup C$, of size at most
+$y+z+k-b<T$.
+
+Otherwise $b\le k+y+z-T\le2(T-x-y)$, the last step being
+$3T\ge k+2x+3y+z$. Split $B=B_1\sqcup B_2$ with $|B_i|\le T-x-y$ and use
+bases $X\cup Y\cup B_1$, $X\cup Y\cup B_2$, $Y\cup Z\cup C$; the last has
+at most $k-x+z\le T$ points. Their total plus $a$ is at most
+$k+2x+3y+z\le3T$; distribute $A$. Every request contains $Y$, which
+covers $Y\times A$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:gaptraces}]
+Request $X\cup Y\cup Z$, $p$ points of $P_E$, $t$ points of $P_F$, and
+$T-S-p-t$ points of $P_G$; these fit, as $u\ge0$ and $T\le k$. No
+triple cell survives. The trace of $K$ on $E$ has at most
+$k-x-y-p\le u$ points, hence at most $\ell$; likewise on $F$. Its trace
+$B$ on $G$ has at most $k-T+x+p+t$ points. Split $B$ into two parts of
+sizes at most $\ceil{(k-T+x+p+t)/2}$ and use bases $X\cup B_1$,
+$X\cup B_2$ and $Y\cup Z\cup(F\cap K)\cup(E\cap K)$. The first two have
+at most $T$ points because $k+3x+p+t\le3T$ (all quantities are
+integers), and the third has at most $y+z+2\ell\le T$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:gapcore}]
+Request $K$ avoiding $X$, $Y$ and $\min(z,T-x-y)$ points of $Z$. Put
+$P=Z\cap K$, $A=(F\cap K)\setminus P$, $B=(G\cap K)\setminus P$ and
+$C=E\cap K$, with sizes $p,a,b,c$; then $p\le\Delta$ and $b\le k-y-z$.
+Moreover $|E\cap K|=c\le k-x-y\le u$ and
+$|F\cap K|=a+p\le k-x-z+\Delta\le u$, so $c\le\ell$ and $a+p\le\ell$ by the gap.
+The candidate pairs are $P\times E$, $X\times B$, $Y\times A$ and
+$(Z\setminus P)\times C$.
+
+Split $B=B_1\sqcup B_2$ nearly equally and use bases $X\cup P\cup B_1$,
+$X\cup P\cup B_2$ and $Y\cup Z\cup A\cup C$. The first two have at most
+$x+\Delta+\ceil{(k-y-z)/2}\le T$ points, and the third at most
+$y+z+2\ell-p\le T$. All three contain $P$. Distribute
+$D=E\setminus(X\cup Y\cup C)$, so that the union contains $E$; the total
+load is
+\[
+ k+x+z+2p+a+b\le k+x+z+p+\ell+b\le2k+x-y+\ell+\Delta\le3T .
+\]
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:twocores}]
+Request $Y$, $g$ points of $X$, $g$ points of $Z$, and further points of
+$F$ so that the request contains exactly $T-y$ points of $F$, taking
+remaining points of $X\cup Z$ first. This is possible as
+$2g\le T-y\le k$. Put $P=X\cap K$ and $R=Z\cap K$, of sizes $p$ and $r$;
+by the priority rule $p+r\le(S-T)_+$. As $K$ avoids $Y$, these are the
+only triple cells. Let $A=(F\cap K)\setminus(P\cup R)$,
+$B=(G\cap K)\setminus R$, $C=(E\cap K)\setminus P$, with sizes $a,b,c$;
+then $d:=|F\cap K|=p+r+a\le k-T+y$. The traces of $K$ on $E$ and on $G$
+have at most $k-y-g\le u$ points, hence at most $\ell$.
+
+Use bases $X\cup(G\cap K)$, $Z\cup(E\cap K)$ and $Y\cup(F\cap K)$, of
+sizes at most $x+\ell$, $z+\ell$ and $k-T+2y$, all at most $T$. Each
+contains $P$ and $R$. Distribute $D=P_E\setminus K$ and
+$W=P_G\setminus K$, of sizes $k-x-y-c$ and $k-y-z-b$, so that the union
+contains $E\cup G$. The total load is
+\[
+ 2k-y+2(p+r)+a=2k-y+(p+r)+d\le3k-T+(S-T)_+\le3T,
+\]
+by $3k\le4T$ if $S\le T$ and by $3k+S\le5T$ otherwise. The candidate pairs
+are $P\times G$ and $R\times E$, covered since $P,R$ lie in every request
+and the union contains $E\cup G$, and $(X\setminus P)\times B$,
+$(Z\setminus R)\times C$, $Y\times A$, covered by the three bases.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:nearcore}]
+Request $K$ avoiding $Y\cup Z$ and $\min(x,T-y-z)$ points of $X$. The only
+possible triple cell is $P=X\cap K$, of size $p\le\Delta$. Put
+$X'=X\setminus P$, $A=K\cap P_E$, $B=K\cap P_F$, $C=K\cap G$ and
+$W=P_G\setminus K$, with sizes $a,b,c,w$; then $C\subseteq P_G$,
+\[
+ a\le k-x-y,\qquad b\le k-x-z,\qquad c+w=k-y-z .
+\]
+By Lemma~\ref{lem:foursets} the candidate pairs are
+$P\times(Y\cup Z\cup C\cup W)$, $X'\times C$, $Y\times B$ and $Z\times A$.
+
+\emph{Case 1: $p+a\le m$.} Put $P$ in all three requests, $X'$ in
+requests $1$ and $3$, $Y\cup B$ in request $1$, $Z\cup A$ in request $2$;
+distribute $C$ between requests $1,3$ and $W$ among all three. The loads
+before distribution are $x+y+b\le k+y-z\le T$, $p+a+z\le m+z\le T$ and
+$x\le T$. The distribution of $C$ is possible since
+$2x+y+b+c\le2k+x-2z\le2T$, and then that of $W$ since the total load is
+$2x+k+p+a+b\le2k+x+m-z\le3T$; as $W$ may go to any request, these two
+inequalities are all the conditions of Lemma~\ref{lem:allocation}. Every candidate pair is covered.
+
+\emph{Case 2: $p+a>m$.} Then $|E\cap K|=p+a>k/2$ by the dichotomy (this
+includes the possibility $K=E$), so $|G\cap K|=c<k/2$; in particular
+$K\ne G$, and the dichotomy gives $c\le m$. Put $P$ in requests $1,2$; $X'$ and $C$ in
+request $2$; $Y\cup B$ in request $1$; $Z$ in requests $1,3$; and
+distribute $A$ between requests $1,3$ and $W$ between requests $1,2$. The
+initial loads are $p+y+z+b\le\Delta+k-x+y\le T$, $x+c\le x+m\le T$ and
+$z\le T$. The three conditions of Lemma~\ref{lem:allocation} for $A$ and
+$W$ follow from
+\begin{gather*}
+ (p+y+z+b)+z+a\le\Delta+2k-2x+z\le2T,\\
+ (p+y+z+b)+(x+c)+w=p+x+k+b\le\Delta+2k-z\le2T,\\
+ p+y+2z+b+x+c+a+w=p+x+k+z+a+b\le\Delta+3k-x-y\le3T .
+\end{gather*}
+Every candidate pair is covered: $P$ meets $Y$ and $Z$ in request~$1$,
+$C$ in request~$2$ and $W$ in request $1$ or $2$; $X'$ and $C$ share
+request~$2$; $Y$ and $B$ share request~$1$; and both allowed labels of
+$A$ meet the label $\{1,3\}$ of $Z$.
+
+If $S\le T$, the first request contains $X$, so $P=\varnothing$ and
+$\Delta=0$, and $W$ has no candidate partner. Case~1 then needs only the
+first distribution, and Case~2 only the distribution of $A$, whose
+conditions are $k-x+y\le T$ and $2k-2x+z\le2T$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma~\ref{lem:twolarge}]
+Put $Y=E\cap G$, $Z=F\cap G$, $Y'=F\cap H$, $Z'=E\cap H$ and
+$U=Y\cup Z\cup Y'\cup Z'$; the six pair cells are disjoint. Write
+$\sigma=|Y|+|Z|$ and $\rho=|Y'|+|Z'|$, both at most $2m$, and put
+\[
+ p=\ceil{k/2}-\min(\sigma,\rho),\qquad q=T-\ceil{k/2}-\max(\sigma,\rho).
+\]
+Both are nonnegative; $p\le\ceil{k/2}\le b$ and $q\le\floor{k/2}<x$.
+Choose $B_0\subseteq B$ and $X_0\subseteq X$ of sizes $p,q$, and request
+an edge $I$ avoiding $U\cup B_0\cup X_0$, a set of exactly $T$ points.
+The trace of $I$ on $G$ has at most
+$k-\sigma-p=\floor{k/2}+\min(\sigma,\rho)-\sigma\le\floor{k/2}$ points,
+and similarly on $H$; by the dichotomy both are at most $m$. In
+particular $|B\cap I|\le m$, and $|X\cap I|\le x-q$.
+
+Choose $B_1\subseteq B$ with $B\cap I\subseteq B_1$ and
+$|B_1|=\min(b,T-x)$, possible since $T-x\ge m$. Use the requests
+$X\cup B_1$ and $(X\cap I)\cup(B\setminus B_1)$. The first has at most $T$
+points; the second has $|X\cap I|+\max(0,b-T+x)$ points, and
+$x-q+b-T+x\le T$ follows from $q\ge T-\ceil{k/2}-2m$ and the last
+hypothesis.
+
+As all triple intersections are empty, the candidate pairs of
+$E,F,G,H$ lie in $X\times B$, $Y\times Y'$ or $Z\times Z'$. The last two
+products lie in $U$, which $I$ avoids. A pair in $X\times B_1$ misses the
+response to $X\cup B_1$. A pair $\{u,v\}$ with $u\in X$ and
+$v\in B\setminus B_1$ has $v\notin I$, so it meets $I$ only if $u\in I$;
+then it misses the response to $(X\cap I)\cup(B\setminus B_1)$. The seven
+edges $E,F,G,H,I$ and the two responses form a bad subfamily.
+\end{proof}
+
+\section*{Research assistance}
+This work made substantial use of AI systems. Claude (Anthropic) and
+Codex (OpenAI) were used for mathematical exploration, for developing
+and checking the local constructions and the case analysis, for
+computational experiments that guided the choice of constructions, for
+literature searches, and for preparing the manuscript. The proofs in
+this paper are hand arguments with exact integer quantities; no
+computation is needed to verify them. [The human authors must describe
+here the independent verification they performed.]
+
+\begin{thebibliography}{9}
+\bibitem{Bloom}
+T.~F.~Bloom, \emph{Erd\H{o}s problems}, Problem 644,
+\url{https://www.erdosproblems.com/644}.
+
+\bibitem{BKS}
+M.~Buci\'c, D.~Kor\'andi and B.~Sudakov,
+\emph{Covering graphs by monochromatic trees and Helly-type results for
+hypergraphs}, Combinatorica \textbf{41} (2021), 319--352.
+
+\bibitem{EFKT}
+P.~Erd\H{o}s, D.~G.~Fon-Der-Flaass, A.~V.~Kostochka and Zs.~Tuza,
+\emph{Small transversals in uniform hypergraphs},
+Siberian Adv.\ Math.\ \textbf{2} (1992), 82--88.
+
+\bibitem{EHT}
+P.~Erd\H{o}s, A.~Hajnal and Zs.~Tuza,
+\emph{Local constraints ensuring small representing sets},
+J.\ Combin.\ Theory Ser.\ A \textbf{58} (1991), 78--84.
+
+\bibitem{FKW}
+D.~G.~Fon-Der-Flaass, A.~V.~Kostochka and D.~R.~Woodall,
+\emph{Transversals in uniform hypergraphs with property $(7,2)$},
+Discrete Math.\ \textbf{207} (1999), 277--284.
+
+\bibitem{Kostochka}
+A.~V.~Kostochka,
+\emph{Transversals in uniform hypergraphs with property $(p,2)$},
+Combinatorica \textbf{22} (2002), 275--285.
+\end{thebibliography}
+\end{document}
